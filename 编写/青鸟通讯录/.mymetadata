@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="青鸟通讯录"
+  id="myeclipse.1455773521189"
+  context-root="/蛋蛋"
+  j2ee-spec="6.0"
+  archive="青鸟通讯录.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

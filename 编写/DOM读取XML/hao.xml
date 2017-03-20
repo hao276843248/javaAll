@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hao>
+	<name>郝</name>
+	<age>21</age>
+	<gender>男</gender>
+	<address>北京市通州区</address>
+	<education>大专</education>
+	<!--工作时间-->
+	<jobYeas>0</jobYeas>
+	<tecs>
+		<tec>JAVA</tec>
+		<tec>HTML</tec>
+	</tecs>
+</hao>

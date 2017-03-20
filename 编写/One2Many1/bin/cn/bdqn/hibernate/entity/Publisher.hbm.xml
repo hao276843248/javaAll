@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="cn.bdqn.hibernate.entity">
+
+	<class name="Publisher" schema="book">
+		
+		<id name="id">
+			<generator class="sequence">
+				<param name="sequence">SEQ_PUBLISHER</param>
+			</generator>
+		</id>
+		
+		<property name="name"/>
+		
+		<!-- 映射表示一对多关联关系的Set集合 -->
+		<!-- cascade:级联操作，对当前的实体类执行持久化操作时，也对其关联的对象执行相同的持久化操作 -->
+		<set name="books" cascade="save-update">
+			<!-- 设置图书表中的外键列名 -->
+			<key column="pid"/>
+			<one-to-many class="Book"/>
+		</set>
+					
+	</class>
+ 
+</hibernate-mapping>
+
+
+
+
+
+
+
+

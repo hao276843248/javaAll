@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+	<!-- 用户自定义构件扩展文件 -->
+<settings>
+	<kColl id="settings">
+		<kColl id="tags">
+			<kColl id="services">
+				<field id="SocketService" value="com.sunyard.insurance.sunose.service.SocketService" />
+				<field id="CXFWebService" value="com.sunyard.insurance.sunose.service.CXFWebService" />
+				<field id="Axis2WebService" value="com.sunyard.insurance.sunose.service.Axis2WebService" />		
+				<field id="JMSService" value="com.sunyard.insurance.sunose.plus.jms.JMSService" />
+			</kColl>
+		</kColl>
+	</kColl>
+</settings>

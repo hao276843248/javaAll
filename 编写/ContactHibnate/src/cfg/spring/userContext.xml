@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+	
+	<!-- 用户模块DAO -->
+	<bean id="userDAO" class="cn.bdqn.contact.dao.user.UserDAOImpl"/>
+	
+	
+	<!-- 用户模块Service -->
+	<bean id="userService" class="cn.bdqn.contact.service.user.UserServiceImpl"
+		p:userDAO-ref="userDAO"
+	/>
+
+	<!-- 用户模块Action -->
+	<bean id="loginAction" class="cn.bdqn.contact.action.user.LoginAction"
+		p:userService-ref="userService"  scope="prototype"/>
+	
+	<bean id="registAction" class="cn.bdqn.contact.action.user.RegistAction"
+		p:userService-ref="userService" scope="prototype"/>	
+	
+	<bean id="logoutAction" class="cn.bdqn.contact.action.user.LogoutAction" scope="prototype"/>
+	
+	<bean id="updatePasswordAction" class="cn.bdqn.contact.action.user.UpdatePasswordAction"
+		p:userService-ref="userService"  scope="prototype"/>
+	
+</beans>
+
+
+
+
+
+
+

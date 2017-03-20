@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<context:component-scan base-package="cn.hao.contact"/>
+	
+	<!-- 前置增强（包含了要附加的增强的处理） -->
+	<bean id="test1" class="cn.hao.contact.test.TestZQ"/>
+	
+	<!-- 配置增强 -->
+	<aop:config>
+		<!-- 切点 描述选中那些方法织入增强 -->
+		<!-- execution（ 【访问修饰符】  返回值类型    包名.类名.方法名（参数列表） ） -->
+		<aop:pointcut  id="serviceMethods" expression="execution(* cn.hao.contact.service..*.*(..))"/>
+		<!-- 织入增强 -->
+		<aop:aspect ref="test1">
+			<aop:before method="test1" pointcut-ref="serviceMethods"/>
+		</aop:aspect>
+	</aop:config>
+</beans>

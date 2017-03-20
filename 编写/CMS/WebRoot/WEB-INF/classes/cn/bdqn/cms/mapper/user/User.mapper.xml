@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.cms.mapper.user.UserMapper">
+	
+	<select id="getUserByName" resultType="User">
+		SELECT id,userName,password FROM Users WHERE userName=#{userName}
+	</select>
+	
+	<select id="findUser" resultType="User">
+		SELECT id,userName,password FROM Users
+		WHERE userName LIKE #{userName}
+		ORDER BY id
+	</select>
+	
+	<select id="getUserById" resultType="User">
+		SELECT id,userName,password FROM Users WHERE id=#{id}
+	</select>
+	
+	<insert id="addUser" parameterType="User">
+		INSERT INTO Users(id,userName,password)
+		VALUES(SEQ_USER.nextval,#{userName},#{password})
+	</insert>
+	
+	<update id="updateUser" parameterType="User">
+		UPDATE Users SET userName=#{userName},password=#{password}
+		WHERE id=#{id}
+	</update>
+	
+	<delete id="deleteUser">
+		DELETE FROM Users WHERE id=#{id}
+	</delete>
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="cn.hao.nt.entity">
+	
+	<class name="Detail">
+		
+		<id name="id">
+			<!-- 设置主键通过外键引用的方式插入 -->
+			<generator class="foreign">
+				<!-- 设置哪个属性代表了外键的值 -->
+				<param name="property">login</param>
+			</generator>	
+		</id>
+		
+		<property name="realname"/>
+		<property name="email"/>
+		
+		<!-- 与Login的一对一关系 constraint表示一对一通过外键约束实现-->
+		<one-to-one name="login" constrained="true" class="Login"/>
+	</class>
+
+
+</hibernate-mapping>

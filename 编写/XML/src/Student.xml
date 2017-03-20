@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<students>
+	<sizi id="s" hite="&lt;165" >s</sizi>
+	<sizi id="m" hite="165&lt; 1&lt170;">m</sizi>
+	<sizi id="l" hite="170&lt;1&lt175;">l</sizi>
+	<sizi id="xl" hite="175&lt;&lt180;">xl</sizi>
+	<sizi id="xxl" hite="180&lt;&lt185;">xxl</sizi>
+</students>

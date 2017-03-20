@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ROOT>
+  <Proposal>
+     <!--投保信息-->
+    <PayCurrency type="String" max="3" name="支付币别">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <MAX_ERR>长度不正确，最大长度3个字符。</MAX_ERR>
+    </PayCurrency>
+    <PayCurrencyName type="String" max="120" name="支付币别名称">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <MAX_ERR>长度不正确，最大长度120个字符。</MAX_ERR>
+    </PayCurrencyName>
+    <CollCurrency type="String" max="3" name="汇总币别">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <MAX_ERR>长度不正确，最大长度3个字符。</MAX_ERR>
+    </CollCurrency>
+    <CollCurrencyName type="String" max="120" name="汇总币别名称">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <MAX_ERR>长度不正确，最大长度120个字符。</MAX_ERR>
+    </CollCurrencyName>
+    <ChannelType type="String" max="5" name="渠道类型">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <MAX_ERR>长度不正确，最大5个字符。</MAX_ERR>
+    </ChannelType>
+    <BusinessNature type="String" max="5" name="业务来源">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <MAX_ERR>长度不正确，最大5个字符。</MAX_ERR>
+    </BusinessNature>
+    <StartDate type="Date" regex="" name="起保日期">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <REG_ERR>格式不合法，请输入正确的日期。</REG_ERR>
+    </StartDate>
+    <EndDate type="Date" regex="" name="终保日期">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <REG_ERR>格式不合法，请输入正确的日期。</REG_ERR>
+    </EndDate>
+    <StartHour type="Int" min="0" max="24" regex="[0-9]*" name="起保小时">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <MIN_ERR>必须是0-24的整数。</MIN_ERR>
+      <MAX_ERR>必须是0-24的整数。</MAX_ERR>
+      <REG_ERR>格式不正确，必须为数字。</REG_ERR>
+    </StartHour>
+    <EndHour type="Int" min="0" max="24" regex="[0-9]*" name="终保小时">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <MIN_ERR>格式不正确，必须是0-24的整数。</MIN_ERR>
+      <MAX_ERR>格式不正确，必须是0-24的整数。</MAX_ERR>
+      <REG_ERR>格式不正确，必须为数字。</REG_ERR>
+    </EndHour>
+    <AppliSign type="String" max="1" name="投保人签章">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <MAX_ERR>长度不正确，最大1个字符。</MAX_ERR>
+    </AppliSign>
+    <AgentCode type="String" max="12" name="代理人代码" field="Expression8">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <MAX_ERR>长度不正确，最大12个字符。</MAX_ERR>
+    </AgentCode>
+    <AgentName type="String" max="120" name="代理人名称" field="Expression8">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <MAX_ERR>长度不正确，最大120个字符。</MAX_ERR>
+    </AgentName>
+    <RenewalFlagName type="String" max="1" name="续保标识">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <MAX_ERR>长度不正确，最大1个字符。</MAX_ERR>
+    </RenewalFlagName>
+    <OldPolicyNo type="String" max="22" name="上年保单号" field="Expression1">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <MAX_ERR>长度不正确，最大22个字符。</MAX_ERR>
+    </OldPolicyNo>
+    <ShareHolderFlag type="String" max="1" name="股东业务标识">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <MAX_ERR>长度不正确，最大1个字符。</MAX_ERR>
+    </ShareHolderFlag>
+    <FeeClass type="String" max="1" name="是否上门投保">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <MAX_ERR>长度不正确，最大1个字符。</MAX_ERR>
+    </FeeClass>
+    <ArgueSolution type="String" max="1" name="合同争议解决方式">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <MAX_ERR>长度不正确，最大1个字符。</MAX_ERR>
+    </ArgueSolution>
+    <ComCode type="String" min="8" max="8" name="归属机构">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <MIN_ERR>长度不正确，最小8个字符。</MIN_ERR>
+      <MAX_ERR>长度不正确，最大8个字符。</MAX_ERR>
+    </ComCode>
+    <ServiceAreaFlag type="String" max="10" name="是否须填写服务区域">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <MAX_ERR>长度不正确，最大10个字符。</MAX_ERR>
+    </ServiceAreaFlag>
+    <ServiceArea type="String" max="20" name="服务区域" field="Expression2">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <MAX_ERR>长度不正确，最大20个字符。</MAX_ERR>
+    </ServiceArea>
+    <ServiceAreaName type="String" max="120" name="服务区域名称" field="Expression2">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <MAX_ERR>长度不正确，最大120个字符。</MAX_ERR>
+    </ServiceAreaName>
+    <AuditSign type="Int" min="1" max="1" name="审核人是否签字标识">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <MIN_ERR>为否，请检查。</MIN_ERR>
+      <MAX_ERR>有误，请检查。</MAX_ERR>
+    </AuditSign>
+    <ArbitBoardName type="String" max="60" name="提交仲裁委员会名称" field="Expression13">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <MAX_ERR>长度不正确，最大60个字符。</MAX_ERR>
+    </ArbitBoardName>
+	<!--投保人信息校验-->
+    <APrpTInss flag="1" errormsg="投保人信息必须填写。" name="投保人信息">
+      <APrpTIns>
+        <Type type="String" max="1" name="客户类型">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大1个字符。</MAX_ERR>
+        </Type>
+        <LinkerName type="String" max="120" name="联系人姓名">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大120个字符。</MAX_ERR>
+        </LinkerName>
+        <Mobile valid="N" type="String" min="11" max="11" regex="[0-9]*" name="移动电话" field="Expression9">
+          <MIN_ERR>必须为11位。</MIN_ERR>
+          <MAX_ERR>必须为11位。</MAX_ERR>
+          <REG_ERR>格式不正确，必须为纯数字。</REG_ERR>
+        </Mobile>
+        <UnitAreaCode valid="N" type="String" min="3" max="4" regex="[0-9]*" name="固定电话区号" field="Expression10">
+          <MIN_ERR>长度错误，最小为3位。</MIN_ERR>
+          <MAX_ERR>长度错误，最大为4位。</MAX_ERR>
+          <REG_ERR>格式不正确，必须为纯数字。</REG_ERR>
+        </UnitAreaCode>
+        <UnitPhoneNumber valid="N" type="String" min="6" max="8" regex="[0-9]*" name="固定电话号码" field="Expression16">
+          <MIN_ERR>长度错误，最小为6位。</MIN_ERR>
+          <MAX_ERR>长度错误，最大为8位。</MAX_ERR>
+          <REG_ERR>格式不正确，必须为纯数字。</REG_ERR>
+        </UnitPhoneNumber>
+        <PhoneNumber type="String" max="20" name="联系人电话" field="Expression14">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大15个字符。</MAX_ERR>
+        </PhoneNumber>
+        <Name type="String" max="120" name="个人客户名称" field="Expression3">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大120个字符。</MAX_ERR>
+        </Name>
+        <IdentifyType type="String" max="2" name="证件类型" field="Expression3">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大2个字符。</MAX_ERR>
+        </IdentifyType>
+        <IdentifyNumber type="String" max="20" name="证件号码" field="Expression3">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大20个字符。</MAX_ERR>
+        </IdentifyNumber>
+        <HomeProvience type="String" max="255" name="地址（省）" field="Expression3">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </HomeProvience>
+        <HomeCity type="String" max="255" name="地址（市）" field="Expression3">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </HomeCity>
+        <HomeDistrict type="String" max="255" name="地址（区）" field="Expression3">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </HomeDistrict>
+        <HomeAddress type="String" max="255" name="地址（详细）" field="Expression3">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </HomeAddress>
+        <HomeProvienceCode type="String" max="255" name="地址（省）代码" field="Expression3">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </HomeProvienceCode>
+        <HomeCityCode type="String" max="255" name="地址（市）代码" field="Expression3">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </HomeCityCode>
+        <HomeDistrictCode type="String" max="255" name="地址（区）代码" field="Expression3">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </HomeDistrictCode>
+        <PostCode type="String" min="6" max="6" regex="[0-9]*" name="个人邮编" field="Expression3">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MIN_ERR>长度错误，最小6个字符。</MIN_ERR>
+          <MAX_ERR>长度错误，最大6个字符。</MAX_ERR>
+          <REG_ERR>格式不正确，必须为纯数字。</REG_ERR>
+        </PostCode>
+        <GroupName type="String" max="120" name="团体名称" field="Expression4">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大120个字符。</MAX_ERR>
+        </GroupName>
+        <UnitCode type="String" max="18" name="组织机构代码" field="Expression4">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大18个字符。</MAX_ERR>
+        </UnitCode>
+        <UnitProvience type="String" max="255" name="地址（省）" field="Expression4">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </UnitProvience>
+        <UnitCity type="String" max="255" name="地址（市）" field="Expression4">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </UnitCity>
+        <UnitDistrict type="String" max="255" name="地址（区）" field="Expression4">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </UnitDistrict>
+        <UnitAddress type="String" max="255" name="地址（详细）" field="Expression4">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </UnitAddress>
+        <UnitProvienceCode type="String" max="255" name="地址（省）代码" field="Expression4">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </UnitProvienceCode>
+        <UnitCityCode type="String" max="255" name="地址（市）代码" field="Expression4">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </UnitCityCode>
+        <UnitDistrictCode type="String" max="255" name="地址（区）代码" field="Expression4">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </UnitDistrictCode>
+        <UnitPostCode type="String" min="6" max="6" regex="[0-9]*" name="团体邮编" field="Expression4">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MIN_ERR>长度错误，最小6个字符。</MIN_ERR>
+          <MAX_ERR>长度错误，最大6个字符。</MAX_ERR>
+          <REG_ERR>格式不正确，必须为纯数字。</REG_ERR>
+        </UnitPostCode>
+      </APrpTIns>
+    </APrpTInss>
+    <!--被保人信息校验-->
+    <IprpInss flag="1" errormsg="被保人信息必须填写。" name="被保人信息">
+      <IprpIns>
+        <Type type="String" max="1" name="客户类型">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大1个字符。</MAX_ERR>
+        </Type>
+        <LinkerName type="String" max="120" name="联系人姓名">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大120个字符。</MAX_ERR>
+        </LinkerName>
+        <Mobile valid="N" type="String" min="11" max="11" regex="[0-9]*" name="移动电话" field="Expression11">
+          <MIN_ERR>必须为11位。</MIN_ERR>
+          <MAX_ERR>必须为11位。</MAX_ERR>
+          <REG_ERR>格式不正确，必须为纯数字。</REG_ERR>
+        </Mobile>
+        <UnitAreaCode valid="N" type="String" min="3" max="4" regex="[0-9]*" name="固定电话区号" field="Expression12">
+          <MIN_ERR>长度错误，最小为3位。</MIN_ERR>
+          <MAX_ERR>长度错误，最大为4位。</MAX_ERR>
+          <REG_ERR>格式不正确，必须为纯数字。</REG_ERR>
+        </UnitAreaCode>
+        <UnitPhoneNumber valid="N" type="String" min="6" max="8" regex="[0-9]*" name="固定电话号码" field="Expression17">
+          <MIN_ERR>长度错误，最小为6位。</MIN_ERR>
+          <MAX_ERR>长度错误，最大为8位。</MAX_ERR>
+          <REG_ERR>格式不正确，必须为纯数字。</REG_ERR>
+        </UnitPhoneNumber>
+        <PhoneNumber type="String" max="20" name="联系人电话" field="Expression15">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大15个字符。</MAX_ERR>
+        </PhoneNumber>
+        <Name type="String" max="120" name="客户名称" field="Expression5">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大120个字符。</MAX_ERR>
+        </Name>
+        <IdentifyType type="String" max="2" name="证件类型" field="Expression5">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大2个字符。</MAX_ERR>
+        </IdentifyType>
+        <IdentifyNumber type="String" max="20" name="证件号码" field="Expression5">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大20个字符。</MAX_ERR>
+        </IdentifyNumber>
+        <HomeProvience type="String" max="255" name="地址（省2）" field="Expression5">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </HomeProvience>
+        <HomeCity type="String" max="255" name="地址（市2）" field="Expression5">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </HomeCity>
+        <HomeDistrict type="String" max="255" name="地址（区2）" field="Expression5">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </HomeDistrict>
+        <HomeAddress type="String" max="255" name="地址（详细）" field="Expression5">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </HomeAddress>
+        <HomeProvienceCode type="String" max="255" name="地址（省）代码" field="Expression5">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </HomeProvienceCode>
+        <HomeCityCode type="String" max="255" name="地址（市）代码" field="Expression5">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </HomeCityCode>
+        <HomeDistrictCode type="String" max="255" name="地址（区）代码" field="Expression5">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </HomeDistrictCode>
+        <PostCode type="String" min="6" max="6" regex="[0-9]*" name="个人邮编" field="Expression5">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MIN_ERR>长度错误，最小6个字符。</MIN_ERR>
+          <MAX_ERR>长度错误，最大6个字符。</MAX_ERR>
+          <REG_ERR>格式不正确，必须为纯数字。</REG_ERR>
+        </PostCode>
+        <GroupName type="String" max="120" name="团体名称" field="Expression6">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大120个字符。</MAX_ERR>
+        </GroupName>
+        <UnitCode type="String" max="18" name="组织机构代码" field="Expression6">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大18个字符。</MAX_ERR>
+        </UnitCode>
+        <UnitProvience type="String" max="255" name="地址（省1）" field="Expression6">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </UnitProvience>
+        <UnitCity type="String" max="255" name="地址（市1）" field="Expression6">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </UnitCity>
+        <UnitDistrict type="String" max="255" name="地址（区1）" field="Expression6">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </UnitDistrict>
+        <UnitAddress type="String" max="255" name="地址（详细1）" field="Expression6">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </UnitAddress>
+        <UnitProvienceCode type="String" max="255" name="地址（省）代码" field="Expression6">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </UnitProvienceCode>
+        <UnitCityCode type="String" max="255" name="地址（市）代码" field="Expression6">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </UnitCityCode>
+        <UnitDistrictCode type="String" max="255" name="地址（区）代码" field="Expression6">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大255个字符。</MAX_ERR>
+        </UnitDistrictCode>
+        <UnitPostCode type="String" min="6" max="6" regex="[0-9]*" name="团体邮编" field="Expression6">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MIN_ERR>长度错误，最小6个字符。</MIN_ERR>
+          <MAX_ERR>长度错误，最大6个字符。</MAX_ERR>
+          <REG_ERR>格式不正确，必须为纯数字。</REG_ERR>
+        </UnitPostCode>
+      </IprpIns>
+    </IprpInss>
+     <!--业务人员信息校验-->
+    <PrpTSales flag="1" errormsg="业务人员信息必须填写。" name="业务人员信息">
+      <PrpTSale>
+        <HandleCode type="String" min="8" max="8" name="业务员代码">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MIN_ERR>长度不正确，最小8个字符。</MIN_ERR>
+          <MAX_ERR>长度不正确，最大8个字符。</MAX_ERR>
+        </HandleCode>
+        <HandleName type="String" max="50" name="业务员名称">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度不正确最大50个字符。</MAX_ERR>
+        </HandleName>
+        <PropOrtion type="Double" min="0.01" max="100" regex="[0-9]+(.[0-9]{0,2})?" name="业务员比例">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MIN_ERR>数值范围不正确，最小0.01。</MIN_ERR>
+          <MAX_ERR>数值范围不正确，最大100。</MAX_ERR>
+          <REG_ERR>数值格式不正确，必须为数字且保留0-2位小数。</REG_ERR>
+        </PropOrtion>
+      </PrpTSale>
+    </PrpTSales>
+	<!--缴费计划-->
+    <PrpTplans name="缴费计划信息">
+      <PrpTplan>
+        <PlanStartDate type="Date" regex="" name="缴费起期" >
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <REG_ERR>格式不合法，请输入正确的日期。</REG_ERR>
+        </PlanStartDate>
+        <PlanDate type="Date" regex="" name="缴费止期">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <REG_ERR>格式不合法，请输入正确的日期。</REG_ERR>
+        </PlanDate>
+        <PlanFee type="Double" min="0.01" name="缴费金额" regex="[0-9]+(.[0-9]{0,2})?">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MIN_ERR>数值范围不正确，最小0.01。</MIN_ERR>
+          <REG_ERR>格式不正确，必须为数字且保留0-2位小数。</REG_ERR>
+        </PlanFee>
+      </PrpTplan>
+    </PrpTplans>
+  </Proposal>
+ </ROOT>
+ 

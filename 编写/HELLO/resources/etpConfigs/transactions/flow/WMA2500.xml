@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 批量执行接口 -->
+<SelfDefTransFlow>
+	<TransactionFlow id="WMA2500" transFlowContext="WMA2500Context">
+	    <!--  -->
+		<transStep id="" >
+			<transition id="0" dest="" />
+			<transition id="Other" dest="errorStep"/>
+		</transStep>
+		
+		
+		
+		
+		<!-- 错误处理步骤 -->
+		<transStep id="errorStep" >
+			<transition id="Other" dest="end"/>
+		</transStep>
+		<refFormat refId="tcpipInputFmt" />
+		<refFormat refId="tcpipOutputFmt" />
+	</TransactionFlow>
+		<!-- 上下文配置 -->
+	<context id="WMA2500Context" type="transFlow">
+		<refKColl refId="datas" />
+		<refService refId="FlowConfigService" />
+	</context>
+
+	<!-- 数据配置 -->
+	<kColl id="datas">
+		<field id="transException" />
+		<refData refId="HEAD" />
+		<refData refId="BODY" />
+		<refData refId="TAIL" />
+	</kColl>
+
+	<!-- 输入格式化配置 -->
+	<fmtDef id="tcpipInputFmt">
+		<refFormat refId="flowInFormat" />
+	</fmtDef>
+
+	<!-- 输出格式化配置 -->
+	<fmtDef id="tcpipOutputFmt">
+		<refFormat refId="flowOutFormat" />
+	</fmtDef>
+
+</SelfDefTransFlow>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!-- 配置MyBatis日志的输出方式 -->
+		<setting name="logImpl" value="LOG4J"/>
+	</settings>
+
+	<typeAliases>
+		<!-- 设置类型别名 -->
+		<typeAlias type="cn.hao.cms.entity.User" alias="User"/>
+		<typeAlias type="cn.hao.cms.entity.Category" alias="Category"/>
+		<typeAlias type="cn.hao.cms.entity.Content" alias="Content"/>
+	</typeAliases>
+	
+	<plugins>  
+	    <plugin interceptor="cn.bdqn.mybatis.plugin.PaginationInterceptor">
+	    	<property name="dialectClass" value="cn.bdqn.mybatis.plugin.OracleDialect"/>
+	   	</plugin>  
+	</plugins>
+	
+	
+	<environments default="cms">
+		<!-- 数据库连接参数 -->
+		<environment id="cms">
+			<!-- 设置事务管理器 -->
+			<transactionManager type="JDBC"/>
+			<!-- 设置数据库连接参数 -->
+			<dataSource type="UNPOOLED">				
+				<property name="driver" value="oracle.jdbc.OracleDriver"/>
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:ORCL"/>
+				<property name="username" value="cms"/>
+				<property name="password" value="ok"/>
+			</dataSource>
+		</environment>
+
+	</environments>
+
+	<!-- 要加载的映射文件 -->
+	<mappers>
+       <mapper resource="cn/hao/cms/mapper/user/user.mapper.xml"/>   
+       <mapper resource="cn/hao/cms/mapper/category/category.mapper.xml"/>
+       <mapper resource="cn/hao/cms/mapper/content/content.mapper.xml"/>      
+	</mappers>
+</configuration>

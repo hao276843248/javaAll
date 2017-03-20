@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+	<DataFields>
+		<DataField FieldId="123,345,567,890,009" ExpId="123">
+			<Field Id="a" Path="HEAD.FLOW.WORKITEMID" Description="不映射"
+				DataType="Context" />
+			<Field Id="b" Path="HEAD.FLOW.USERID" Description="不映射"
+				DataType="Context" />
+			<Field Id="test" Path="HEAD.FLOW.PROCDEFNAME" Description="不映射"
+				DataType="Context" />
+		</DataField>
+
+		<DataField FieldId="124" ExpId="124">
+			<Field Id="a" Path="ROOT/HEAD/FLOW/WORKITEMID"
+				Description="不映射" DataType="Xml" />
+			<Field Id="b" IsIterate="true" Path="ROOT/HEAD/FLOW/USERID"
+				Description="不映射" DataType="Xml" />
+			<Field Id="test" IsIterate="true" Path="HEAD.FLOW.PROCDEFNAME"
+				Description="不映射" DataType="Xml" />
+		</DataField>
+
+		<DataField FieldId="125" ExpId="125">
+			<Field Id="a" IsIterate="true" Path="ROOT/BODY/As/A" Description="不映射" DataType="Xml" />
+			<Field Id="b" IsIterate="true" Path="ROOT/BODY/Bs/B" Description="不映射" DataType="Xml" />
+			<Field Id="test"  IsIterate="true" Path="ROOT/BODY/Test/T" Description="不映射"
+				DataType="Xml" />
+		</DataField>
+
+		<DataField FieldId="126" ExpId="126">
+			<Field Id="a" IsIterate="true" Path="ROOT/BODY/As/A" Description="不映射" DataType="Xml" />
+			<Field Id="b" Path="ROOT/BODY/Bs" Description="不映射" DataType="Xml" />
+			<Field Id="test" Path="ROOT/HEAD/FLOW/WORKITEMID" Description="不映射"
+				DataType="Xml" />
+		</DataField>
+
+		<DataField FieldId="127" ExpId="127">
+			<Field Id="a" IsIterate="true" Path="ROOT/BODY/As/A"   Description="不映射" DataType="Xml" />
+			<Field Id="b" IsIterate="true" Path="ROOT/BODY/Bs/B" Description="不映射" DataType="Xml" />
+			<Field Id="test" Path="ROOT/HEAD/FLOW/USERID" Description="不映射"
+				DataType="Xml" />
+		</DataField>
+	</DataFields>
+
+	<Expressions>
+		<Expression Id="123" Result="test" Point="0">[a]*[b]-([a]+[b])
+		</Expression>
+		<Expression Id="124" Result="test" Point="1">([a]+[b])*[a]*[b]-([a]+[b])
+		</Expression>
+		<Expression Id="125" Result="test" Point="2">([a]+[b])*[a]*[b]-([a]+[b])
+		</Expression>
+		<Expression Id="126" Result="test">#sum([a])</Expression>
+		<Expression Id="127" Result="test" Point="3">#avg([b])
+		</Expression>
+	</Expressions>
+
+	<RefFields>
+		<RefField Id="2700">123,124,125,126,127</RefField>
+	</RefFields>
+
+</Root>

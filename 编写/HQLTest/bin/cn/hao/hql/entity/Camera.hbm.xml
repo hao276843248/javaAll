@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="cn.hao.hql.entity">
+	
+	<class name="Camera" table="Camera" schema="scott">
+		<id name="id">
+			<generator class="assigned" >
+			</generator>
+		</id>
+		<property name="brandid" />
+		<property name="typeid" />
+		<property name="title" />
+		<property name="pixel" />
+		<property name="zoom" />
+		<property name="lcd" />
+		<property name="color" />
+		<property name="price" />
+		<property name="image" />
+		<property name="status" />
+	</class>
+
+</hibernate-mapping>

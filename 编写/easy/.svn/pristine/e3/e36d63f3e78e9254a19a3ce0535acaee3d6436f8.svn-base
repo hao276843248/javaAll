@@ -1,0 +1,84 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<jsp:include page="inc/scripts.jsp" />
+</head>
+<body>
+<jsp:include page="inc/header.jsp" />
+<jsp:include page="inc/childNav.jsp" />
+<div id="main" class="wrap">
+	<div class="lefter">
+			<jsp:include page="inc/cpfl.jsp" />
+		<div class="spacer"></div>
+		<div class="last-view">
+			<h2>最近浏览</h2>
+			<dl class="clearfix">
+				<dt><img src="images/product/0_tiny.gif" /></dt>
+				<dd><a href="product-view.html">法国德菲丝松露精品巧克力500g/盒</a></dd>
+				<dt><img src="images/product/0_tiny.gif" /></dt>
+				<dd><a href="product-view.html">法国德菲丝松露精品巧克力500g/盒</a></dd>
+			</dl>
+		</div>
+	</div>
+	<div class="main">
+		<div class="price-off">
+			<h2>今日特价</h2>
+			<ul class="product clearfix">
+				<c:forEach items="${product1.results}" var="product1" varStatus="i">
+					<li>
+						<dl>
+							<dt><a href="product-view_{${product1.epId}}.html" target="_blank"><img src="images/product/${product1.epFileName}" /></a></dt>
+							<dd class="title"><a href="product-view.html" target="_blank">${product1.epName}</a></dd>
+							<dd class="price">${product1.epPrice}</dd>
+						</dl>
+					</li>
+				</c:forEach>
+			</ul>
+		</div>
+		<div class="side">
+			<div class="news-list">
+				<h4>最新留言</h4>
+					<c:forEach items="${commentFind.results}" var="commentFind">
+						<ul>
+							<li><a href="guestbook.html" target="_blank">${commentFind.ecContent}</a></li>
+						</ul>
+					</c:forEach>
+			</div>
+			<div class="spacer"></div>
+			<div class="news-list">
+				<h4>新闻动态</h4>
+				<c:forEach items="${news.results}" var="news">
+					<ul>
+						<li><a href="news-view_${news.enId}.html" target="_blank">${news.enTitle}</a></li>
+					</ul>
+				</c:forEach>
+			</div>
+		</div>
+		<div class="spacer clear"></div>
+		<div class="hot">
+			<h2>热卖推荐</h2>
+			<ul class="product clearfix">
+				<c:forEach items="${product2.results}" var="product2">
+					<li>
+						<dl>
+							<dt><a href="product-view_{${product2.epId}}.html" target="_blank"><img src="images/product/${product2.epFileName}" /></a></dt>
+							<dd class="title"><a href="product-view.html" target="_blank">${product2.epName}</a></dd>
+							<dd class="price">${product2.epPrice}</dd>
+						</dl>
+					</li>
+				</c:forEach>
+			</ul>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<jsp:include page="inc/foot.jsp" />
+</body>
+</html>

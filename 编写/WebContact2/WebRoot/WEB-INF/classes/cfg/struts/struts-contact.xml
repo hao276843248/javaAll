@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<!-- 上传文件的临时目录 -->
+	<constant name="struts.multipart.saveDir" value="f:/Temp" />
+	<!-- 上传文件的最大长度 -1表示不限 -->
+	<constant name="struts.multipart.maxSize" value="-1" />
+	<package name="contact" namespace="/background" extends="default">
+		<!-- 添加联系人 -->
+		<action name="addContact" class="addContactAction">
+			<interceptor-ref name="defaultStack">
+				<param name="fileUpload.maximumSize">10485760</param>
+				<param name="fileUpload.allowedExtensions">.jpg,.bmp,.gif,.png</param>
+			</interceptor-ref>
+			<result name="input">add.jsp</result>
+			<result type="redirectAction">listContact</result>
+		</action>
+		
+		<!-- 联系人列表 -->
+		<action name="listContact" class="listContactAction">
+			<result>index.jsp</result>
+		</action>
+		
+		<!-- 修改联系人 -->
+		<action name="updateContact" class="updateContactAction">
+			<interceptor-ref name="defaultStack">
+				<param name="fileUpload.maximumSize">10485760</param>
+				<param name="fileUpload.allowedExtensions">.jpg,.bmp,.gif,.png</param>
+			</interceptor-ref>
+			<result name="input">edit.jsp</result>
+			<result type="redirectAction">listContact</result>
+		</action>
+		
+		<!-- 编辑联系人 -->
+		<action name="getContact" class="getContactAction">
+			<result>edit.jsp</result>
+		</action>
+		
+		<!-- 删除联系人 -->
+		<action name="deleteContact" class="deleteContactAction">
+			<result type="redirectAction">listContact</result>
+		</action>
+		
+		<!-- 联系人详细信息 -->
+		<action name="getContact2" class="getContactAction2">
+			<result>detail.jsp</result>
+		</action>
+		
+		<!-- 导出联系人 -->
+		<action name="export" class="exportContactAction">
+			<result type="stream">
+				<!-- 用来获取输入流的属性名(默认为inputStream) -->
+				<param name="inputName">inputStream</param>
+				<!-- 设置内容类型 -->
+				<param name="contentType">application/octet-stream</param>
+				<!-- 设置下载文件名 -->
+				<param name="contentDisposition">attachment;filename="${fileName}";filename*=utf-8''${fileName}</param>
+			</result>
+		</action>
+		
+		
+	</package>
+
+</struts>    
+
+
+
+
+
+
+

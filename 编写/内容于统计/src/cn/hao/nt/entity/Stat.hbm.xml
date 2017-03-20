@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="cn.hao.nt.entity">
+	<class name="Stat" table="Stat" schema="tom">
+		<id name="id">
+			<generator class="increment"/>
+		</id>
+		<property name="visit"/>
+		<many-to-one name="content" column="cid" class="Content" unique="true"/>
+	</class>
+</hibernate-mapping>

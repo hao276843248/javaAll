@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <display-name></display-name>
+  <welcome-file-list>
+    <welcome-file>Login.jsp</welcome-file>
+  </welcome-file-list>
+  <!-- 全局的初始化参数，可以被所有的过滤器和Servlet读取 -->
+  	<context-param>
+  		<param-name>tempDir</param-name>
+  		<param-value>D:/temp</param-value>
+  	</context-param>
+  	<context-param>
+  		<param-name>sizeThreshold</param-name>
+  		<param-value>100</param-value>
+  	</context-param>
+  	<context-param>
+  		<param-name>sizeMax</param-name>
+  		<param-value>104857600</param-value>
+  	</context-param>
+  	<context-param>
+  		<param-name>fileSizeMax</param-name>
+  		<param-value>10485760</param-value>
+  	</context-param>
+  	<context-param>
+  		<param-name>uploadPath</param-name>
+  		<param-value>/manage/upload</param-value>
+  	</context-param>
+  	<context-param>
+  		<param-name>allowExtNames</param-name>
+  		<param-value>jpg,gif,png,bmp</param-value>
+  	</context-param>
+  
+    <filter>
+        <filter-name>Charset</filter-name>
+        <filter-class>cn.hao.book.filter.CharseFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/manage/*</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>cn.hao.book.filter.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Charset</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+     <filter>
+        <filter-name>OpenSessionInView</filter-name>
+        <filter-class>cn.hao.book.filter.OpenSessionInViewFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>OpenSessionInView</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+</web-app>

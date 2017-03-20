@@ -1,0 +1,90 @@
+package cn.hao.easybuy.form;
+
+import java.util.Date;
+
+import cn.hao.easybuy.entity.EasybuyComment;
+
+public class CommentForm {
+
+
+	private int ecId;
+	private Date ct;
+	private String ecReply;
+	private String guestName;
+	private String guestContent;
+	private int pageIndex=1;
+	private int pageSize=3;
+	
+	public CommentForm() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+	public CommentForm(EasybuyComment comment) {
+		super();
+		this.ecId = comment.getEcId();
+		this.ecReply = comment.getEcReply();
+		this.ct=comment.getEcCreateTime();
+		this.guestName = comment.getEcNickName();
+		this.guestContent = comment.getEcContent();
+	}
+
+
+	public EasybuyComment getComment(){
+		return new EasybuyComment(guestContent, ct, ecReply, new Date(), guestName);
+	}
+
+	
+	public Date getCt() {
+		return ct;
+	}
+
+
+
+	public void setCt(Date ct) {
+		this.ct = ct;
+	}
+
+
+
+	public String getGuestName() {
+		return guestName;
+	}
+	public void setGuestName(String guestName) {
+		this.guestName = guestName;
+	}
+	public String getGuestContent() {
+		return guestContent;
+	}
+	public void setGuestContent(String guestContent) {
+		this.guestContent = guestContent;
+	}
+	public int getPageIndex() {
+		return pageIndex;
+	}
+	public void setPageIndex(int pageIndex) {
+		this.pageIndex = pageIndex;
+	}
+	public int getPageSize() {
+		return pageSize;
+	}
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
+	public int getEcId() {
+		return ecId;
+	}
+	public void setEcId(int ecId) {
+		this.ecId = ecId;
+	}
+	public String getEcReply() {
+		return ecReply;
+	}
+	public void setEcReply(String ecReply) {
+		this.ecReply = ecReply;
+	}
+	
+	
+	
+}

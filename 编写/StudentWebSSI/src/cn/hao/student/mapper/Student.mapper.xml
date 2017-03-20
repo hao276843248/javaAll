@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hao.student.mapper.StudentMapper">
+	<select id="findStudent" resultMap="StudentMap">
+		Select id,name,gender,brithday,pic from Student  
+		<where>
+			<if test="name!=null">name like #{name}</if>
+		</where>
+		order by id
+	</select>
+	
+	<insert id="addStudent" parameterType="Student" useGeneratedKeys="true" keyProperty="id">
+		insert into Student(name,gender,brithday,pic) values(#{name},#{gender},#{brithday},#{pic})
+	</insert>
+	
+	<delete id="deleteStudent">
+		delete from Student where id=#{id}
+	</delete>
+	
+	<update id="updateStudent" parameterType="Student">
+		update Student set 
+			name=#{name},gender=#{gender},brithday=#{brithday},pic=#{pic}
+		 where id=#{id}
+	</update>
+	
+	<select id="getStudent" resultType="Student">
+		select id,name,gender,brithday,pic from student where id=#{id}
+	</select>
+	
+	<resultMap type="Student" id="StudentMap">
+		<id column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="gender" property="gender"/>
+		<result column="brithday" property="brithday"/>
+		<result column="pic" property="pic"/>  
+	</resultMap>
+</mapper>

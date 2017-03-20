@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+	<!-- 判断任务唯一性，是否满足发起条件 -->
+	<ProcedureAccessService id="SEL_CANSTART_SP_SERVICE"
+		DriverType="ORACLE" dbResource="CBIFJDBC">
+		<JDBCProcedureDefine id="SEL_CANSTART_SP_JDBCDEF"
+			procedureName="SEL_CANSTART_SP">
+			<kColl id="input">
+				<!--输入参数数据域有序枚举 -->
+				<field id="TASKID" value="HEAD.TASKID" />
+				<field id="APPCODE" value="HEAD.APPCODE" />
+			</kColl>
+			<kColl id="output">
+				<!--输出参数数据域有序枚举 -->
+				<field id="PROCINSNAME" value="HEAD.FLOW.PROCINSNAME" />
+				<field id="PROCDEFNAME" value="HEAD.FLOW.PROCDEFNAME" />
+				<field id="NODENAME" value="HEAD.FLOW.NODENAME" />
+				<field id="APPTABLENAME" value="HEAD.APPTABLENAME" />
+				<field id="RETCODE" value="TAIL.RETCODE" />
+				<field id="RETREASON" value="TAIL.RETREASON" />
+			</kColl>
+		</JDBCProcedureDefine>
+	</ProcedureAccessService>
+
+	<!-- 保存任务信息 -->
+	<ProcedureAccessService id="SAV_TASKLIST_SP_SERVICE"
+		DriverType="ORACLE" dbResource="CBIFJDBC">
+		<JDBCProcedureDefine id="SAV_TASKLIST_SP_JDBCDEF"
+			procedureName="SAV_TASKLIST_SP">
+			<kColl id="input">
+				<!--输入参数数据域有序枚举 -->
+				<field id="I_TASK_ID" value="HEAD.TASKID" /> <!--任务索引号 -->
+				<field id="I_GROUP_ID" value="HEAD.FLOW.GROUPID" /><!--任务组索引号 -->
+				<field id="I_FLOW_ID" value="HEAD.FLOW.PROCESSID" /> <!--流程id -->
+				<field id="I_BEGIN_USERNO" value="HEAD.FLOW.USERID" /><!--操作员 -->
+				<field id="I_BEGIN_ORGNO" value="HEAD.ORGCODE" /><!--业务发起机构 -->
+				<field id="I_START_TIM" value="HEAD.FLOW.CREATETIME" /> <!--业务发起时间 -->
+				<!--<field id="I_START_ORGAN" value="HEAD.TASKID" />代理发起机构 -->
+				<field id="I_APP_CODE" value="HEAD.APPCODE" /><!-- 业务代码 -->
+				<!--<field id="I_POINT" value="HEAD.TASKID" /> 优先级 -->
+				<!--<field id="I_POINT_BITMAP" value="HEAD.TASKID" /> 过程中优先级 -->
+			</kColl>
+			<kColl id="output">
+				<!--输出参数数据域有序枚举 -->
+				<field id="O_RET" value="TAIL.RETCODE" />
+				<field id="O_MSG" value="TAIL.RETREASON" />
+			</kColl>
+		</JDBCProcedureDefine>
+	</ProcedureAccessService>
+
+	<!-- 更新任务状态 -->
+	<ProcedureAccessService id="UP_TASKSTATE_SP_SERVICE"
+		DriverType="ORACLE" dbResource="CBIFJDBC">
+		<JDBCProcedureDefine id="UP_TASKSTATE_SP_JDBCDEF"
+			procedureName="UP_TASKSTATE_SP">
+			<kColl id="input">
+				<!--输入参数数据域有序枚举 -->
+				<field id="I_TASK_ID" value="HEAD.TASKID" /> 			<!--任务索引号 -->
+				<field id="I_TASK_STATE" value="HEAD.STATE" />			<!--状态 -->
+				<field id="I_FLOW_ID" value="HEAD.FLOW.PROCESSID" /> 	<!--流程id -->
+				<field id="I_END_TIME" value="HEAD.FLOW.ENDTIME" /> 		<!--流程id -->
+			</kColl>
+			<kColl id="output">
+				<!--输出参数数据域有序枚举 -->
+				<field id="O_RET" value="TAIL.RETCODE" />
+				<field id="O_MSG" value="TAIL.RETREASON" />
+			</kColl>
+		</JDBCProcedureDefine>
+	</ProcedureAccessService>
+
+	<!-- 保存任务明细 -->
+	<ProcedureAccessService id="SAV_TASKDETAIL_SP_SERVICE"
+		DriverType="ORACLE" dbResource="CBIFJDBC">
+		<JDBCProcedureDefine id="SAV_TASKDETAIL_SP_JDBCDEF"
+			procedureName="SAV_TASKDETAIL_SP">
+			<kColl id="input">
+				<!--输入参数数据域有序枚举 -->
+				<field id="I_TASK_ID" value="HEAD.TASKID" /> <!--任务索引号 -->
+				<field id="I_GROUP_ID" value="HEAD.FLOW.GROUPID" /><!--任务组索引号 -->
+				<field id="I_FLOW_ID" value="HEAD.FLOW.PROCESSID" /> <!--流程id -->
+				<field id="I_FLOW_NODE" value="HEAD.FLOW.NODENAME" /> <!--流程节点 -->
+				<field id="I_WKI_ID" value="HEAD.FLOW.WORKITEMID" /> <!--工作项id -->
+				<field id="I_APP_CODE" value="HEAD.APPCODE" /> <!--业务代码 -->
+				<field id="I_USER_NO" value="HEAD.FLOW.USERID" /> <!--操作用户 -->
+				<field id="I_ORGAN_NO" value="HEAD.ORGCODE" /> <!--处理机构 -->
+
+				<field id="I_CREATE_TIME" value="HEAD.FLOW.WKIMCREATETIME" /> <!--创建时间 -->
+				<field id="I_CHECKOUT_TIME" value="HEAD.FLOW.WKIMCHECKOUTTIME" /> <!--获取时间 -->
+				<field id="I_CHECKIN_TIME" value="HEAD.FLOW.WKIMCHECKINTIME" /> <!--提交时间 -->
+				<field id="I_SUSPEND_TIME" value="HEAD.FLOW.SUSPENDTIME" /> <!--挂起时间 -->
+				<field id="I_RESUME_TIME" value="HEAD.FLOW.RESUMETIME" /> <!--恢复时间 -->
+				<field id="I_STATE" value="HEAD.FLOW.WKIMSTATE" /> <!--任务状态 -->
+
+				<field id="I_RESULT" value="TAIL.RETCODE" /> <!--处理结果 -->
+			</kColl>
+			<kColl id="output">
+				<!--输出参数数据域有序枚举 -->
+				<field id="O_RET" value="TAIL.RETCODE" />
+				<field id="O_MSG" value="TAIL.RETREASON" />
+			</kColl>
+		</JDBCProcedureDefine>
+	</ProcedureAccessService>
+
+	<!-- 保存任务消息 -->
+	<ProcedureAccessService id="SAV_LOCALMSG_SP_SERVICE"
+		DriverType="ORACLE" dbResource="CBIFJDBC">
+		<JDBCProcedureDefine id="SAV_LOCALMSG_SP_JDBCDEF"
+			procedureName="SAV_LOCALMSG_SP">
+			<kColl id="input">
+				<!--输入参数数据域有序枚举 -->
+				<field id="I_TASK_ID" value="HEAD.TASKID" /> <!--任务索引号 -->
+				<field id="I_MESSAGE" value="LOCALMSG" /><!--任务组索引号 -->
+			</kColl>
+			<kColl id="output">
+				<!--输出参数数据域有序枚举 -->
+				<field id="O_RET" value="TAIL.RETCODE" />
+				<field id="O_MSG" value="TAIL.RETREASON" />
+			</kColl>
+		</JDBCProcedureDefine>
+	</ProcedureAccessService>
+
+	<!-- 保存节点消息 -->
+	<ProcedureAccessService id="SAV_TEMPMSG_SP_SERVICE"
+		DriverType="ORACLE" dbResource="CBIFJDBC">
+		<JDBCProcedureDefine id="SAV_TEMPMSG_SP_JDBCDEF"
+			procedureName="SAV_TEMPMSG_SP">
+			<kColl id="input">
+				<!--输入参数数据域有序枚举 -->
+				<field id="I_TASK_ID" value="HEAD.TASKID" /> <!--任务索引号 -->
+				<field id="I_FLOW_NODE" value="HEAD.FLOW.NODENAME" /><!--任务组索引号 -->
+				<field id="I_TEMPMSG" value="trxData" /> <!--任务索引号 -->
+			</kColl>
+			<kColl id="output">
+				<!--输出参数数据域有序枚举 -->
+				<field id="O_RET" value="TAIL.RETCODE" />
+				<field id="O_MSG" value="TAIL.RETREASON" />
+			</kColl>
+		</JDBCProcedureDefine>
+	</ProcedureAccessService>
+
+	<!-- 根据TASKID或FLOWID查询任务信息 -->
+	<ProcedureAccessService id="SEL_TASKLIST_SP_SERVICE"
+		DriverType="ORACLE" dbResource="CBIFJDBC">
+		<JDBCProcedureDefine id="SEL_TASKLIST_SP_JDBCDEF"
+			procedureName="SEL_TASKLIST_SP">
+			<kColl id="input">
+				<!--输入参数数据域有序枚举 -->
+				<field id="I_TASK_ID" value="HEAD.TASKID" /> <!--任务索引号 -->
+				<field id="I_FLOW_ID" value="HEAD.FLOW.PROCESSID" /> <!--任务索引号 -->
+			</kColl>
+			<kColl id="output">
+				<!--输出参数数据域有序枚举 -->
+				<field id="O_TASK_ID" value="HEAD.TASKID" /> <!--任务索引号 -->
+				<field id="O_FLOW_ID" value="HEAD.FLOW.PROCESSID" />
+				<field id="O_GROUP_ID" value="HEAD.FLOW.GROUPID" />
+				<field id="O_START_TIME" value="HEAD.FLOW.CREATETIME" />
+				<field id="O_END_TIME" value="HEAD.FLOW.ENDTIME" />
+				<field id="O_APP_CODE" value="HEAD.APPCODE" />
+				<field id="O_RET" value="TAIL.RETCODE" />
+				<field id="O_MSG" value="TAIL.RETREASON" />
+			</kColl>
+		</JDBCProcedureDefine>
+	</ProcedureAccessService>
+
+	<!-- 查询 TASKDETAIL 详细信息 -->
+	<ProcedureAccessService id="SEL_TASKDETAIL_SP_SERVICE"
+		DriverType="ORACLE" dbResource="CBIFJDBC">
+		<JDBCProcedureDefine id="SEL_TASKDETAIL_SP_JDBCDEF"
+			procedureName="SEL_TASKDETAIL_SP">
+			<kColl id="input">
+				<!--输入参数数据域有序枚举 -->
+				<field id="I_TASK_ID" value="HEAD.TASKID" /> <!--任务索引号 -->
+				<field id="I_APP_CODE" value="HEAD.APPCODE" /> <!--任务索引号 -->
+			</kColl>
+			<kColl id="output">
+				<!--输出参数数据域有序枚举 -->
+				<field id="O_TASK_ID" value="HEAD.TASKID" /> <!--任务索引号 -->
+				<field id="O_FLOW_NAME" value="HEAD.FLOW.PROCDEFNAME" />
+				<field id="O_FLOW_NODE" value="HEAD.FLOW.NODENAME" />
+				<field id="O_WKI_ID" value="HEAD.FLOW.WORKITEMID" />
+				<field id="O_USER_ID" value="HEAD.FLOW.USERID" />
+				<field id="O_FLOW_ID" value="HEAD.FLOW.PROCESSID" />
+				<field id="O_GROUP_ID" value="HEAD.FLOW.GROUPID" />
+				<field id="O_START_ORGAN" value="HEAD.ORGCODE" />
+				<field id="O_CENTER_NO" value="HEAD.CENTERNO" />
+				<field id="O_AREA_CODE" value="HEAD.AREACODE" />
+				<field id="O_POINT" value="HEAD.FLOW.PRIO" />
+				<field id="O_RET" value="TAIL.RETCODE" />
+				<field id="O_MSG" value="TAIL.RETREASON" />
+			</kColl>
+		</JDBCProcedureDefine>
+	</ProcedureAccessService>
+
+	<!-- 查询流程节点对应的存储过程 -->
+	<ProcedureAccessService id="SEL_NODELIST_SP_SERVICE"
+		DriverType="ORACLE" dbResource="CBIFJDBC">
+		<JDBCProcedureDefine id="SEL_NODELIST_SP_JDBCDEF"
+			procedureName="SEL_NODELIST_SP">
+			<kColl id="input">
+				<!--输入参数数据域有序枚举 -->
+				<field id="I_APP_CODE" value="HEAD.APPCODE" />
+				<field id="I_FLOW_NODE" value="HEAD.FLOW.NODENAME" />
+			</kColl>
+			<kColl id="output">
+				<!--输出参数数据域有序枚举 -->
+				<field id="O_RET" value="TAIL.RETCODE" />
+				<field id="O_MSG" value="TAIL.RETREASON" />
+				<field id="O_NODE_TYPE" value="NodeParams.NodeType" />
+				<field id="O_NODE_INFOSP" value="NodeParams.NodeInfosp" />
+				<field id="O_NODE_LISTSP" value="NodeParams.NodeListsp" />
+				<field id="O_NODE_PAGE" value="NodeParams.NodePage" />
+				<field id="O_PAGE_TYPE" value="NodeParams.PageType" />
+				<field id="O_TABLE_NAME" value="NodeParams.TableName" />
+			</kColl>
+		</JDBCProcedureDefine>
+	</ProcedureAccessService>
+
+	<!-- 查询任务报文存储过程 -->
+	<ProcedureAccessService id="SEL_LOCALMSG_SP_SERVICE"
+		DriverType="ORACLE" dbResource="CBIFJDBC">
+		<JDBCProcedureDefine id="SEL_LOCALMSG_SP_JDBCDEF"
+			procedureName="SEL_LOCALMSG_SP">
+			<kColl id="input">
+				<!--输入参数数据域有序枚举 -->
+				<field id="I_TASK_ID" value="HEAD.TASKID" />
+				<field id="I_NODE_NAME" value="HEAD.FLOW.NODENAME" />
+				<field id="I_FLOW_ID" />
+			</kColl>
+			<kColl id="output">
+				<!--输出参数数据域有序枚举 -->
+				<field id="O_RET" value="TAIL.RETCODE" />
+				<field id="O_MSG" value="TAIL.RETREASON" />
+				<field id="O_LOCALMSG" value="LOCALMSG" />
+				<field id="O_TEMPMSG" value="TEMPMSG" />
+			</kColl>
+		</JDBCProcedureDefine>
+	</ProcedureAccessService>
+
+	<!-- 查询Tem_MESSAGE任务报文存储过程 -->
+	<ProcedureAccessService id="SEL_TEMPMSG_SP_SERVICE"
+		DriverType="ORACLE" dbResource="CBIFJDBC">
+		<JDBCProcedureDefine id="SEL_TEMPMSG_SP_JDBCDEF"
+			procedureName="SEL_TEMPMSG_SP">
+			<kColl id="input">
+				<!--输入参数数据域有序枚举 -->
+				<field id="I_TASK_ID" value="HEAD.TASKID" />
+				<field id="I_FLOW_NODE" value="HEAD.FLOW.NODENAME" />
+			</kColl>
+			<kColl id="output">
+				<!--输出参数数据域有序枚举 -->
+				<field id="O_MESSAGE" value="TEMPMSG" />
+				<field id="O_RET" value="TAIL.RETCODE" />
+				<field id="O_MSG" value="TAIL.RETREASON" />
+			</kColl>
+		</JDBCProcedureDefine>
+	</ProcedureAccessService>
+
+	<!-- JdbcCallProduceStep专用SQLAccessService -->
+	<SQLAccessService id="JdbcCallProduceStepService">
+	</SQLAccessService>
+
+</settings>

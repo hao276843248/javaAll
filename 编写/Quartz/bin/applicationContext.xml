@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+	
+	<bean id="springJob" class="cn.bdqn.quartz.job.SpringJob"/>
+	
+	<bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"
+		p:targetObject-ref="springJob"
+		p:targetMethod="doJob"		
+	/>
+	
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean"
+		p:jobDetail-ref="jobDetail"
+		p:cronExpression="0/5 * * * * ?"
+	/>
+	
+	<bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref local="cronTrigger"/>
+			</list>			
+		</property>
+		<!-- 是否在SchedulerFactoryBean完成初始化后立即启动调度 -->
+		<property name="autoStartup" value="true"/>
+		<!-- SchedulerFactoryBean完成初始化后，延迟多少秒启动调度 -->
+		<property name="startupDelay" value="5"/>
+	</bean>
+	
+</beans>
+
+
+

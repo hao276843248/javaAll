@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<types>  
+	<!-- 必输账号验证器-->
+	<type id="refDates" dataElementClass="com.sunyard.cbif.etp.base.DataField">
+	  <Definition id="typeDefault" isMandatory="true" class="com.sunyard.cbif.etp.base.typeData.StringDefinition">
+		<Validator id="valid" regex="^\d{18,20}$" class="com.sunyard.cbif.etp.base.typeData.StringValidator"/>
+	  </Definition>
+	</type>  
+	
+	<kColl id="extendedFiles">
+	<!-- 扩展类型数据规则文件 -->
+		
+	</kColl>
+	
+</types>

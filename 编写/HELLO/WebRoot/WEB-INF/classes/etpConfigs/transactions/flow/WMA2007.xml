@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<SelfDefTransFlow>
+	<!-- 挂起任务接口 -->
+	<TransactionFlow id="WMA2007" transFlowContext="WMA2007Context">
+		<!-- 连接工作流 -->
+		<transStep id="GetFlowConnStep" flowServiceID="FlowConfigService">
+			<transition id="0" dest="SuspendWorkItemStep"/>
+			<transition id="Other" dest="errorStep"/>
+		</transStep>
+
+		<!-- 挂起流程实例 -->
+		<transStep id="SuspendWorkItemStep">
+			<transition id="0" dest="DisconnectFlowStep"/>
+			<transition id="Other" dest="errorStep"/>
+		</transStep>
+
+		<!-- 释放工作流 -->
+		<transStep id="DisconnectFlowStep">
+			<transition id="0" dest="AutoDispatchBusinessStep"/>
+			<transition id="Other" dest="errorStep"/>
+		</transStep>
+
+		<!-- 自动跳转业务流程模块 -->
+		<transStep id="AutoDispatchBusinessStep">
+			<transition id="0" dest="end" />
+			<transition id="Other" dest="errorStep" />
+		</transStep>
+
+		<!-- 错误处理步骤 -->
+		<transStep id="errorStep">
+			<transition id="Other" dest="end" />
+		</transStep>
+
+		<refFormat refId="tcpipInputFmt" />
+		<refFormat refId="tcpipOutputFmt" />
+	</TransactionFlow>
+
+	<!-- 上下文配置 -->
+	<context id="WMA2007Context" type="transFlow">
+		<refKColl refId="datas" />
+		<refService refId="FlowConfigService" />
+	</context>
+
+	<!-- 数据配置 -->
+	<kColl id="datas">
+		<field id="transException" />
+		<refData refId="HEAD" />
+		<refData refId="BODY" />
+		<refData refId="TAIL" />
+	</kColl>
+
+	<!-- 输入格式化配置 -->
+	<fmtDef id="tcpipInputFmt">
+		<refFormat refId="flowInFormat" />
+	</fmtDef>
+
+	<!-- 输出格式化配置 -->
+	<fmtDef id="tcpipOutputFmt">
+		<refFormat refId="flowOutFormat" />
+	</fmtDef>
+</SelfDefTransFlow>

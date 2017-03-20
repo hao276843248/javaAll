@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project name="hibernatelazy" default="instrument" basedir=".">
+	  <!--设置相对于配置文件所在位置，项目中用来防止jar包的目录的路径-->
+      <property name="lib.dir" value="./lib"/>
+	  <!--设置相对于配置文件所在位置，项目中用来存放编译结果(class)文件的目录的路径-->
+      <property name="classes.dir" value="./bin"/>
+       <path id="lib.class.path">
+             <fileset dir="${lib.dir}">
+                    <include name="**/*.jar"/>
+              </fileset>
+        </path>
+        <target name="instrument">
+            <taskdef name="instrument" classname="org.hibernate.tool.instrument.javassist.InstrumentTask">
+                     <classpath path="${classes.dir}"/>
+                     <classpath refid="lib.class.path"/>
+             </taskdef>
+             <instrument verbose="true">
+             		  <!--设置需要添加字节码增强的类所在的包-->
+                     <fileset dir="${classes.dir}/cn/hao/nt/entity">
+                            
+                      </fileset>
+              </instrument>
+         </target>
+</project>

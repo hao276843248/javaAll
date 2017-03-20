@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+<script src="../js/util.js"></script>
+</head>
+<body>
+	<div id="title">
+		<table width="100%" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="50%">
+					<img src="../images/logo.jpg"/>
+				</td>
+				<td width="50%" align="right" id="info">
+					<span>
+						当前用户:admin&nbsp;<a href="#">退出登录</a>
+					</span>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<ul id="nav">
+		<li link="../user/list.html">用户管理</li>
+		<li link="../category/list.html">分类管理</li>
+		<li link="../content/list.html">内容管理</li>
+		<li link="../leaveword/list.html">留言管理</li>
+		<li link="../link/list.html">链接管理</li>
+	</ul>
+	<div id="shadow"></div>
+	
+	<div class="path">
+		<span>当前位置:后台--友情管理--添加链接</span>
+	</div>
+	<div id="shadow"></div>
+	<form>
+	
+	
+	<table width="100%" border="0">
+		<tr class="fitem">
+			<td class="flabel">链接标题</td>
+			<td class="finput">
+				<input type="text" name="loginName" class="txt"/>
+			</td>
+		</tr>
+		<tr class="ferror">
+			<td></td>
+			<td>错误信息</td>
+		</tr>
+		<tr class="fitem">
+			<td class="flabel">链接地址</td>
+			<td class="finput">
+				<input type="text" name="loginName" class="txt" style="width:500px;"/>
+			</td>
+		</tr>
+		<tr class="fitem">
+			<td class="flabel" valign="top">Logo</td>
+			<td class="finput">
+				<input type="text" class="txt" name="logo" style="width:500px;"/>
+				<br/>
+				<iframe src="upload.html" width="602" height="26" frameborder="0" scrolling="no"></iframe>
+			</td>
+		</tr>
+		<tr class="ferror">
+			<td></td>
+			<td>错误信息</td>
+		</tr>
+		<tr class="fitem">
+			<td class="flabel"></td>
+			<td class="finput">
+				<input type="submit" value="保存链接" class="btn"/>
+			</td>
+		</tr>
+	</table>
+
+	
+	</form>
+
+</body>
+</html>

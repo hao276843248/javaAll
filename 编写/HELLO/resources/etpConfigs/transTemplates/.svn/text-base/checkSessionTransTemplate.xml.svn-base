@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<SelfDefTransFlow>
+	<TransTemplate id="checkSessionTransTemplate"
+		transFlowContext="testContext">
+		<BeforeAdvice>
+			<transStep id="SetTCPIPReply0"
+				class="test.com.sunyard.cbif.etp.base.transSteps.SetReplyTcpipTransStep"
+				onOtherDo="end" />
+		</BeforeAdvice>
+		<AfterAdvice>
+			<transStep id="SetErrorPage0"
+				class="test.com.sunyard.cbif.etp.base.transSteps.SetErrorPageTransStep"
+				onOtherDo="end" errorCodeName="errorCode" />
+		</AfterAdvice>
+	</TransTemplate>
+	<context id="testContext" type="transFlow">
+		<refKColl refId="testCtxDataCollection" />
+	</context>
+
+	<kColl id="testCtxDataCollection">
+		<!-- 该域存放如果进行tcpip交易时发生的异常，必须域 -->
+		<field id="transException" />
+		<!-- 该域存放输入数据流解析后的iColl集合 -->
+		<iColl id="tcpipUserData">
+			<kColl>
+				<field id="name" des="客户号" />
+				<field id="pswd" des="开始时间" />
+			</kColl>
+		</iColl>
+		<!-- 该域存放输出数据流解析后的iColl集合 -->
+		<iColl id="tradingDetail">
+			<kColl>
+				<field id="TransTime" des="交易时间" />
+				<field id="PayerAcNo" des="付款人账号" />
+				<field id="PayerAcName" des="付款人名称" />
+				<field id="TransType" des="交易类型" />
+				<field id="ClsBankNo" des="收款方清算行号" />
+				<field id="ClsBankName" des="收款方清算行名" />
+			</kColl>
+		</iColl>
+	</kColl>
+</SelfDefTransFlow>

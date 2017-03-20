@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+  		"-//Apache Struts//XWork Validator 1.0.3//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<!-- 用户注册验证规则 -->  	
+<validators>
+
+	<!-- 用户名字段 -->
+	<field name="userName">
+		<!-- 检查String类型字段，不能是空字符串或空引用 -->
+		<field-validator type="requiredstring">
+			<!-- 在检查前先去掉首尾空格 -->
+			<param name="trim">true</param>
+			<message key="username.required"/>
+		</field-validator>	
+	</field>
+	
+	<!-- 密码字段 -->
+	<field name="password">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="password.required"/>
+		</field-validator>	
+	</field>
+
+	<!-- 验证码字段 -->
+	<field name="vcode">
+		<field-validator type="requiredstring" short-circuit="true">
+			<param name="trim">true</param>
+			<message key="vcode.required"/>
+		</field-validator>
+		
+		<field-validator type="fieldexpression">
+			<param name="expression">vcode==#session.KAPTCHA_SESSION_KEY</param>
+			<message key="vcode.invalid"/>
+		</field-validator>		
+	</field>
+
+</validators>  	
+
+
+
+
+
+
+
+
+
+
+
+	

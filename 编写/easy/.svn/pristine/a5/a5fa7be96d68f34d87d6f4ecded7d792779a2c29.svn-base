@@ -1,0 +1,53 @@
+package cn.hao.easybuy.controller.productcategory;
+
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import cn.hao.easybuy.controller.ControllerBean;
+import cn.hao.easybuy.entity.EasybuyProductCategory;
+import cn.hao.easybuy.form.GroupForm;
+
+@RequestMapping("/manage")
+@Controller
+public class AddController extends ControllerBean{
+
+	@ModelAttribute("productcategoryForm1")
+	public List<EasybuyProductCategory> EasybuyProductCategory(){
+		List<EasybuyProductCategory> a= productCategoryService.find();
+		EasybuyProductCategory b=new EasybuyProductCategory();
+		b.setEpcName("¸úÀ¸Ä¿");
+		b.setEpcId(0);
+		a.add(0, b);
+		return productCategoryService.find();
+	}
+	
+	@ModelAttribute("groupForm")
+	public GroupForm groupForm(){
+		return new GroupForm();
+	}
+	
+	
+	@RequestMapping(value="productClass-add",method=RequestMethod.GET)
+	public String add(){
+		return "manage/productClass-add";
+	}
+	
+	
+	@RequestMapping(value="productClass-add",method=RequestMethod.POST)
+	public String add(	@ModelAttribute("groupForm")GroupForm groupForm){
+		
+		EasybuyProductCategory e=new EasybuyProductCategory();
+		List<EasybuyProductCategory> a= productCategoryService.find();
+		
+		e.setEpcId(a.get(a.size()-1).getEpcId()+1);
+		e.setEpcParentId(groupForm.getParentId());
+		e.setEpcName(groupForm.getName());
+		
+		productCategoryService.addCategory(e);
+		return "manage/productClass-add";
+	}
+}

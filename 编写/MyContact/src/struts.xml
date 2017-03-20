@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<!-- UI标签的主题 -->
+	<constant name="struts.ui.theme" value="simple"/>
+	<!-- 国际化资源文件的基础名 -->
+	<constant name="struts.custom.i18n.resources" value="message"/>
+	<!-- 开发模式 -->
+	<constant name="struts.devMode" value="true"/>
+	<!-- 上传文件的临时目录 -->
+	<constant name="struts.multipart.saveDir" value="D:/temp"/>
+	<!-- 上传文件的最大长度 -1表示不限-->
+	<constant name="struts.multipart.maxSize" value="1048576"/>
+	
+	<!-- 当在对应的命名空间中没有找到要执行的action时，最终会在默认命名空间下查找action -->
+	<package name="default" namespace="" extends="struts-default">
+		
+		<!-- 如果在默认的命名空间下没有找到要执行的action，则执行指定的默认的action -->
+		<default-action-ref name="default"/> 
+		
+		<!-- 全局结果 -->
+		<global-results>
+			<result name="error">/error/500.jsp</result>
+		</global-results>
+		
+		
+		<!-- 全局异常映射 -->
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception" result="error"/>
+		</global-exception-mappings>
+		
+		<!-- 
+			action的class可以省略，默认为ActionSupport
+			action的method可以省略，默认执行execute方法
+			result的name可以省略，默认为success
+			result的type可以省略，默认为dispatcher，即转发
+		 -->		
+		<action name="default">
+			<result>/error/404.jsp</result>
+		</action>
+		
+		
+	</package>
+	
+	<include file="cfg/struts/struts-user.xml"/>
+	<include file="cfg/struts/struts-group.xml"/>
+	<include file="cfg/struts/struts-contact.xml"/>
+	
+	
+</struts>    
+
+
+
+
+
+
+

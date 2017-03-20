@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- 异步日志,此处选择需要的appender -->
+	<appender name="ASYNC" class="org.apache.log4j.AsyncAppender">
+		<appender-ref ref="DAYLOGFILE" />
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="ERRORLOGFILE" />
+	</appender>
+
+	<!-- SunOSE INFO日志 -->
+	<appender name="INFOLOGFILE" class="org.apache.log4j.RollingFileAppender">
+		<param name="Threshold" value="INFO" />
+		<param name="File" value="D:/SunOSEloggs/oseInfo.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="10240KB" /><!-- 文件大小 -->
+		<param name="MaxBackupIndex" value="5" /><!-- 文件数量 -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} %-5p [%t] %10c - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- ETP INFO日志 -->
+	<appender name="ETPLOGFILE" class="org.apache.log4j.RollingFileAppender">
+		<param name="Threshold" value="INFO" />
+		<param name="File" value="D:/SunOSEloggs/etpInfo.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="10240KB" /><!-- 文件大小 -->
+		<param name="MaxBackupIndex" value="5" /><!-- 文件数量 -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} %-5p [%t] %10c - %m%n" />
+		</layout>
+	</appender>
+
+
+	<!-- ERROR日志 -->
+	<appender name="ERRORLOGFILE" class="org.apache.log4j.RollingFileAppender">
+		<param name="Threshold" value="ERROR" />
+		<param name="File" value="D:/SunOSEloggs/oseError.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="10240KB" /><!-- 文件大小 -->
+		<param name="MaxBackupIndex" value="5" /><!-- 文件数量 -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} %-5p [%t] %10c - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- 按天生成业务日志 -->
+	<appender name="DAYLOGFILE" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="D:/SunOSEloggs/daylog.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} %-5p [%t] %10c - %m%n" />
+		</layout>
+		<!--过滤器设置输出的级别 -->
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="levelMin" value="info" />
+			<param name="levelMax" value="error" />
+			<param name="AcceptOnMatch" value="true" />
+		</filter>
+	</appender>
+
+	<!-- 控制台日志, 开发阶段使用 -->
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{dd HH:mm:ss,SSS\} %-5p] [%t] %c{2\} - %m%n" />
+		</layout>
+		<!--过滤器设置输出的级别 -->
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="levelMin" value="debug" />
+			<param name="levelMax" value="error" />
+			<param name="AcceptOnMatch" value="true" />
+		</filter>
+	</appender>
+
+	<!-- SunOSE 自带日志输出到文件，继承属性（additivity）为打开 -->
+	<logger name="com.sunyard.insurance.sunose" additivity="true">
+		<level value="INFO" />
+		<appender-ref ref="INFOLOGFILE" />
+	</logger>
+
+	<!-- OSE通道日志输出到文件 ，继承属性（additivity）为打开 -->
+	<logger name="OSE" additivity="true">
+		<level value="INFO" />
+		<appender-ref ref="INFOLOGFILE" />
+	</logger>
+
+	<!-- SERVICE通道日志输出到文件 ，继承属性（additivity）为打开 -->
+	<logger name="SERVICE" additivity="true">
+		<level value="INFO" />
+		<appender-ref ref="INFOLOGFILE" />
+	</logger>
+
+	<!-- Etp通道日志输出到文件 ，继承属性（additivity）为打开 -->
+	<logger name="->ETP" additivity="true">
+		<level value="off" />
+		<appender-ref ref="ETPLOGFILE" />
+	</logger>
+
+	<root>
+		<priority value="INFO" />
+		<appender-ref ref="ASYNC" />
+	</root>
+</log4j:configuration>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+	
+	<context:component-scan base-package="cn.bdqn.contact"/>
+	
+	<!-- 数据源 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		p:driverClassName="com.mysql.jdbc.Driver"
+		p:url="jdbc:mysql:///contact"
+		p:username="contact"
+		p:password="123456"
+	/>
+	
+	<!-- 配置SessionFactory -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+			</props>		
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>cn/hao/contact/entity/Contact.hbm.xml</value>
+				<value>cn/hao/contact/entity/Group.hbm.xml</value>
+				<value>cn/hao/contact/entity/User.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Hibernate模板 -->
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate" 
+		p:sessionFactory-ref="sessionFactory"	
+	/>
+	
+	<!-- 创建事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager"
+		p:sessionFactory-ref="sessionFactory"
+	/>
+	
+	<!-- 事务增强-->
+	<tx:advice id="txAdvice">
+		<!-- 配置当事务增强被附加到不同的方法上时，在处理事务时的一些具体特性 -->
+		<tx:attributes>
+			<!-- 对于以get和find开头命名的方法，使用只读事务 -->
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="find*" read-only="true"/>
+			<!-- 对于其他方法，使用默认的事务参数 -->
+			<tx:method name="*"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	
+
+	<!-- 配置切面 -->
+	<aop:config>
+		<!-- 切点(描述选中哪些方法织入增强) -->
+		<!-- execution([访问修饰符] 返回值类型 包名.类名.方法名(参数列表)) -->
+		<aop:pointcut id="serviceMethods" expression="execution(* cn.hao.contact.service..*.*(..))"/>
+		<!-- 织入增强 -->
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods"/>
+	</aop:config>
+
+
+</beans>

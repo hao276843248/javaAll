@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
+	
+	<mvc:annotation-driven/>
+	
+	<!-- 启用组件扫描 -->
+	<context:component-scan base-package="cn.bdqn.contact">
+		 <context:include-filter  type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
+	<!-- 配置视图解析器 , 负责根据逻辑视图名转换物理视图路径-->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" 
+		p:order="0"
+	/>
+	
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:prefix="/WEB-INF/views/"
+		p:suffix=".jsp"
+		p:viewClass="org.springframework.web.servlet.view.JstlView"
+		p:order="1"
+	/>
+	
+	<!-- 验证器 -->	 
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">		
+        <property name="providerClass"  value="org.hibernate.validator.HibernateValidator"/>
+        <property name="validationMessageSource" ref="messageSource"/>        
+    </bean>
+    
+    <!-- i18n(国际化资源) -->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">    	
+        <property name="basename" value="classpath:message"/>        
+        <property name="fileEncodings" value="utf-8"/>        
+        <property name="cacheSeconds" value="120"/>  
+    </bean>
+	
+	<!-- 文件上传解析器 -->
+ 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+    	p:defaultEncoding="utf-8"
+    	p:maxUploadSize="40960000"	
+   	/>
+
+
+	<!-- 自定义的Excel视图 -->
+	<bean id="contactListExcelView" class="cn.bdqn.contact.view.ExcelVeiw"/>
+
+
+</beans>

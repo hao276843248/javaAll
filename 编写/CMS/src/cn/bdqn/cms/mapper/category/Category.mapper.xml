@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.cms.mapper.category.CategoryMapper">
+	
+	<!-- 添加分类 -->
+	<insert id="addCategory" parameterType="Category">
+		INSERT INTO Category(id,name) 
+		VALUES(SEQ_CATEGORY.nextval,#{name})
+	</insert>
+	
+	<!-- 更新分类 -->
+	<update id="updateCategory" parameterType="Category">
+		UPDATE Category SET name=#{name} WHERE id=#{id}
+	</update>
+	
+	<!-- 删除分类 -->
+	<delete id="deleteCategory">
+		DELETE Category WHERE id=#{id}
+	</delete>
+	
+	<!-- 根据id查询单个分类 -->
+	<select id="getCategoryById" resultType="Category">
+		SELECT id,name FROM Category WHERE id=#{id}
+	</select>
+	
+	<!-- 查询全部分类列表 -->
+	<select id="findCategory" resultType="Category">
+		SELECT id,name FROM Category WHERE name LIKE #{title}
+		ORDER BY id 
+	</select>
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+

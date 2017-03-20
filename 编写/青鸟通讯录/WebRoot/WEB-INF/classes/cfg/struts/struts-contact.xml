@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	
+	<package name="contact" namespace="/background" extends="default">
+		<action name="list" class="listAction">
+			<result>index.jsp</result>
+		</action>
+		
+		<action name="add" class="addAction">
+			<interceptor-ref name="defaultStack">
+				<param name="fileUpload.maximumSize">10485760</param>
+				<param name="fileUpload.allowedExtensions">.jpg,.bmp,.gif,.png</param>
+			</interceptor-ref>
+			<result name="input">add.jsp</result>
+			<result type="redirectAction">list</result>
+		</action>
+		
+		<action name="get" class="getAction">
+			<result>${view}.jsp</result>
+		</action>
+		
+		<action name="delete" class="deleteAction">
+			<result type="redirectAction">list</result>
+		</action>
+		
+		<action name="detail" class="detailAction">
+			<result>detail.jsp</result>
+		</action>
+		
+		<action name="edit" class="editAction">
+			<interceptor-ref name="defaultStack">
+				<param name="fileUpload.maximumSize">10485760</param>
+				<param name="fileUpload.allowedExtensions">.jpg,.bmp,.gif,.png</param>
+			</interceptor-ref>
+			<result name="input">edit.jsp</result>
+			<result type="redirectAction">list</result>
+			<result name="NO">hello.jsp</result>
+		</action>
+			
+		<action name="excel" class="excelAction">
+			<result type="stream">
+				<!-- 用来获取输入流的属性名(默认为inputStream) -->
+				<param name="inputName">inputStream</param>
+				<!-- 设置内容类型 -->
+				<param name="contentType">application/octet-stream</param>
+				<!-- 设置下载文件名 -->
+				<param name="contentDisposition">attachment;filename="${fileName}";filename*=utf-8''${fileName}</param>
+			</result>
+		</action>	
+			
+	</package>
+	
+</struts>    

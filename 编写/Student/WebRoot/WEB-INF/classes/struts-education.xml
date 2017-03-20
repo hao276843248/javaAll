@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+
+	<!-- 学历模块 -->
+	<package name="education" namespace="/" extends="default">
+		
+		<!-- 加载学历选项列表到请求作用域 -->
+		<action name="educations" class="cn.bdqn.student.action.education.ListEducationAction"/>
+	
+	</package>
+
+	
+
+</struts>

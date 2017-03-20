@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
+	
+	
+	<!-- 基于注解的MVC配置 -->
+	<mvc:annotation-driven/>
+	
+	<!-- 自建扫描 -->
+	<context:component-scan base-package="cn.hao.mvc">
+		<context:include-filter  type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
+	<!-- 视图解析器 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:prefix="/WEB-INF/views/"
+		p:suffix=".jsp"
+	/>
+	<!-- 验证器 -->	
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		 <!-- 使用Hibernate验证框架进行验证 -->
+		 <property name="providerClass"  value="org.hibernate.validator.HibernateValidator"/> 
+	    <!-- 用来获取验证错误信息的国际化资源 -->
+        <property name="validationMessageSource" ref="messageSource"/>           
+    </bean>
+    
+    <!-- i18n(国际化资源) -->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+    	<!-- 资源文件基础名 -->  
+        <property name="basename" value="classpath:message"/>
+        <!-- 资源文件编码 -->  
+        <property name="fileEncodings" value="utf-8"/>
+        <!-- 资源文件内容检查重载的间隔秒数 -->  
+        <property name="cacheSeconds" value="120"/>  
+    </bean>
+    
+    <!-- 文件上传解析器 -->
+ 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+    	p:defaultEncoding="utf-8"
+    	p:maxUploadSize="10240"    	
+   	/>
+   	
+   	<!-- 全局异常处理 -->
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<!-- 定义默认的异常处理页面，当该异常类型的未注册时使用 -->  
+    	<property name="defaultErrorView" value="error/upload"/> 		
+		<!-- 定义异常处理页面用来获取异常信息的变量名，默认名为exception -->  
+    	<property name="exceptionAttribute" value="ex"/>  		
+    	<!-- 设置具体的异常和视图的对应关系 -->
+		<property name="exceptionMappings">
+			<props>
+				<prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">error/upload</prop>			
+			</props>		
+		</property>
+	</bean>
+	
+</beans>

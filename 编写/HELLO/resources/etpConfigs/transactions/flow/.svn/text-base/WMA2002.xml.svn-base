@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<SelfDefTransFlow>
+	<!-- 获取任务接口 -->
+	<TransactionFlow id="WMA2002" transFlowContext="WMA2002Context">
+		<!-- 连接工作流 -->
+		<transStep id="GetFlowConnStep" flowServiceID="FlowConfigService">
+			<transition id="0" dest="GetWorkItemStep" />
+			<transition id="Other" dest="errorStep" />
+		</transStep>
+		
+		<!-- 根据WORKITEMID查询工作项 -->
+		<transStep id="GetWorkItemStep">
+			<transition id="0" dest="CheckOutStep" />
+			<transition id="1" dest="ListWorkItemStep" />
+			<transition id="Other" dest="errorStep" />
+		</transStep>
+
+		<!-- 查询任务列表 -->
+		<transStep id="ListWorkItemStep">
+			<transition id="0" dest="CheckOutStep" />
+			<transition id="1" dest="NoWorkDisconnectFlowStep" />
+			<transition id="Other" dest="errorStep" />
+		</transStep>
+
+		<!-- 获取工作项 -->
+		<transStep id="CheckOutStep">
+			<transition id="0" dest="DisconnectFlowStep" />
+			<transition id="1" dest="NoWorkDisconnectFlowStep" />
+			<transition id="Other" dest="errorStep" />
+		</transStep>
+		
+		<!-- 无任务释放工作流 -->
+		<transStep id="NoWorkDisconnectFlowStep" class="com.sunyard.insurance.sunose.steps.DisconnectFlowStep">
+			<transition id="0" dest="end" />
+			<transition id="Other" dest="errorStep" />
+		</transStep>
+		
+		<!-- 释放工作流 -->
+		<transStep id="DisconnectFlowStep">
+			<transition id="0" dest="SEL_TASKLIST_SP" />
+			<transition id="Other" dest="errorStep" />
+		</transStep>
+		
+		<!-- 查询任务信息 -->
+		<transStep id="SEL_TASKLIST_SP" class="com.sunyard.insurance.sunose.plus.ProcedurePlus"
+			procedureService="SEL_TASKLIST_SP_SERVICE" JDBCProcedureDefine="SEL_TASKLIST_SP_JDBCDEF">
+			<transition id="0" dest="SEL_NODELIST_SP" />
+			<transition id="Other" dest="errorStep" />
+		</transStep>
+		
+		<!-- 查询流程节点关系 -->
+		<transStep id="SEL_NODELIST_SP" class="com.sunyard.insurance.sunose.plus.ProcedurePlus"
+			procedureService="SEL_NODELIST_SP_SERVICE" JDBCProcedureDefine="SEL_NODELIST_SP_JDBCDEF">
+			<transition id="0" dest="SEL_LOCALMSG_SP" />
+			<transition id="Other" dest="errorStep" />
+		</transStep>
+		
+		<!-- 查询任务报文 -->
+		<transStep id="SEL_LOCALMSG_SP" class="com.sunyard.insurance.sunose.plus.JdbcCallProducePlus"
+			Procedurename="SEL_LOCALMSG_SP" inputkcoll="HEAD.TASKID/HEAD.FLOW.NODENAME/0"
+			inputdatatype="varchar/varchar/number" outputkcoll="TAIL.RETCODE/TAIL.RETREASON/LOCALMSG/TEMPMSG"
+			outputdatatype="varchar/varchar/clob/clob" service="JdbcCallProduceStepService">
+			<transition id="0" dest="AutoDispatchBusinessStep" />
+			<transition id="Other" dest="errorStep" />
+		</transStep>
+		
+		<!-- 自动跳转业务流程模块 -->
+		<transStep id="AutoDispatchBusinessStep">
+			<transition id="0" dest="DealTaskInfoStep" />
+			<transition id="Other" dest="errorStep" />
+		</transStep>
+		
+		<!-- 处理任务信息 -->
+		<transStep id="DealTaskInfoStep" class="com.sunyard.insurance.sunose.steps.DealTaskInfoStep">
+			<transition id="0" dest="end" />
+			<transition id="Other" dest="errorStep" />
+		</transStep>
+		
+		<!-- 错误处理步骤 -->
+		<transStep id="errorStep">
+			<transition id="Other" dest="end" />
+		</transStep>
+
+		<refFormat refId="tcpipInputFmt" />
+		<refFormat refId="tcpipOutputFmt" />
+	</TransactionFlow>
+
+	<!-- 上下文配置 -->
+	<context id="WMA2002Context" type="transFlow">
+		<refKColl refId="datas" />
+		<refService refId="FlowConfigService" />
+		<refService refId="SEL_TASKLIST_SP_SERVICE" />
+		<refService refId="SEL_NODELIST_SP_SERVICE" />
+		<refService refId="JdbcCallProduceStepService" />
+		<refService refId="transactionManager_jdbc" />
+	</context>
+
+	<!-- 数据配置 -->
+	<kColl id="datas">
+		<field id="transException" />
+		<field id="LOCALMSG" />
+		<field id="TEMPMSG" />
+		<kColl id="NodeParams" />
+		<refData refId="HEAD" />
+		<refData refId="BODY" />
+		<refData refId="TAIL" />
+	</kColl>
+
+	<!-- 输入格式化配置 -->
+	<fmtDef id="tcpipInputFmt">
+		<refFormat refId="flowInFormat" />
+	</fmtDef>
+
+	<!-- 输出格式化配置 -->
+	<fmtDef id="tcpipOutputFmt">
+		<refFormat refId="flowOutFormat" />
+	</fmtDef>
+</SelfDefTransFlow>

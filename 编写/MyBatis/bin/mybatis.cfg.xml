@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!-- 配置MyBatis日志的输出方式 -->
+		<setting name="logImpl" value="STDOUT_LOGGING"/>
+	</settings>
+
+	<typeAliases>
+		<!-- 设置类型别名 -->
+		<typeAlias type="cn.bdqn.mybatis.entity.Book" alias="Book"/>
+		<typeAlias type="cn.bdqn.mybatis.entity.User" alias="User"/>
+		<typeAlias type="cn.bdqn.mybatis.entity.Camera" alias="Camera"/>
+		<typeAlias type="cn.bdqn.mybatis.entity.Brand" alias="Brand"/>
+		<typeAlias type="cn.bdqn.mybatis.entity.Type" alias="Type"/>
+	</typeAliases>
+	
+	<plugins>  
+	    <plugin interceptor="cn.bdqn.mybatis.plugin.PaginationInterceptor">
+	    	<property name="dialectClass" value="cn.bdqn.mybatis.plugin.OracleDialect"/>
+	   	</plugin>  
+	</plugins>
+	
+	
+	<environments default="book">
+		<!-- 数据库连接参数 -->
+		<environment id="book">
+			<!-- 设置事务管理器 -->
+			<transactionManager type="JDBC"/>
+			<!-- 设置数据库连接参数 -->
+			<dataSource type="UNPOOLED">				
+				<property name="driver" value="oracle.jdbc.OracleDriver"/>
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:ORCL"/>
+				<property name="username" value="book"/>
+				<property name="password" value="ok"/>
+			</dataSource>
+		</environment>
+
+	</environments>
+
+	<!-- 要加载的映射文件 -->
+	<mappers>
+        <mapper resource="cn/bdqn/mybatis/mapper/User.mapper.xml"/>
+        <mapper resource="cn/bdqn/mybatis/mapper/User2.mapper.xml"/>
+        <mapper resource="cn/bdqn/mybatis/mapper/Brand.mapper.xml"/>
+        <mapper resource="cn/bdqn/mybatis/mapper/Camera.mapper.xml"/>
+	</mappers>
+</configuration>

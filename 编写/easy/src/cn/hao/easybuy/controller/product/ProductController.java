@@ -1,0 +1,62 @@
+package cn.hao.easybuy.controller.product;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import cn.hao.easybuy.controller.ControllerBean;
+import cn.hao.easybuy.entity.EasybuyProduct;
+import cn.hao.easybuy.util.PageBean;
+
+@RequestMapping("/")
+@Controller
+public class ProductController extends ControllerBean{
+	
+	
+	@ModelAttribute("product1")
+	public PageBean product(){
+		PageBean p=productService.find(1, 8, 1);
+		return p;
+	}
+	
+	@ModelAttribute("product2")
+	public PageBean product2(){
+		PageBean p2=productService.find(1, 12, 2);
+		return p2;
+	}
+	@ModelAttribute("news")
+	public PageBean news(){
+		PageBean p3=newsService.findNews(1, 7);
+		return p3;
+	}
+	
+	@RequestMapping("index")
+	public String index(){
+		return "index";
+	}
+	
+
+	
+	@RequestMapping(value="product-list_{id}",method=RequestMethod.GET)
+	public ModelAndView get(@PathVariable("id") int id ){
+		PageBean p=productService.find(1,9, id);
+		return new ModelAndView("product-list").addObject("product", p).addObject("id", id);
+	}
+		
+	@RequestMapping(value="product-list_{id}",method=RequestMethod.POST)
+	public ModelAndView find(@PathVariable("id") int id,int pageIndex){
+		
+		PageBean p=productService.find(pageIndex,9, id);
+		return new ModelAndView("product-list").addObject("product",p).addObject("id", id);
+	}
+	
+	@RequestMapping(value="product-view_{id}",method=RequestMethod.GET)
+	public ModelAndView get1(@PathVariable("id") int id){
+		EasybuyProduct e=productService.get(id);
+		return new ModelAndView("product-view").addObject("product",e);
+	}
+
+}

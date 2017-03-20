@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<!-- UI标签的主题 -->
+	<constant name="struts.ui.theme" value="simple"/>
+	<!-- 上传文件的临时目录 -->
+	<constant name="struts.multipart.saveDir" value="D:/temp"/>
+	<!-- 上传文件的最大长度 -1表示不限-->
+	<constant name="struts.multipart.maxSize" value="1048576"/>
+	<!-- 开发模式 -->
+	<constant name="struts.devMode" value="true"/>
+	
+	<package name="student" namespace="/" extends="struts-default">
+		<action name="find" class="cn.hao.student.action.findAction">
+			<result>index.jsp</result>
+		</action>
+	
+		<action name="add" class="cn.hao.student.action.addAction">
+			<result type="redirectAction">find</result>
+		</action>
+		
+		<action name="delete" class="cn.hao.student.action.deleteAction">
+			<result type="redirectAction">find</result>
+		</action>
+		
+		<action name="update" class="cn.hao.student.action.updateAction">
+		</action>
+		
+		<action name="get" class="cn.hao.student.action.getAction">
+			<result>edit.jsp</result>
+		</action>
+	</package>
+
+</struts>    

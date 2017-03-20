@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	
+	<!-- 用户模块 -->
+	<package name="user" namespace="/" extends="default">
+		
+		<!-- 用户注册 -->
+		<!-- 
+			Spring与Struts框架整合方案1：将Struts2的Action也配置成Spring中的Bean，在Spring中完成一切依赖注入
+			在Strtus2的配置文件中，将action的class设置成Spring的IoC容器中的Bean的id
+			当处理请求时，Struts2框架自身不再创建Action的实例，而是从Spring的IoC容器中获取action对象，处理请求
+			要求在Spring中配置Action对应Bean时，将Bean的scope设置为prototype
+		 -->
+		<action name="regist" class="registAction">
+			<!-- 如果返回input结果，表示服务器端验证失败，转发回注册表单页面 -->
+			<result name="input">regist.jsp</result>
+			<!-- 如果返回success结果，表示注册成功，重定向到登录页面 -->
+			<result type="redirect">login.jsp</result>
+		</action>
+		
+		<!-- 用户登录 -->
+		<action name="login" class="loginAction">
+			<!-- 如果返回input结果，表示服务器端验证失败，转发回登录表单页面 -->
+			<result name="input">login.jsp</result>
+			<!-- 如果返回success结果，表示登录成功，重定向到后台首页 -->
+			<result type="redirect">background/list.action</result>
+		</action>
+	
+		<!-- 退出登录 -->
+		<action name="logout" class="logoutAction">			
+			<!-- 如果返回success结果，表示退出成功，重定向回登录表单页面 -->
+			<result type="redirect">login.jsp</result>
+		</action>
+		
+		<!-- 找回密码 -->
+		<action name="findPwd" class="cn.bdqn.contact.action.user.FindPasswordAction">
+			<result type="redirect">findSuccess.jsp</result>
+			<result name="error" type="redirect">findError.jsp</result>
+			<result name="input">findPwd.jsp</result>			
+		</action>
+	
+	</package>
+
+	<package name="user-back" namespace="/background" extends="default">
+	
+		<action name="password" class="updatePasswordAction">
+			<result name="input">password.jsp</result>
+			<result type="redirectAction">list</result>
+			
+		</action>
+	</package>
+
+</struts>    
+
+
+
+
+
+
+

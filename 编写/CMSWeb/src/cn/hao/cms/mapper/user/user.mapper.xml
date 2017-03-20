@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hao.cms.mapper.user.UserMapper">
+	<select id="getUser" resultType="User">
+		SELECT id,userName,password FROM Users where userName=#{userName}
+	</select>
+	
+	<select id="findUser" resultType="User">
+		SELECT id,userName,password FROM Users where userName like '%'||#{userNamer}||'%'
+	</select>
+	
+	<select id="getOneUser" resultType="User">
+		SELECT id,userName,password from users where id=#{id}
+	</select>
+	
+	<select id="getUserold" resultType="User">
+		SELECT * FROM USERS WHERE userNAME=#{userName}
+	</select>
+	
+	<delete id="delUser">
+		delete from  users  where id=#{id}
+	</delete>
+	
+	<insert id="addUser" parameterType="User">
+		INSERT INTO USERS VALUES(SEQ_USER.nextval,#{userName},#{password})
+	</insert>
+	
+	<update id="updateUser" parameterType="User">
+		UPDATE USERS SET USERNAME=#{userName},PASSWORD=#{password} where id=#{id}
+	</update>
+	
+	
+</mapper>
+

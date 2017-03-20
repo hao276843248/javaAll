@@ -1,0 +1,25 @@
+package cn.hao.easybuy.controller.productcategory;
+
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import cn.hao.easybuy.controller.ControllerBean;
+import cn.hao.easybuy.entity.EasybuyProductCategory;
+
+@RequestMapping("/manage")
+@Controller
+public class FindeController extends ControllerBean{
+
+	@ModelAttribute("productcategoryForm")
+	public List<EasybuyProductCategory> EasybuyProductCategory(){
+		return productCategoryService.find();
+	}
+	
+	@RequestMapping("productClass")
+	public String product(){
+		return "manage/productClass";
+	}
+}

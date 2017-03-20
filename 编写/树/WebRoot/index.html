@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+     <style type="text/css">
+        * {
+            margin: 0 auto;
+        }
+
+        .container {
+            width: 850px;
+        }
+
+        .tree_container {
+            margin: 10px auto;
+            width: 240px;
+            height: 500px;
+            float: left;
+            border: solid 1px #808080;
+            text-align: left;
+            overflow: auto;
+        }
+
+        .edit_container {
+            margin: 10px auto;
+            width: 600px;
+            height: 500px;
+            float: right;
+            border: solid 1px #808080;
+            text-align: left;
+            position: relative;
+            overflow: auto;
+        }
+
+        .textbox {
+            width: 80%;
+        }
+
+        .table {
+            width: 100%;
+        }
+
+            .table td {
+                text-align: left;
+                font-size: 16px;
+            }
+
+            .table th {
+                text-align: center;
+                width: 100px;
+            }
+
+        .dept_desc {
+            height: 300px;
+            width: 80%;
+        }
+
+        .rbl_status {
+            width: 100%;
+        }
+    </style>
+<body>
+    <div class="container">
+    <div class="tree_container">
+
+        <ul class="easyui-tree">
+            <li>组织结构图</li>
+            <li>
+                <ul>
+                <li>大中华地区</li>
+                <li><ul>
+                    <li>
+                        国际运营部
+                    </li>
+                     <li>
+                        国际运营部
+                    </li>
+                     <li>
+                        国际运营部
+                    </li>
+                    </ul></li>
+               </ul>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="edit_container">
+
+      <form>
+            
+            <input type="hidden" value="Add" id ="opeType" name ="opeType"/>
+            <table class="table">
+                <tr>
+                    <th>部门名称
+                    </th>
+                    <td>
+                      <input type="text" value="" style="width: 272px; height: 21px" />
+                        <br />
+                       
+                    </td>
+                </tr>
+                <tr>
+                    <th>部门代码
+                    </th>
+                    <td>
+                        <input type="text" value="" style="width: 269px; height: 24px" />
+                        <br />
+                     
+                    </td>
+                </tr>
+                <tr>
+                    <th>部门描述
+                    </th>
+                    <td>
+                       <textarea style="width: 407px; height: 215px">
+
+                       </textarea>
+                        <br />
+                       
+                    </td>
+                </tr>
+                <tr>
+                    <th>状&nbsp;&nbsp;态
+                    </th>
+                    <td>
+                       
+                        <input type="radio" name="status" id="status_1" value="true"/>启用
+                		<input type="radio" name="status" id="status_0" value="false"/>禁用
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="添加" id="addDept" class="button" />
+                        <input type="submit" value="修改" id="updateDept" class="button" />
+                        <input type="submit" value="删除" id="delDept" class="button" />
+                    </td>
+                </tr>
+            </table>
+     </form>
+        <div id="message"></div>
+
+    </div>
+</div>
+
+
+   
+</body>
+</html>

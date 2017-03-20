@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<SelfDefTransFlow>
+	<!-- 创建并开启工作流接口 -->
+	<TransactionFlow id="WMA2000" transFlowContext="WMA2000Context">
+		<!-- 任务是否可发起 -->
+		<transStep id="SEL_CANSTART_SP" class="com.sunyard.insurance.sunose.plus.ProcedurePlus" 
+			procedureService="SEL_CANSTART_SP_SERVICE" JDBCProcedureDefine="SEL_CANSTART_SP_JDBCDEF">
+			<transition id="0" dest="GetFlowConnStep" />
+			<transition id="Other" dest="errorStep" />
+		</transStep>
+	
+		<!-- 连接工作流 -->
+		<transStep id="GetFlowConnStep" flowServiceID="FlowConfigService">
+			<transition id="0" dest="CreateStep" />
+			<transition id="Other" dest="errorStep" />
+		</transStep>
+
+		<!-- 创建流程实例 -->
+		<transStep id="CreateStep">
+			<transition id="0" dest="SAV_TASKLIST_SP" />
+			<transition id="Other" dest="errorStep" />
+		</transStep>
+		
+		<!-- 保存任务信息 -->
+		<transStep id="SAV_TASKLIST_SP" class="com.sunyard.insurance.sunose.plus.ProcedurePlus"
+			procedureService="SAV_TASKLIST_SP_SERVICE" JDBCProcedureDefine="SAV_TASKLIST_SP_JDBCDEF">
+			<transition id="0" dest="AutoDispatchBusinessStep" />
+			<transition id="Other" dest="TerminateProcessInstanceStep" />
+		</transStep>
+		
+		<!-- 自动跳转业务流程模块 -->
+		<transStep id="AutoDispatchBusinessStep">
+			<transition id="0" dest="StartStep" />
+			<transition id="Other" dest="TerminateProcessInstanceStep" />
+		</transStep>
+
+		<!-- 开启流程实例 -->
+		<transStep id="StartStep">
+			<transition id="0" dest="UP_TASKSTATE_SP" />
+			<transition id="Other" dest="TerminateProcessInstanceStep" />
+		</transStep>
+		
+		<!-- 更新任务状态 -->
+		<transStep id="UP_TASKSTATE_SP" class="com.sunyard.insurance.sunose.plus.ProcedurePlus"
+			procedureService="UP_TASKSTATE_SP_SERVICE" JDBCProcedureDefine="UP_TASKSTATE_SP_JDBCDEF">
+			<transition id="0" dest="DisconnectFlowStep" />
+			<transition id="Other" dest="TerminateProcessInstanceStep" />
+		</transStep>
+		
+		<!-- 终止流程实例 -->
+		<transStep id="TerminateProcessInstanceStep">
+			<transition id="Other" dest="errorStep" />
+		</transStep>
+
+		<!-- 释放工作流 -->
+		<transStep id="DisconnectFlowStep">
+			<transition id="0" dest="end" />
+			<transition id="Other" dest="errorStep" />
+		</transStep>
+
+		<!-- 错误处理步骤 -->
+		<transStep id="errorStep">
+			<transition id="Other" dest="end" />
+		</transStep>
+
+		<refFormat refId="tcpipInputFmt" />
+		<refFormat refId="tcpipOutputFmt" />
+	</TransactionFlow>
+
+	<!-- 上下文配置 -->
+	<context id="WMA2000Context" type="transFlow">
+		<refKColl refId="datas" />
+		<refService refId="FlowConfigService" />
+		<refService refId="SEL_CANSTART_SP_SERVICE" />
+		<refService refId="SAV_TASKLIST_SP_SERVICE" />
+		<refService refId="UP_TASKSTATE_SP_SERVICE" />
+		<refService refId="transactionManager_jdbc" />
+	</context>
+
+	<!-- 数据配置 -->
+	<kColl id="datas">
+		<field id="transException" />
+		<refData refId="HEAD" />
+		<refData refId="BODY" />
+		<refData refId="TAIL" />
+	</kColl>
+	
+	<!-- 输入格式化配置 -->
+	<fmtDef id="tcpipInputFmt">
+		<refFormat refId="flowInFormat" />
+	</fmtDef>
+
+	<!-- 输出格式化配置 -->
+	<fmtDef id="tcpipOutputFmt">
+		<refFormat refId="flowOutFormat" />
+	</fmtDef>
+</SelfDefTransFlow>

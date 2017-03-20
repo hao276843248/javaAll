@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hao.sx.DAO.IStuinfoDAO">
+	<select id="findStudent"  resultType="StuFind">
+	SELECT s.ID as ID,s.NAME as name,s.SEX as sex,
+	s.BIRTHDAY,c.name as Course,e.name as Education,
+	s.CONTACT as contact,s.TIME as time,s.STATE as state,
+	s.ADDTIME as addtime 
+	FROM STUDENT s,Course c,Education e WHERE s.cid=c.id AND s.eiD=e.id and 1=1
+	<if test="tj.name!='' and tj.name!=null">
+		 and s.name LIKE '%'||#{tj.name}||'%'
+	</if>
+	<if test="tj.cid!=0">
+		and s.cid=#{tj.cid}
+	</if>
+	<if test="tj.eid!=0">
+		and s.eid=#{tj.eid}
+	</if>
+	<if test="tj.state!=0">
+		and state=#{tj.state}
+	</if>
+	<if test="tj.time!=0">
+		and time=#{tj.time}
+	</if>
+	  ORDER BY s.ID DESC
+	</select>
+	
+	<select id="getStudent" parameterType="_int" resultType="Stu">
+		SELECT * FROM STUDENT WHERe ID=#{ID}
+	</select>
+	
+	<insert id="addStudent" parameterType="Stu">
+		INSERT INTO STUDENT VALUES
+		(SEQ_STUDENT.NEXTVAL,#{name},#{sex},#{birthday},#{cid},#{eid},#{contact},#{time},#{state},#{addTime})
+	</insert>
+	
+	<delete id="delStudent" >
+		DELETE From Student WHERE ID=#{ID}
+	</delete>
+	
+	<update id="updateStudent" parameterType="Stu">  
+		UPDATE STUDENT SET NAME=#{name},SEX=#{sex},BIRTHDAY=#{birthday},CID=#{cid},EID=#{eid},CONTACT=#{contact},TIME=#{time},STATE=#{state},ADDTIME=#{addTime} 
+		WHERE ID=#{id}
+	</update>
+</mapper>

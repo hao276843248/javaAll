@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 增加参与者接口 -->
+<SelfDefTransFlow>
+	<TransactionFlow id="WMA2018" transFlowContext="WMA2018Context">
+	    <!-- 连接工作流 -->
+		<transStep id="GetFlowConnStep" flowServiceID="FlowConfigService">
+			<transition id="0" dest="AddApplyManStep"/>
+			<transition id="Other" dest="errorStep"/>
+		</transStep>
+
+		<!-- 增加任务参与者 -->
+		<transStep id="AddApplyManStep">
+			<transition id="0" dest="DisconnectFlowStep"/>
+			<transition id="Other" dest="errorStep"/>
+		</transStep>
+
+		<!-- 释放工作流 -->
+		<transStep id="DisconnectFlowStep" >
+			<transition id="0" dest="end"/>
+			<transition id="Other" dest="errorStep"/>
+		</transStep>
+		
+		<!-- 错误处理步骤 -->
+		<transStep id="errorStep" >
+			<transition id="Other" dest="end"/>
+		</transStep>
+		<refFormat refId="tcpipInputFmt" />
+		<refFormat refId="tcpipOutputFmt" />
+	</TransactionFlow>
+		<!-- 上下文配置 -->
+	<context id="WMA2018Context" type="transFlow">
+		<refKColl refId="datas" />
+		<refService refId="FlowConfigService" />
+	</context>
+
+	<!-- 数据配置 -->
+	<kColl id="datas">
+		<field id="transException" />
+		<refData refId="HEAD" />
+		<refData refId="BODY" />
+		<refData refId="TAIL" />
+	</kColl>
+
+	<!-- 输入格式化配置 -->
+	<fmtDef id="tcpipInputFmt">
+		<refFormat refId="flowInFormat" />
+	</fmtDef>
+
+	<!-- 输出格式化配置 -->
+	<fmtDef id="tcpipOutputFmt">
+		<refFormat refId="flowOutFormat" />
+	</fmtDef>
+
+</SelfDefTransFlow>

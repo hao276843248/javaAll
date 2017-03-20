@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    
+    <sql-query name="findBrand_1">
+    	SELECT id,name FROM Brand ORDER BY id
+    	<return-scalar column="id" type="long"/>
+    	<return-scalar column="name" type="string"/>    
+    </sql-query>
+    
+    <sql-query name="findBrand_2">
+    	SELECT {b.*},{c.*} FROM Brand b LEFT JOIN Camera c ON b.id=c.brandId ORDER BY b.id
+    	<return alias="b" class="cn.bdqn.qbc.entity.Brand"/>
+    	<return alias="c" class="cn.bdqn.qbc.entity.Camera"/>
+    </sql-query>
+    
+</hibernate-mapping>
+
+
+
+
+
+
+

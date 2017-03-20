@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+	<!-- 设置字符集编码 -->
+	<constant name="struts.i18n.encoding" value="utf-8"/>
+
+
+	<package name="root" namespace="/" extends="struts-default">
+	
+		<action name="hello" class="cn.bdqn.test.action.HelloAction">
+			<result>hello.jsp</result>
+		</action>		
+		<action name="hello2" class="cn.bdqn.test.action.HelloAction2"/>		
+		<action name="hello3" class="cn.bdqn.test.action.HelloAction3"/>
+		
+		<action name="scope" class="cn.bdqn.test.action.ScopeAction">
+			<result>show.jsp</result>
+		</action>
+		
+		<action name="scope2" class="cn.bdqn.test.action.ScopeAction2">
+			<result>show.jsp</result>
+		</action>
+		
+		
+		
+	</package>
+
+</struts>
+
+
+
+
+

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	
+	<!-- 用户模块 -->
+	<package name="user" namespace="/" extends="default">
+		
+		<!-- 用户注册 -->
+		<action name="regist" class="registAction">
+			<!-- 如果返回input结果，表示服务器端验证失败，转发回注册表单页面 -->
+			<result name="input">regist.jsp</result>
+			<!-- 如果返回success结果，表示注册成功，重定向到登录页面 -->
+			<result type="redirect">login.jsp</result>
+		</action>
+	
+		<!-- 用户登录 -->
+		<action name="login" class="loginAction">
+			<result name="input">login.jsp</result>
+			<result type="redirectAction">background/list</result>
+		</action>
+		
+		<!-- 用户退出 -->
+		<action name="logout" class="logoutAction">
+			<result type="redirect">/login.jsp</result>
+		</action>
+		
+		
+	</package>
+	<package name="updatePassword" namespace="/background" extends="default">
+		<!-- 修改密码 -->
+		<action name="updatePassword" class="updatePasswordAction" >
+			<result name="success" type="redirectAction">../logout</result>
+			<result name="NO" type="redirectAction">../logout</result>
+			<result name="input">password.jsp</result>
+		</action>
+	</package>
+
+
+</struts>    
+
+
+
+
+
+
+

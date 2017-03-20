@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<formats>
+	<xmlWrap id="flowInFormat" tagName="ROOT">
+		<xmlHead encoding="UTF-8" version="1.0" />
+		<xmlWrap tagName="HEAD" dataName="HEAD">
+			<xmlWrap tagName="FLOW" dataName="FLOW">
+				<!-- 工作流相关 格式化数据集 -->
+				<xmlFullTag tagName="PROCESSID" dataName="PROCESSID" des="流程实例ID" />
+				<xmlFullTag tagName="WORKITEMID" dataName="WORKITEMID"
+					des="任务ID" />
+				<xmlFullTag tagName="USERID" dataName="USERID" des="用户工作流账号" />
+				<xmlFullTag tagName="PASS" dataName="PASS" des="用户工作流密码" />
+				<xmlFullTag tagName="PROCDEFNAME" dataName="PROCDEFNAME"
+					des="流程定义名称" />
+				<xmlFullTag tagName="PROCINSNAME" dataName="PROCINSNAME"
+					des="流程实例名称 " />
+				<xmlFullTag tagName="NODENAME" dataName="NODENAME" des="节点名称" />
+				<xmlFullTag tagName="NODENAME2" dataName="NODENAME2" des="节点名称" />
+				<xmlFullTag tagName="WEIGHT" dataName="WEIGHT" des="流程实例的紧急程度" />
+				<xmlFullTag tagName="PRIO" dataName="PRIO" des="流程实例的重要程度" />
+				<xmlFullTag tagName="SEARCHFILTER" dataName="SEARCHFILTER"
+					des="任务查询条件" />
+				<xmlFullTag tagName="PARTICIPANTNAME" dataName="PARTICIPANTNAME"
+					des="参与者的登录名" />
+				<xmlFullTag tagName="PARTICIPANTID" dataName="PARTICIPANTID"
+					des="参与者的ID" />
+				<xmlFullTag tagName="TRANSEXCEPTION" dataName="TRANSEXCEPTION"
+					des="业务流程处理异常 " />
+				<xmlFullTag tagName="PAGESIZE" dataName="PAGESIZE" des="分页大小" />
+				<xmlFullTag tagName="PAGEINDEX" dataName="PAGEINDEX" des="分页查询起始索引" />
+				<xmlFullTag tagName="GROUPID" dataName="GROUPID" des="流程组索引" />
+				<xmlFullTag tagName="AREACODE" dataName="AREACODE" des="区域中心号" />
+				<xmlFullTag tagName="EXECUTORSID" dataName="EXECUTORSID"
+					des="任务转寄参与者ID集合" />
+
+				<xmlFullTag tagName="PRI_RESERVED1" dataName="PRI_RESERVED1"
+					des="扩展属性1" />
+				<xmlFullTag tagName="PRI_RESERVED2" dataName="PRI_RESERVED2"
+					des="扩展属性2" />
+				<xmlFullTag tagName="PRI_RESERVED3" dataName="PRI_RESERVED3"
+					des="扩展属性3" />
+				<xmlFullTag tagName="PRI_RESERVED4" dataName="PRI_RESERVED4"
+					des="扩展属性4" />
+			</xmlWrap>
+			<xmlFullTag tagName="TRANSID" dataName="TRANSID" des="工作流任务交易编号" />
+			<xmlFullTag tagName="TASKID" dataName="TASKID" des="任务编号" />
+			<xmlFullTag tagName="APPCODE" dataName="APPCODE" des="业务种类" />
+			<xmlFullTag tagName="ORGCODE" dataName="ORGCODE" des="当前操作员归属机构" />
+			<xmlFullTag tagName="CENTERNO" dataName="CENTERNO" des="处理中心号" />
+			<xmlFullTag tagName="AREACODE" dataName="AREACODE" des="区域中心号" />
+			<xmlFullTag tagName="TRADECODE" dataName="TRADECODE" des="业务交易代码" />
+			<xmlFullTag tagName="ISBIZ" dataName="ISBIZ" des="业务流程执行标记" />
+			<xmlFullTag tagName="NODETYPE" dataName="NODETYPE" des="节点类型" />
+		</xmlWrap>
+		<xmlWrap tagName="BODY" dataName="BODY">
+			<xmlFullTag tagName="XMLDATAS" dataName="XMLDATAS" />
+		</xmlWrap>
+		<xmlWrap tagName="TAIL" dataName="TAIL">
+			<xmlFullTag dataName="RETCODE" tagName="RETCODE" />
+			<xmlFullTag dataName="RETREASON" tagName="RETREASON" />
+		</xmlWrap>
+	</xmlWrap>
+</formats>

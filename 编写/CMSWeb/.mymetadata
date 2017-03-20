@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="CMSWeb"
+  id="myeclipse.1451281130956"
+  context-root="/CMSWeb"
+  j2ee-spec="6.0"
+  archive="CMSWeb.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

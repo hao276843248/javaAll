@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="ReserveWEB"
+  id="myeclipse.1456725379474"
+  context-root="/ReserveWEB"
+  j2ee-spec="6.0"
+  archive="ReserveWEB.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

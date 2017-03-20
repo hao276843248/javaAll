@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+	
+	<!-- 设置UI标签的主题 -->
+	<constant name="struts.ui.theme" value="simple"/>
+	<!-- 设置国际化资源文件的基础名 -->
+	<constant name="struts.custom.i18n.resources" value="message"/>
+	<!-- 设置启用开发模式 -->
+	<constant name="struts.devMode" value="true"/>
+	
+	<!-- 
+		如果不为package设置namespace属性，则该package属于默认的命名空间
+		当在其他命名空间下没有找action时，最后都会到默认包下查找	
+	 -->
+	<package name="default" extends="struts-default">
+		
+		<!-- 当在包中没有找到指定的action时，就调用default-action-ref指定的默认action -->
+		<default-action-ref name="notFound"/>
+		
+		<!-- 
+			action的class默认为ActionSupport类
+			action的method默认为execute方法，ActionSupport类中的execute方法直接返回SUCCESS结果
+			result的name默认为"success"
+			result的type默认为"dispatcher"，即转发
+		 -->
+		<action name="notFound">
+			<result>/err/404.jsp</result>
+		</action>
+	
+	</package>
+	
+	<include file="struts-course.xml"/>
+	<include file="struts-education.xml"/>
+	<include file="struts-student.xml"/>
+	
+
+</struts>

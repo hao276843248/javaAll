@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="MysqlBook"
+  id="myeclipse.1455683564993"
+  context-root="/MysqlBook"
+  j2ee-spec="6.0"
+  archive="MysqlBook.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

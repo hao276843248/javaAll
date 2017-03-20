@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="cn.hao.Hbook.entity">
+	<class name="Book" table="Book" schema="book">
+		<id name="id">
+			<generator class="sequence">
+				<param name="sequence">SEQ_BOOK</param>
+			</generator>
+		</id>
+		<property name="pid"/>
+		<property name="author "/>
+		<property name="title "/>
+		<property name="price "/>
+		<property name="pubdate "/>
+		<property name="pic "/>
+	</class>
+</hibernate-mapping>

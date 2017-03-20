@@ -1,0 +1,24 @@
+#MyEclipse Hibernate Properties
+#Thu Feb 18 13:43:30 CST 2016
+sessionFactoryName=cn.bdqn.contact.util.HibernateUtil
+genBasicCompId=false
+profile=
+daoSFId=
+version=3.3
+jndiPath=
+detectM2M=false
+reStrategyClass=
+detectO2O=false
+springDaoFile=
+useJavaTypes=true
+keyGenerator=identity
+libInstallFolder=WebRoot/WEB-INF/lib
+addLibs2Project=true
+genVersionTag=false
+sessionFactoryId=
+basePersistenceClass=
+genAnnotations=false
+reSettingsFile=
+configFile=/Contact/src/hibernate.cfg.xml
+createConfigFile=true
+addLibs2Classpath=true

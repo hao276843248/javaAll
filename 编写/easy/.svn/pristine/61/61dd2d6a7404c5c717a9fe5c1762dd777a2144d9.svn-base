@@ -1,0 +1,25 @@
+package cn.hao.easybuy.controller.comment;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import cn.hao.easybuy.controller.ControllerBean;
+import cn.hao.easybuy.entity.EasybuyComment;
+import cn.hao.easybuy.entity.EasybuyProductCategory;
+import cn.hao.easybuy.form.CommentForm;
+import cn.hao.easybuy.util.PageBean;
+
+@RequestMapping("/")
+@Controller
+public class AddGuesbookController extends ControllerBean{
+
+	
+}

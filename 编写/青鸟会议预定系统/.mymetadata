@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="青鸟会议预定系统"
+  id="myeclipse.1455938399367"
+  context-root="/青鸟会议预定系统"
+  j2ee-spec="6.0"
+  archive="青鸟会议预定系统.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

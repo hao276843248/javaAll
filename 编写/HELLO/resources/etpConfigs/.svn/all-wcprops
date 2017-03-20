@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/151/sunosp/sunose/trunk/SunOSE/resources/etpConfigs
+END
+FrequenceTransList.txt
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/306/sunosp/sunose/trunk/SunOSE/resources/etpConfigs/FrequenceTransList.txt
+END
+settings.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/198/sunosp/sunose/trunk/SunOSE/resources/etpConfigs/settings.xml
+END
+services.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/263/sunosp/sunose/trunk/SunOSE/resources/etpConfigs/services.xml
+END
+types.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/6/sunosp/sunose/trunk/SunOSE/resources/etpConfigs/types.xml
+END
+logging.xml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/255/sunosp/sunose/trunk/SunOSE/resources/etpConfigs/logging.xml
+END
+dataColls.xml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/6/sunosp/sunose/trunk/SunOSE/resources/etpConfigs/dataColls.xml
+END
+etphtm.msg
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/6/sunosp/sunose/trunk/SunOSE/resources/etpConfigs/etphtm.msg
+END
+IntercurrentTransList.txt
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/306/sunosp/sunose/trunk/SunOSE/resources/etpConfigs/IntercurrentTransList.txt
+END
+contexts.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/6/sunosp/sunose/trunk/SunOSE/resources/etpConfigs/contexts.xml
+END
+formats.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/6/sunosp/sunose/trunk/SunOSE/resources/etpConfigs/formats.xml
+END

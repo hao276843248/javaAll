@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<SelfDefStateMachine><!--行内转账状态机-->
+
+	<StateMachine id="innerTransferStateMachine"
+		stateMachineContext="innerTransferCtx" timeout="0">
+		<state id="initial" type="initial">
+			<transitions>
+				<stateTransition id="initial.start"
+					targetState="queryAccountListState" />
+			</transitions>
+		</state>
+
+		<state id="queryAccountListState" typeIdInfo="innerTransferFlow"
+			type="transFlow" linkContextTo="true">
+			<transitions>
+				<stateTransition
+					id="queryAccountListState.setSuccessPageStep.0"
+					targetState="queryAccountListState_confirm" />
+				<stateTransition
+					id="queryAccountListState.setSuccessPageStep.1"
+					targetState="final" />
+			</transitions>
+		</state>
+		<state id="queryAccountListState_confirm">
+			<transitions>
+				<stateTransition id="queryAccountListState_confirm.next"
+					targetState="queryBalanceState" />
+				<stateTransition id="queryAccountListState_confirm.cancel"
+					targetState="innerTransferCancel" />
+			</transitions>
+		</state>
+		<state id="queryBalanceState"
+			typeIdInfo="innerAcctSelectTransferFlow" type="transFlow"
+			linkContextTo="true">
+			<transitions>
+				<stateTransition id="queryBalanceState.setSuccessPageStep.0"
+					targetState="queryBalanceState_confirm" />
+				<stateTransition id="queryBalanceState.setSuccessPageStep.1"
+					targetState="final" />
+			</transitions>
+		</state>
+		<state id="queryBalanceState_confirm">
+			<transitions>
+				<stateTransition id="queryBalanceState_confirm.next"
+					targetState="transferConfirmState" />
+				<stateTransition id="queryBalanceState_confirm.back"
+					targetState="queryAccountListState" />
+				<stateTransition id="queryBalanceState_confirm.cancel"
+					targetState="innerTransferCancel" />
+			</transitions>
+		</state>
+		<state id="transferConfirmState"
+			typeIdInfo="innerTransferInputFlow" type="transFlow"
+			linkContextTo="true">
+			<transitions>
+				<stateTransition
+					id="transferConfirmState.setSuccessPageStep.0"
+					targetState="transferConfirmState_confirm" />
+				<stateTransition
+					id="transferConfirmState.setSuccessPageStep.1" targetState="final" />
+			</transitions>
+		</state>
+		<state id="transferConfirmState_confirm">
+			<transitions>
+				<stateTransition id="transferConfirmState_confirm.next"
+					targetState="innerTransferConfirmState" />
+				<stateTransition id="transferConfirmState_confirm.back"
+					targetState="queryBalanceState" />
+				<stateTransition id="transferConfirmState_confirm.cancel"
+					targetState="innerTransferCancel" />
+			</transitions>
+		</state>
+		<state id="innerTransferConfirmState"
+			typeIdInfo="innerTransferConfirmFlow" type="transFlow"
+			linkContextTo="true">
+			<transitions>
+				<stateTransition
+					id="innerTransferConfirmState.setSuccessPageStep.0"
+					targetState="final" />
+				<stateTransition
+					id="innerTransferConfirmState.setSuccessPageStep.1"
+					targetState="final" />
+			</transitions>
+		</state>
+		<state id="innerTransferCancel" type="transStep">
+			<actions>
+				<transStep id="SetReplyPageTransStep" onOtherDo="end"
+					pageName="wap/transfer/transfer_main.jsp" isReturnState="true" />
+			</actions>
+			<transitions>
+				<stateTransition
+					id="innerTransferCancel.SetReplyPageTransStep.0" targetState="final" />
+			</transitions>
+		</state>
+		<state id="final" type="final"/>
+	</StateMachine>
+	<context id="innerTransferCtx" type="stateMachine">
+		<refKColl refId="innerTransferDataColl" />
+	</context>
+	<kColl id="innerTransferDataColl">
+		<field id="acNo" desc="付款人账号" />
+		<field id="balance" desc="可用余额" />
+		<field id="payeeAcNo" desc="收款人账号" />
+		<field id="payeeAcName" desc="收款人名称" />
+		<field id="amount" desc="交易金额" />
+		<field id="remark" desc="转账附言" />
+	</kColl>
+</SelfDefStateMachine>

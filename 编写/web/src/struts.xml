@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="default" namespace="/" extends="json-default">
+		<action name="getNodes" class="cn.sun.tree.action.DeptAction" method="getNodes">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="getDeptById" class="cn.sun.tree.action.DeptAction" method="getDeptById">
+			<result type="json">
+				<param name="root">obj</param>
+			</result>
+		</action>
+		<action name="addDept" class="cn.sun.tree.action.DeptAction" method="addDept">
+			<result type="json">
+				<param name="root">obj</param>
+			</result>
+		</action>
+		<action name="updateDept" class="cn.sun.tree.action.DeptAction" method="updateDept">
+			<result type="json">
+				<param name="root">obj</param>
+			</result>
+		</action>
+		<action name="delDept" class="cn.sun.tree.action.DeptAction" method="delDept">
+			<result type="json">
+				<param name="root">obj</param>
+			</result>
+		</action>
+		<action name="getChildByid" class="cn.sun.tree.action.DeptAction" method="getDeptByPid">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+</struts>    

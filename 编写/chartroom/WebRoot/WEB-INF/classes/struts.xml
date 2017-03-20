@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<package name="chartroom" namespace="/" extends="json-default">
+		<action name="list" class="cn.hao.chartroom.action.ListContentAction">
+			<result type="json">
+				<!-- <param name="root">content</param> -->
+				<param name="includeproperties">
+					content.*,
+					currentIP
+				</param>
+			</result>
+		</action>
+		<action name="add" class="cn.hao.chartroom.action.AddContentAction"/>
+	</package>
+	
+	
+</struts>    

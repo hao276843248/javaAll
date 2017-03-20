@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+	<!--  上传文件的临时目录 -->
+	<constant name="struts.multipart.saveDir" value="D:/temp"/>
+	<!-- 上传文件的最大长度 -1表示不限-->
+	<constant name="struts.multipart.maxSize" value="-1"/>
+	<!-- 设置UI标签主题 -->
+	<constant name="struts.ui.theme" value="simple"/>
+	<!-- 自定义资源文件的基础名 -->
+	<constant name="struts.custom.i18n.resources" value="message"/>
+	
+	<package name="default" namespace="/" extends="struts-default">
+		<!-- 声明拦截器 -->
+		<interceptors>
+			<interceptor name="interA" class="cn.hao.test.interceptor.InterceptorA"/>
+			<interceptor name="interB" class="cn.hao.test.interceptor.InterceptorB"/>
+			<!-- 拦截器栈 -->
+			<interceptor-stack name="testStack">
+				<interceptor-ref name="interA"/>
+				<interceptor-ref name="interB"/>
+				<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="testStack"/>
+		
+		
+		<action name="aaa" class="cn.hao.test.action.testAction">
+			<!-- 引用拦截器 -->
+			<!--单个引用 <interceptor-ref name="interA"/>
+				<interceptor-ref name="interB"/> -->
+			<!--拦截器栈  <interceptor-ref name="testStack"/> -->
+			<result>index.jsp</result>
+			<result name="hello">hello.jsp</result>
+		</action>
+		
+		<action name="upload" class="cn.hao.test.action.Upload">
+			<interceptor-ref name="testStack">
+				<param name="fileUpload.maximumSize">10485760</param>
+				<param name="fileUpload.allowedExtensions">.jpg,.bmp,.png,.gif</param>
+			</interceptor-ref>
+			<result name="input">upload.jsp</result>
+		</action>
+		<action name="download" class="cn.hao.test.action.Download">
+			<result type="stream">
+				<param name="inputName">inputStream</param>
+				<param name="contentType">application/octet-stream</param>
+				<param name="contentDisposition">attachment;filename="${fileName};filename*=utf-8''${fileName}"</param>
+			</result>
+			
+		</action>
+	</package>
+</struts>

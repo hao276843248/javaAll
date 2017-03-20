@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+  		"-//Apache Struts//XWork Validator 1.0.3//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<!-- 用户注册验证规则 -->  	
+<validators>
+
+	<!-- 姓名字段 -->
+	<field name="name">
+		<!-- 检查String类型字段，不能是空字符串或空引用 -->
+		<field-validator type="requiredstring">
+			<!-- 在检查前先去掉首尾空格 -->
+			<param name="trim">true</param>
+			<message key="name.required"/>
+		</field-validator>	
+	</field>
+	
+	
+	<field name="sex">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="sex.required"/>
+		</field-validator>	
+	</field>
+	<field name="birthday">
+	<field-validator type="required">
+			<message key="birthday.required"></message>
+		</field-validator>
+	</field>
+	<field name="upload">
+		<field-validator type="required">
+			<param name="trim">true</param>
+			<message key="upload.required"/>
+		</field-validator>	
+	</field>
+	<field name="title">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="title.required"/>
+		</field-validator>	
+	</field>
+	<field name="group.id">
+		<field-validator type="required">
+			<param name="trim">true</param>
+			<message key="group.required"/>
+		</field-validator>	
+	</field>
+
+	<field name="phone">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="phone.required"/>
+		</field-validator>	
+	</field>
+	<!-- Email字段 -->
+	<field name="email">
+		<field-validator type="requiredstring" short-circuit="true">
+			<param name="trim">true</param>
+			<message key="email.required"/>
+		</field-validator>	
+		
+		<!-- 判断字符串内容是不是有效的Email格式 -->
+		<field-validator type="email">		
+			<message key="email.invalid"/>
+		</field-validator>		
+	</field>
+	<field name="qq">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="qq.required"/>
+		</field-validator>	
+	</field>
+	<field name="address">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="address.required"/>
+		</field-validator>	
+	</field>
+	<field name="description">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="description.required"/>
+		</field-validator>	
+	</field>
+	
+	<!-- 验证码字段 -->
+	<field name="vcode">
+		<field-validator type="requiredstring" short-circuit="true">
+			<param name="trim">true</param>
+			<message key="vcode.required"/>
+		</field-validator>
+		
+		<field-validator type="fieldexpression">
+			<param name="expression">vcode==#session.KAPTCHA_SESSION_KEY</param>
+			<message key="vcode.invalid"/>
+		</field-validator>		
+	</field>
+
+</validators>  	

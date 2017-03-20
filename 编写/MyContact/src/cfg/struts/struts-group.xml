@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<package name="group" namespace="/background" extends="default">
+		<!-- 
+			Spring与Struts整合方案2:在Struts配置文件中设置Action的完整类名，还是由Struts2框架负责创建Actin的实例
+			Struts2框架在创建Action实例后，检查Action中的setter方法，并根据setter方法对应的属性名到Spring的IoC中取出相应对象
+			然后通过这些setter方法将对象注入到action中		
+		 -->
+		<action name="groups" class="cn.bdqn.contact.action.group.ListGroupAction"/>
+	</package>
+
+</struts>    
+
+
+
+
+
+
+

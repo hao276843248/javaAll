@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/80/sunosp/sunose/trunk/SunOSE/resources/etpConfigs/properties
+END
+xmlTransMap.properties
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/6/sunosp/sunose/trunk/SunOSE/resources/etpConfigs/properties/xmlTransMap.properties
+END
+taglibKey.properties
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/6/sunosp/sunose/trunk/SunOSE/resources/etpConfigs/properties/taglibKey.properties
+END
+authCode.properties
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/6/sunosp/sunose/trunk/SunOSE/resources/etpConfigs/properties/authCode.properties
+END
+transCode.properties
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/6/sunosp/sunose/trunk/SunOSE/resources/etpConfigs/properties/transCode.properties
+END
+license.properties
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/80/sunosp/sunose/trunk/SunOSE/resources/etpConfigs/properties/license.properties
+END
+webServTransMap.properties
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/6/sunosp/sunose/trunk/SunOSE/resources/etpConfigs/properties/webServTransMap.properties
+END

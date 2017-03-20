@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.camera.mapper.brand.BrandMapper">
+	
+	<cache		
+		flushInterval="60000"
+		size="30"
+		readOnly="true"/>
+	
+	<select id="findBrand" resultType="Brand">
+		SELECT id,name FROM Brand ORDER BY id
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+

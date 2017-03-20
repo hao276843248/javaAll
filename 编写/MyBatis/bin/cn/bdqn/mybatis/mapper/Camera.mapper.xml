@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.mybatis.mapper.CameraMapper">
+
+
+	<select id="findCamear" resultMap="cameraMap">
+		SELECT
+		      c.id AS cameraId,
+		      c.title,
+		      c.pixel,
+		      c.zoom,
+		      c.lcd,
+		      c.color,
+		      c.price,
+		      c.image,
+		      b.id AS brandId,
+		      b.name AS brandName,
+		      t.id AS typeId,
+		      t.name AS typeName
+		FROM Camera c INNER JOIN Brand b ON c.brandId=b.id
+		              INNER JOIN Types t ON c.typeid=t.id
+	</select>
+	
+	
+	
+	<resultMap type="Camera" id="cameraMap">
+		<!-- 和Camera类相关的列和属性的对应关系 -->
+		<id column="cameraId" property="id"/>
+		<result column="title" property="title"/>		
+		<result column="pixel" property="pixel"/>
+		<result column="zoom" property="zoom"/>
+		<result column="lcd" property="lcd"/>
+		<result column="color" property="color"/>
+		<result column="price" property="price"/>
+		<result column="image" property="image"/>
+		
+		<!-- 和Camera中的brand属性相关的转换规则
+			property:关联对象的属性名
+			javaType:关联对象的类型
+		 -->
+		<association property="brand" javaType="Brand">
+			<!-- Brand对象相关的列和属性的转换方式 -->
+			<id column="brandId" property="id"/>
+			<result column="brandName" property="name"/>
+		</association>
+		
+		<association property="type" javaType="Type">
+			<id column="typeId" property="id"/>
+			<result column="typeName" property="name"/>
+		</association>
+	
+	</resultMap>
+
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+

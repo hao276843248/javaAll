@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+  		"-//Apache Struts//XWork Validator 1.0.3//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+
+	<field name="name">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="name.required"/>
+		</field-validator>	
+	</field>
+
+	<field name="sex">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="sex.required"/>
+		</field-validator>
+	</field>
+	
+	<field name="birthday">
+		<field-validator type="required">
+			<message key="birthday.required"/>
+		</field-validator>
+	</field>
+	
+	<field name="course.id">
+		<field-validator type="required">
+			<message key="course.required"/>
+		</field-validator>
+	</field>
+	
+	<field name="time">
+		<field-validator type="required">
+			<message key="time.required"/>
+		</field-validator>
+	</field>
+	
+	<field name="education.id">
+		<field-validator type="required">
+			<message key="education.required"/>
+		</field-validator>
+	</field>
+	
+	<field name="contact">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="contact.required"/>
+		</field-validator>
+	</field>
+
+	<field name="stat">
+		<field-validator type="required">
+			<message key="stat.required"/>
+		</field-validator>
+	</field>
+</validators>
+
+
+
+
+
+
+
+
+
+
+		

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<SelfDefTransFlow>
+	<!-- 自动跳转业务流程接口 -->
+	<TransactionFlow id="WMA3000" transFlowContext="WMA3000Context">
+		<!-- 自动跳转业务流程模块 -->
+		<transStep id="DispatchStep">
+			<transition id="Other" dest="end" />
+			<transition id="-99" dest="errorStep" />
+			<transition id="-1" dest="errorStep" />
+		</transStep>
+
+		<!-- 错误处理步骤 -->
+		<transStep id="errorStep">
+			<transition id="Other" dest="end" />
+		</transStep>
+
+		<refFormat refId="tcpipInputFmt" />
+		<refFormat refId="tcpipOutputFmt" />
+	</TransactionFlow>
+
+	<!-- 上下文配置 -->
+	<context id="WMA3000Context" type="transFlow">
+		<refKColl refId="datas" />
+	</context>
+
+	<!-- 数据配置 -->
+	<kColl id="datas">
+		<field id="transException" />
+		<refData refId="HEAD" />
+		<refData refId="BODY" />
+		<refData refId="TAIL" />
+	</kColl>
+
+	<!-- 输入格式化配置 -->
+	<fmtDef id="tcpipInputFmt">
+		<refFormat refId="flowInFormat" />
+	</fmtDef>
+
+	<!-- 输出格式化配置 -->
+	<fmtDef id="tcpipOutputFmt">
+		<refFormat refId="flowOutFormat" />
+	</fmtDef>
+
+</SelfDefTransFlow>

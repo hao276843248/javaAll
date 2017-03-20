@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jaxws="http://cxf.apache.org/jaxws" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+		http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+	
+	<import resource="classpath:META-INF/cxf/cxf.xml"/>
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>		
+		
+	<context:component-scan base-package="cn.bdqn.contact"/>	
+	
+	<!-- 数据源 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		p:driverClassName="com.mysql.jdbc.Driver"
+		p:url="jdbc:mysql:///contact"
+		p:username="contact"
+		p:password="123456"
+	/>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
+		<!--数据源-->
+		<property name="dataSource" ref="dataSource" />
+		<!--外部的MyBatis配置文件的路径-->
+		<property name="configLocation" value="classpath:mybatis.cfg.xml"></property>   
+		<!--配置映射文件的加载位置-->
+		<property name="mapperLocations" value="classpath:cn/bdqn/contact/mapper/*.xml"/>  
+		<!--配置将哪个包下的类名转成别名-->
+		<property name="typeAliasesPackage" value="cn.bdqn.contact.entity" />  
+	</bean>
+	
+	<!-- 在指定的包下自动找到MyBatis的查询接口，并自动生成这些查询接口的实现类对象 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
+		<property name="basePackage" value="cn.bdqn.contact.mapper" />  
+	</bean>
+	
+	<!-- 事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		p:dataSource-ref="dataSource"
+	/>
+	
+	<!-- 事务增强 -->
+	<tx:advice id="txAdvice">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true" propagation="SUPPORTS"/>
+			<tx:method name="find*" read-only="true" propagation="SUPPORTS"/>
+			<tx:method name="*" propagation="REQUIRED"/>
+		</tx:attributes>	
+	</tx:advice>
+	
+	<!-- 事务切面 -->
+	<aop:config>
+		<!-- 切点 -->
+		<aop:pointcut expression="execution(* cn.bdqn.contact.service..*.*(..))" id="txMethods"/>
+		<!-- 组装切面 -->
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txMethods"/>
+	</aop:config>
+	
+	<jaxws:client id="mailService"
+                  serviceClass="cn.bdqn.mail.ws.IMailWebService"
+                  address="http://localhost:8080/MailService/services/mail" />
+	
+	<!-- 导入各模块配置文件 -->
+	<import resource="cfg/spring/userContext.xml"/>
+	<import resource="cfg/spring/groupContext.xml"/>	
+	<import resource="cfg/spring/contactContext.xml"/>
+	
+	
+	
+
+</beans>
+
+
+
+
+
+
+
+

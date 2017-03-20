@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hao.cms.mapper.category.CategoryMapper">
+	<select id="findCategory" resultType="Category">
+		SelECT * FROM CATEGORY where name LIKE '%'||#{name}||'%'
+	</select>
+	<select id="getCategory" resultType="Category">
+		SELECT * FROM CATEGORY WHERE ID=#{id}
+	</select>
+	<insert id="addCategory" parameterType="Category">
+		INSERT INTO CATEGORY VALUES(SEQ_CATEGORY.NEXTVAL,#{name})
+	</insert>
+	<update id="updateCategory" parameterType="Category">
+		UPDATE CATEGORY SET NAME=#{name} WHERE ID=#{id}
+	</update>
+	<delete id="delCategory">
+		DELETE FROM CATEGORY WHERE ID=#{id}
+	</delete>
+	
+</mapper>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="JAVA发送邮件"
+  id="myeclipse.1457666937046"
+  context-root="/asd"
+  j2ee-spec="6.0"
+  archive="JAVA发送邮件.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

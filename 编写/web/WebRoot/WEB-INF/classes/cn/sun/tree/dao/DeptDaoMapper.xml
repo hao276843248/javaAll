@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.sun.tree.dao.DeptDao">
+	<select id="getDepartments" parameterType="int" resultType="dept">
+		select * from Department where parentId=#{parentId}
+	</select>
+	<select id="getDepartmentById" parameterType="int" resultType="dept">
+		select * from Department where deptid=#{deptid}
+	</select>
+	<insert id="addDept"  useGeneratedKeys="true"  parameterType="dept">
+		insert into Department values(#{deptcode},#{deptname},#{description},#{parentid},1)
+	</insert>
+	<update id="updateDept" parameterType="dept">
+		update Department 
+		set deptcode=#{deptcode},deptname=#{deptname},description=#{description},parentid=#{parentid}
+		where deptid=#{deptid}
+	</update>
+	<delete id="delDept" parameterType="int">
+		delete from Department where deptid=#{deptid}
+	</delete>
+</mapper>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+	<!-- 设置UI标签使用的主题 -->
+	<constant name="struts.ui.theme" value="simple"/>
+	
+	<package name="root" namespace="/" extends="struts-default">
+		
+		<action name="jobs" class="cn.bdqn.regist.action.ListJobAction"/>
+		<action name="hobbies" class="cn.bdqn.regist.action.ListHobbyAction"/>
+	
+	</package>
+</struts>

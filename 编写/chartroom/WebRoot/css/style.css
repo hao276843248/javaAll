@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+body{margin:0px;}
+#wrap{width:980px;margin:5px auto;border:2px dashed #856a30;height:810px;}
+#head{height:80px;background:url(../images/logo.jpg) no-repeat #856a30;}
+#form{height:100px;border-bottom:2px dashed #856a30;}
+#form textarea{width:960px;margin-top:5px;margin-left:3px;border:1px solid #856a30;background-color:#FBEECE;height:50px;}
+#tdBtn{text-align:right;}
+#tdBtn a{text-decoration:none;font-size:20px;color:#856a30;font-family:幼圆;}
+#contents{height:700px;overflow:auto;}
+.cleft .ip{float:left;font-size:13px;color:#003D79;font-weight:bold;clear:both;margin:3px;}
+.cleft .content{float:left;width:500px;padding:3px;background-color:#DFEFFF;border:1px solid #002346;color:#003D79;font-size:14px;margin:5px;font-family:幼圆;clear:both;}
+
+.cright .ip{float:right;font-size:13px;color:#002F00;font-weight:bold;clear:both;margin:3px;}
+.cright .content{float:right;width:500px;padding:3px;background-color:#CBF0B5;border:1px solid #075F18;color:#103212;font-size:14px;margin:5px;font-family:幼圆;clear:both;}
+
+.clear{clear:both;}
+
+

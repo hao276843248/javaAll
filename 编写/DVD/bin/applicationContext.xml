@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<!-- 无参构造方法 -->
+	<bean id="dvdm" class="cn.bdqn.dvd.MovieDVD"
+		p:name="我的世界" p:zt="true" p:CS="1990" p:director="MACWAD"
+	/>
+
+
+	<!-- 有参构造方法 -->
+	<bean id="dvd2" class="cn.bdqn.dvd.MovieDVD">
+		<constructor-arg value="2企鹅企鹅企鹅其实"/>
+		<constructor-arg value="true"/>
+		<constructor-arg><null/></constructor-arg>
+		<constructor-arg value="1568741"/>
+		<constructor-arg value="擦擦2额度其实去啊地区阿斯"/>
+	</bean>
+	
+	<bean id="dao" class="cn.bdqn.dvd.DAO.DVDDAO">
+		<property name="dvds">
+			<array>
+				<ref local="dvdm"/>
+				<ref local="dvd2"/>			
+			</array>
+		</property>
+	</bean>
+	
+	<bean id="serviceDVD" class="cn.bdqn.dvd.Service.DVDService"
+		p:dao-ref="dao"
+	/>	
+	
+</beans>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+	
+	<!-- 上传文件的临时目录 -->
+	<constant name="struts.multipart.saveDir" value="D:/temp"/>
+	<!-- 上传文件的最大长度 -1表示不限-->
+	<constant name="struts.multipart.maxSize" value="-1"/>
+	<!-- 设置UI标签的主题 -->
+	<constant name="struts.ui.theme" value="simple"/>
+	<!-- 自定义资源文件的基础名 -->
+	<constant name="struts.custom.i18n.resources" value="message"/>
+
+	<package name="test" namespace="/" extends="struts-default">
+		<!-- 声明拦截器 -->
+		<interceptors>
+			<interceptor name="interA" class="cn.bdqn.test.interceptor.InterceptorA"/>
+			<interceptor name="interB" class="cn.bdqn.test.interceptor.InterceptorB"/>
+			<!-- 拦截器栈 -->
+			<interceptor-stack name="testStack">
+				<interceptor-ref name="defaultStack"/>
+				<interceptor-ref name="interA"/>
+				<interceptor-ref name="interB"/>
+			</interceptor-stack>		
+		</interceptors>
+		
+		<default-interceptor-ref name="testStack"/>
+		
+		<action name="test" class="cn.bdqn.test.action.TestAction">
+			<!-- 引用拦截器 -->
+			<!-- <interceptor-ref name="testStack"/> -->		
+			<result>index.jsp</result>
+			<result name="hello">hello.jsp</result>
+		</action>
+		
+		<action name="upload" class="cn.bdqn.test.action.UploadAction">
+			<interceptor-ref name="testStack">
+				<param name="fileUpload.maximumSize">10485760</param>
+				<param name="fileUpload.allowedExtensions">.jpg,.bmp,.gif,.png</param>
+			</interceptor-ref>
+			
+			<result name="input">upload.jsp</result>
+		</action>
+		
+		<action name="download" class="cn.bdqn.test.action.DownloadAction">
+			<result type="stream">
+				<!-- 用来获取输入流的属性名(默认为inputStream) -->
+				<param name="inputName">inputStream</param>
+				<!-- 设置内容类型 -->
+				<param name="contentType">application/octet-stream</param>
+				<!-- 设置下载文件名 -->
+				<param name="contentDisposition">attachment;filename="${fileName}";filename*=utf-8''${fileName}</param>
+			</result>
+		</action>
+		
+	</package>
+
+
+</struts>
+
+
+
+
+
+
+
+

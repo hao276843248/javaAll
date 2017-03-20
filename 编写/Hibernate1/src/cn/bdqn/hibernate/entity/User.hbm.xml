@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<!-- package:在当前映射文件中默认使用的包名 -->
+<hibernate-mapping package="cn.bdqn.hibernate.entity">
+	
+	<!-- name:类名 table:表名 schema:数据库用户名 -->
+	<class name="User" table="Users" schema="book">
+	
+		<!-- name:属性名 -->		
+		<id name="id">
+			<!-- class:主键生成策略 -->
+			<generator class="sequence">
+				<!-- 设置序列名称 -->
+				<param name="sequence">SEQ_USER</param>
+			</generator>
+		</id>		
+		
+		<property name="loginName" type="java.lang.String"/>
+		<property name="password" type="string"/>			
+	</class>
+ 
+</hibernate-mapping>

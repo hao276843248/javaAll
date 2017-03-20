@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+	<package name="c" namespace="/"  extends="struts-default">
+		<action name="aaa" class="cn.hao.test.aaaAction">
+			<result name="success" >index2.jsp</result>
+		</action>
+	</package>
+</struts>

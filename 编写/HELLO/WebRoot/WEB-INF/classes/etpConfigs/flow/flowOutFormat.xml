@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<formats>
+	<xmlWrap id="flowOutFormat" tagName="ROOT">
+		<xmlHead encoding="UTF-8" version="1.0" />
+		<xmlWrap tagName="HEAD" dataName="HEAD">
+			<xmlWrap tagName="FLOW" dataName="FLOW">
+				<!-- 工作流相关 格式化数据集 -->
+				<xmlFullTag tagName="PROCESSID" dataName="PROCESSID" des="流程实例ID" />
+				<xmlFullTag tagName="WORKITEMID" dataName="WORKITEMID"
+					des="任务ID" />
+				<xmlFullTag tagName="USERID" dataName="USERID" des="用户工作流账号" />
+				<xmlFullTag tagName="PROCDEFNAME" dataName="PROCDEFNAME"
+					des="流程定义名称" />
+				<xmlFullTag tagName="PROCINSNAME" dataName="PROCINSNAME"
+					des="流程实例名称 " />
+				<xmlFullTag tagName="NODENAME" dataName="NODENAME" des="节点名称" />
+				<xmlFullTag tagName="GROUPID" dataName="GROUPID" des="流程组索引" />
+				<xmlFullTag tagName="PRIO" dataName="PRIO" des="流程实例的重要程度" />
+				
+				<xmlFullTag tagName="SEARCHCOUNT" dataName="SEARCHCOUNT" des="条件查询总数"/>
+			</xmlWrap>
+			
+			<xmlFullTag tagName="TRANSID" dataName="TRANSID" des="工作流任务交易编号" />
+			<xmlFullTag tagName="TASKID" dataName="TASKID" des="任务编号" />
+			<xmlFullTag tagName="APPCODE" dataName="APPCODE" des="业务种类" />
+			<xmlFullTag tagName="ORGCODE" dataName="ORGCODE" des="当前操作员归属机构" />
+			<xmlFullTag tagName="CENTERNO" dataName="CENTERNO" des="处理中心号" />
+			<xmlFullTag tagName="AREACODE" dataName="AREACODE" des="区域中心号" />
+			<xmlFullTag tagName="TRADECODE" dataName="TRADECODE" des="业务交易代码" />
+			<xmlFullTag tagName="ISBIZ" dataName="ISBIZ" des="业务流程执行标记" />
+			<xmlFullTag tagName="NODETYPE" dataName="NODETYPE" des="节点类型" />
+
+			<xmlWrap tagName="WORKITEMCOUNT" dataName="WORKITEMCOUNT">
+				<xmlFullTag tagName="ALLCOUNT" dataName="ALLCOUNT"  des="任务总数"/>
+				<xmlFullTag tagName="CMPCOUNT" dataName="CMPCOUNT"  des="完成任务总数"/>
+				<xmlFullTag tagName="APPLYCOUNT" dataName="APPLYCOUNT" des="申请任务总数" />
+				<xmlFullTag tagName="CHECKCOUNT" dataName="CHECKCOUNT"  des="处理中任务总数" />
+				<xmlFullTag tagName="SUSPENDCOUNT" dataName="SUSPENDCOUNT" des="挂起任务总数"/>
+				<xmlFullTag tagName="TERMCOUNT" dataName="TERMCOUNT"  des="终止任务总数"/>
+			</xmlWrap>
+		</xmlWrap>
+		<xmlFullTag dataName="BODY" tagName="BODY" />
+		<xmlWrap tagName="TAIL" dataName="TAIL">
+			<xmlFullTag dataName="RETCODE" tagName="RETCODE" des="结果码 "/>
+			<xmlFullTag dataName="RETREASON" tagName="RETREASON" des="结果描述 "/>
+		</xmlWrap>
+	</xmlWrap>
+</formats>

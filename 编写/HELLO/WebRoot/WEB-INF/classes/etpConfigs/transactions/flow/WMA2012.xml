@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<SelfDefTransFlow>
+	<!-- 查询各种工作项状态总数 -->
+	<TransactionFlow id="WMA2012" transFlowContext="WMA2012Context">
+		<!-- 连接工作流 -->
+		<transStep id="GetFlowConnStep" flowServiceID="FlowConfigService">
+			<transition id="0" dest="GetWorkItemCountStep"/>
+			<transition id="Other" dest="errorStep"/>
+		</transStep>
+
+		<!-- 分页查询工作项列表 -->
+		<transStep id="GetWorkItemCountStep">
+			<transition id="0" dest="AutoDispatchBusinessStep"/>
+			<transition id="Other" dest="errorStep"/>
+		</transStep>
+		
+		<!-- 自动跳转业务流程模块 -->
+		<transStep id="AutoDispatchBusinessStep">
+			<transition id="0" dest="DisconnectFlowStep" />
+			<transition id="Other" dest="errorStep" />
+		</transStep>
+
+		<!-- 释放工作流 -->
+		<transStep id="DisconnectFlowStep">
+			<transition id="0" dest="end"/>
+			<transition id="Other" dest="errorStep"/>
+		</transStep>
+
+		<!-- 错误处理步骤 -->
+		<transStep id="errorStep">
+			<transition id="Other" dest="end" />
+		</transStep>
+
+		<refFormat refId="tcpipInputFmt" />
+		<refFormat refId="tcpipOutputFmt" />
+	</TransactionFlow>
+
+	<!-- 上下文配置 -->
+	<context id="WMA2012Context" type="transFlow">
+		<refKColl refId="datas" />
+		<refService refId="FlowConfigService" />
+	</context>
+
+	<!-- 数据配置 -->
+	<kColl id="datas">
+		<field id="transException" />
+		<refData refId="HEAD" />
+		<refData refId="BODY" />
+		<refData refId="TAIL" />
+	</kColl>
+
+	<!-- 输入格式化配置 -->
+	<fmtDef id="tcpipInputFmt">
+		<refFormat refId="flowInFormat" />
+	</fmtDef>
+
+	<!-- 输出格式化配置 -->
+	<fmtDef id="tcpipOutputFmt">
+		<refFormat refId="flowOutFormat" />
+	</fmtDef>
+	
+</SelfDefTransFlow>

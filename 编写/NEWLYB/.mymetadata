@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="NEWLYB"
+  id="myeclipse.1449730964650"
+  context-root="/NEWLYB"
+  j2ee-spec="6.0"
+  archive="NEWLYB.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

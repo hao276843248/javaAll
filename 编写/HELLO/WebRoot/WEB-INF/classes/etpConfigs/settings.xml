@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+	<kColl id="settings">
+		<!--获取系统配置信息时，参数关键字格式为"settings.key[.key]" -->
+
+		<kColl id="initialization">
+			<field id="enableTransFlowsCache" value="false" />
+			<field id="enableStateMachinesCache" value="false" />
+			<field id="enableFormatsCache" value="false" />
+			<field id="enableTypesCache" value="false" />
+			<field id="enableContextsCache" value="false" />
+		</kColl>
+
+		<kColl id="formatCfg">
+			<field id="charSet" value="utf-8" />
+		</kColl>
+
+		<kColl id="sessionCfg">
+			<!-- 默认Session配置 开始 -->
+
+			<!-- 会话监听类注册 -->
+			<field id="sessListenerClass" value="" />
+
+			<!-- 登陆业务操作步骤 -->
+			<field id="logonTransFlow" value="logonFlow" />
+			<!-- 系统资源，会话上下文 -->
+			<field id="sessionContext" value="htmlSessionCtx" />
+			<!-- 会话粘性 -->
+			<field id="sessionAffinity" value="true" />
+			<!-- 会话持久性 -->
+			<field id="sessionPersistent" value="true" />
+			<!-- 会话持久处理格式 -->
+			<field id="sessionPersistentFmt" value="sessionDataFmt" />
+			<!-- session内存空间最大值 -->
+			<field id="poolMaxSize" value="1000" />
+			<!-- 是否使用cookie -->
+			<field id="cookie" value="true" />
+			<!-- session过期定时检查的时间间隔,单位为分钟 -->
+			<field id="timeBetweenSessionCheck" value="1" />
+			<!-- 多渠道session的过期时间,单位为分钟 -->
+			<field id="sessInactiveTimeOut" value="10" />
+			<!-- 生成的CBI会话标识的长度 -->
+			<field id="sessionIdLength" value="20" />
+			<!-- 编码格式 -->
+			<field id="encoding" value="UTF-8" />
+			<!-- HTML编码格式度 -->
+			<field id="htmlEnCoding" value="UTF-8" />
+			<!-- 错误返回页面 -->
+			<field id="errorPage" value="error.jsp" />
+			<!-- 默认Session配置 结束 -->
+
+			<!-- html渠道 开始 -->
+
+			<!-- 会话上下文 -->
+			<field id="sessionContext0" value="htmlSessionCtx" />
+			<!-- 登陆TransFlowStep -->
+			<field id="logonTransFlow0" value="logonTransactionFlow" />
+			<!-- 会话持久性 -->
+			<field id="sessionPersistent0" value="false" />
+			<!-- 会话紧密性 -->
+			<field id="sessionAffinity0" value="true" />
+			<!-- 生成的CBI会话标识的长度 -->
+			<field id="sessionIdLength0" value="20" />
+			<!-- 是否使用cookie -->
+			<field id="cookies0" value="true" />
+			<!-- 编码格式 -->
+			<field id="encoding0" value="GBK" />
+			<!-- HTML编码格式 -->
+			<field id="htmlEnCoding0" value="GBK" />
+			<!-- 错误页面 -->
+			<field id="errorPage0" value="error.jsp" />
+			<!-- html渠道 结束 -->
+
+			<!-- xhtml渠道 开始 -->
+			<!-- 会话上下文 -->
+			<field id="sessionContext1" value="htmlSessionCtx" />
+			<!-- 登陆TransFlowStep -->
+			<field id="logonTransFlow1" value="logonTransactionFlow" />
+			<!-- 会话持久性 -->
+			<field id="sessionPersistent1" value="false" />
+			<!-- 会话紧密性 -->
+			<field id="sessionAffinity1" value="true" />
+			<!-- 生成的CBI会话标识的长度 -->
+			<field id="sessionIdLength1" value="20" />
+			<!-- 是否使用cookie -->
+			<field id="cookies1" value="true" />
+			<!-- 编码格式 -->
+			<field id="encoding1" value="GBK" />
+			<!-- XHTML编码格式 -->
+			<field id="htmlEnCoding1" value="GBK" />
+			<!-- 错误页面 -->
+			<field id="errorPage1" value="/wap/error.jsp" />
+			<!-- xhtml渠道 结束 -->
+
+			<!-- java渠道 开始 -->
+			<field id="sessionContext2" value="htmlSessionCtx" />
+			<field id="cookies2" value="true" />
+			<!-- java渠道 结束 -->
+
+			<!-- tcpip 渠道 开始 -->
+			<field id="sessionContext3" value="htmlSessionCtx" />
+			<field id="sessionTcpipInputFmt3" value="tcpipInputFmt" />
+			<field id="sessionTcpipOutputFmt3" value="tcpipOutputFmt" />
+			<field id="encoding3" value="GBK" />
+			<!-- tcpip 渠道 结束 -->
+
+		</kColl>
+
+		<kColl id="ETPKey">
+			<!-- ETPKey 配置：定义了系统中使用的一些关键字及其配置 -->
+			<field id="SystemJDBCResource" value="CBIFJDBC" />
+			<!-- 系统定义JDBCResource名称 -->
+			<field id="defaultChannel" value="html" />
+			<!-- 根据请求信息无法识别渠道时赋予的默认渠道类型 -->
+			<field id="isCheckChannelStarted" value="false" />
+			<!-- 是否检查请求中传递的渠道是否注册 -->
+		</kColl>
+
+		<kColl id="ETPInitServices">
+			<!-- ETP系统启动时，需要初始化启动的服务 -->
+			<field id="TCPIPResourceService" />
+			<field id="JDBCDBResourceService" />
+			<field id="SunFlowService" />
+			
+		</kColl>
+
+		<kColl id="registedChannels">
+			<field id="0" value="html" />
+			<field id="1" value="xhtml" />
+			<field id="2" value="java" />
+			<field id="3" value="tcpip" />
+			<field id="4" value="xml" />
+		</kColl>
+
+		<kColl id="channelHandlers">
+			<!-- 渠道处理器配置 -->
+			<kColl id="html">
+				<!-- HTML渠道 -->
+				<field id="requestHandler"
+					value="com.sunyard.cbif.cbi.html.HtmlChannelRequestHandler" />
+				<field id="responseHandler"
+					value="com.sunyard.cbif.cbi.html.HtmlChannelResponseHandler" />
+				<!-- 渠道请求处理器bean配置 -->
+				<kColl id="responseBeans">
+					<field id="defaultBean" value="com.sunyard.cbif.cbi.html.HtmlChannelResponseBean" />
+				</kColl>
+				<!-- 渠道响应处理器配置 -->
+				<field id="runInSession" value="true" />
+				<!-- 是否在会话session中运行交易 -->
+			</kColl>
+
+
+			<kColl id="xhtml">
+				<field id="requestHandler"
+					value="com.sunyard.cbif.cbi.xhtml.XhtmlChannelRequestHandler" />
+				<field id="responseHandler"
+					value="com.sunyard.cbif.cbi.xhtml.XhtmlChannelResponseHandler" />
+				<kColl id="responseBeans">
+					<field id="defaultBean"
+						value="com.sunyard.cbif.cbi.xhtml.XhtmlChannelResponseBean" />
+				</kColl>
+				<field id="runInSession" value="true" />
+			</kColl>
+
+			<kColl id="java">
+				<!-- java渠道 -->
+				<field id="requestHandler"
+					value="com.sunyard.cbif.cbi.java.JavaChannelRequestHandler" />
+				<field id="responseHandler"
+					value="com.sunyard.cbif.cbi.java.JavaChannelResponseHandler" />
+				<field id="runInSession" value="true" />
+			</kColl>
+
+			<kColl id="tcpip">
+				<!-- tcpip渠道 -->
+				<field id="requestHandler"
+					value="com.sunyard.cbif.cbi.tcpip.TCPIPChannelRequestHandler" />
+				<!-- <field id="responseHandler" value="com.sunyard.cbif.cbi.tcpip.TCPIPChannelResponseHandler" 
+					/> -->
+				<field id="responseHandler"
+					value="com.sunyard.insurance.sunose.flow.TCPIPChannelResponseHandler" />
+			</kColl>
+
+		</kColl>
+
+		<kColl id="htmlClient">
+			<field id="filePath" value="/" />
+			<field id="homePage" value="auth/logon.jsp" />
+			<field id="minRequestResubmitTime" value="3" />
+		</kColl>
+		<kColl id="xhtmlClient">
+			<field id="filePath" value="/" />
+			<field id="exceptionPage" value="wap/main.jsp" />
+		</kColl>
+
+		<kColl id="CSClient">
+			<kColl id="testClient">
+				<field id="serverName" value="http://127.0.0.1:8080" />
+				<!-- 服务器ip -->
+				<field id="reqServletPath" value="/cbifdemo/servlet/JavaRequestServlet" />
+				<!-- 请求入口地址 -->
+				<field id="logonServletPath" value="/cbifdemo/servlet/JavaLogonRequestServlet" />
+				<!-- 建立session请求的入口地址 -->
+				<field id="logoutServletPath" value="/cbifdemo/servlet/JavaLogoutRequestServlet" />
+				<!-- 结束session请求的入口地址 -->
+				<field id="noSessServletPath" value="/cbifdemo/servlet/JavaNoSessionRequestServlet" />
+				<!-- 无session请求的入口地址 -->
+				<field id="sessionType" value="NonSecure" />
+				<!-- session类别,缺省值为'NonSecure' -->
+				<field id="keyRingClass" value="" />
+				<!-- SSL KeyRing Class名称 -->
+				<field id="usedForSrvToClientEventNotif" value="false" />
+				<!-- 是否采用事件机制 -->
+				<field id="timeBetweenReconnectionAttempts" value="12000" />
+				<!-- 交易请求重试的时间间隔,缺省值为10000毫秒 -->
+				<field id="reconnectionAttempts" value="10" />
+				<!-- http请求链接重试次数,缺省值为20次 -->
+				<field id="defaultActionFlowTimeout" value="20000" />
+				<!-- 请求默认超时时间,缺省值为40000毫秒 -->
+				<field id="keepAliveConnection" value="true" />
+				<!-- http请求保持属性,缺省值true -->
+				<field id="useProxy" value="false" />
+				<!-- 是否采用代理服务器,缺省值false -->
+				<field id="proxyHost" value="172.16.0.5" />
+				<!-- 代理服务器地址 -->
+				<field id="proxyPort" value="80" />
+				<!-- 代理服务器端口,缺省值80 -->
+				<field id="serverCredentials" value="" />
+				<!-- 请求资源的授权证书信息 -->
+				<field id="proxyCredentials" value="" />
+				<!-- 代理授权的证书信息 -->
+				<field id="userAgent" value="CSClient" />
+				<!-- 发起请求的用户代理的信息,即User-Agent域内容 -->
+			</kColl>
+		</kColl>
+
+		<kColl id="traces">
+			<!-- 日志监控相关配置 -->
+			<field id="enableTrace" value="true" />
+			<!-- 是否启用日志监控 -->
+			<field id="traceToMonitor" value="true" />
+			<!-- 是否将日志信息输出到监控平台 -->
+			<field id="logConfigFile" value="logging.xml" />
+			<!-- 日志文件配置 -->
+			<field id="show_sql" value="true" />
+			<!-- 是否输出执行的SQL语句 -->
+			<field id="show_sqlExeTime" value="true" />
+			<!-- 是否输出执行SQL耗时 -->
+		</kColl>
+
+		<kColl id="files">
+			<!-- 引用其他规则文件的相关配置 -->
+			<field id="data" value="dataColls.xml" />
+			<!-- 数据规则定义文件配置 -->
+			<field id="format" value="formats.xml" />
+			<!-- 格式化规则定义文件配置 -->
+			<field id="context" value="contexts.xml" />
+			<!-- 上下文Context规则定义文件配置 -->
+			<field id="service" value="services.xml" />
+			<!-- 服务规则定义文件配置 -->
+			<field id="type" value="types.xml" />
+			<!-- 类型数据规则定义文件配置 -->
+			<kColl id="transactions" />
+			<kColl id="stateMachines">
+				<!-- 自定义状态机规则定义 -->
+				<stateMachineDef id="innerTransferStateMachine"
+					value="testStateMachine.xml" />
+			</kColl>
+
+			<kColl id="transTemplates">
+				<!-- 业务流程模板注册规则定义 -->
+				<field id="checkSessionTransTemplate" value="checkSessionTransTemplate.xml" />
+			</kColl>
+		</kColl>
+
+		<kColl id="paths">
+			<!-- 应用系统相关路径配置 -->
+			<field id="entities" value="./" />
+			<field id="transactions" value="/transactions" />
+			<field id="stateMachines" value="/stateMachines" />
+			<field id="transTemplates" value="/transTemplates" />
+			<field id="errorCode" value="/errorCode" />
+			<field id="msgResource_appSystem" value="/messageResource/appSystem" />
+			<field id="msgResource_cbif" value="/messageResource/cbif" />
+			<field id="msgResource_etp" value="/messageResource/etp" />
+		</kColl>
+		<kColl id="properties">
+			<!-- 自定义属性文件 -->
+			<field id="transCode" value="/properties" />
+			<field id="authCode" value="/properties" />
+			<field id="xmlTransMap" value="/properties" />
+			<field id="webServTransMap" value="/properties" />
+			<field id="taglibKey" value="/properties" />
+		</kColl>
+
+
+		<field id="transLimitedEnable" value="true" />
+		<!-- 是否启用交易并发控制机制 -->
+		<field id="intercurrentLimitedTransList" value="IntercurrentTransList.txt" />
+		<!-- 并发受限交易列表文件名 -->
+		<field id="frequenceLimitedTransList" value="FrequenceTransList.txt" />
+		<!-- 启用提交频度控制交易列表文件 -->
+		<field id="bufferSize" value="20000" />
+		<!-- 缓存大小 -->
+		<field id="showMessagesOnServer" value="true" />
+		<!-- 是否在服务端显示相关信息 -->
+		<field id="dbEnable" value="true" />
+		<!-- 是否启用数据库监控 -->
+		<kColl id="tags">
+			<!-- 标签定义：定义了系统配置文件settings.xml引用其他规则定义文件（包括：上下文contexts规则文件、服务services规则文件、 
+				交易TransactionFlow规则文件、数据data规则文件、格式化formats规则文件、业务操作步骤TransactionStep规则文件、状态机规则文件和类型type规则文件） 
+				中使用的tags名称和解析的类名之间的对应关系，可以在此修自定义实现类 -->
+			<kColl id="contexts">
+				<field id="context" description="compound"
+					value="com.sunyard.cbif.etp.base.Context" />
+				<field id="refKColl" />
+				<field id="refService" />
+			</kColl>
+			<kColl id="datas">
+				<field id="field" value="com.sunyard.cbif.etp.base.DataField" />
+
+				<!-- <field id="paramsField" value="com.sunyard.insurance.sunose.etpObj.ParamsField"/> -->
+				<field id="kColl" description="compound"
+					value="com.sunyard.cbif.etp.base.KeyedCollection" />
+				<field id="iColl" description="compound"
+					value="com.sunyard.cbif.etp.base.IndexedCollection" />
+				<field id="refData" />
+				<field id="secureField" value="com.sunyard.cbif.etp.base.SecureField" />
+			</kColl>
+			<kColl id="transactions">
+				<field id="TransactionFlow" value="com.sunyard.cbif.etp.base.TransactionFlow" />
+				<field id="TransTemplate" value="com.sunyard.cbif.etp.base.TransTemplate" />
+				<field id="BeforeAdvice" value="com.sunyard.cbif.etp.base.ETPBeforeAdvice" />
+				<field id="AfterAdvice" value="com.sunyard.cbif.etp.base.ETPAfterAdvice" />
+				<field id="refFormat" />
+				<field id="transStep" />
+				<field id="transition" value="com.sunyard.cbif.etp.base.Transition" />
+			</kColl>
+			<kColl id="stateMachines">
+				<field id="StateMachine" value="com.sunyard.cbif.etp.stateMachine.StateMachine" />
+				<field id="state" value="com.sunyard.cbif.etp.stateMachine.ETPState" />
+				<field id="stateTransition" value="com.sunyard.cbif.etp.stateMachine.StateTransition" />
+				<field id="transitions" value="com.sunyard.cbif.etp.stateMachine.ETPObjectWrapper" />
+				<field id="actions"
+					value="com.sunyard.cbif.etp.stateMachine.StateActionWrapper" />
+			</kColl>
+			<kColl id="formats">
+				<field id="strFmt" value="com.sunyard.cbif.etp.formats.StringFormat" />
+				<field id="fmtCurrency" value="com.sunyard.cbif.etp.formats.CurrencyFormat" />
+				<field id="iCollFmt"
+					value="com.sunyard.cbif.etp.formats.IndexedCollectionFormat" />
+				<field id="delim" value="com.sunyard.cbif.etp.formats.Delimiter" />
+				<field id="fmtDef" value="com.sunyard.cbif.etp.base.FormatElement" />
+				<field id="nullCheck" value="com.sunyard.cbif.etp.formats.NullCheckDecorator" />
+				<field id="intFmt" value="com.sunyard.cbif.etp.formats.IntegerFormat" />
+				<field id="kCollFmt" value="com.sunyard.cbif.etp.formats.KeyedCollectionFormat" />
+				<field id="nullCheFmt" value="com.sunyard.cbif.etp.formats.NullCheckFormat" />
+				<field id="objFmt" value="com.sunyard.cbif.etp.formats.ObjectFormat" />
+				<field id="secStrFmt" value="com.sunyard.cbif.etp.formats.SecureStringFormat" />
+				<field id="curValueFmt" value="com.sunyard.cbif.etp.formats.CurrencyValueFormat" />
+				<field id="getSysTimeFmt" value="com.sunyard.cbif.etp.formats.GetSystemTimeFormat" />
+				<field id="varLenFmt" value="com.sunyard.cbif.etp.formats.VariableLengthFormat" />
+				<field id="desFormat" value="com.sunyard.cbif.etp.formats.DESFormat" />
+
+				<field id="xmlWrap" value="com.sunyard.cbif.etp.formats.xml.XMLWrapFormat" />
+				<field id="xmlHead" value="com.sunyard.cbif.etp.formats.xml.XMLHeadTagFormat" />
+				<field id="xmlFullTag" value="com.sunyard.cbif.etp.formats.xml.XMLFullTagFormat" />
+				<field id="xmlConstantTag"
+					value="com.sunyard.cbif.etp.formats.xml.XMLConstantTagFormat" />
+				<field id="xmlEndTag" value="com.sunyard.cbif.etp.formats.xml.XMLEndTagFormat" />
+				<field id="xmlHalfTag" value="com.sunyard.cbif.etp.formats.xml.XMLHalfTagFormat" />
+				<field id="xmlIColl" value="com.sunyard.cbif.etp.formats.xml.XMLICollFormat" />
+				<field id="iso8583Format" value="com.sunyard.cbif.etp.formats.msg8583.ISO8583Format" />
+				<field id="iso8583Field" value="com.sunyard.cbif.etp.formats.msg8583.ISO8583Field" />
+				<field id="iso8583CompFormat"
+					value="com.sunyard.cbif.etp.formats.msg8583.ISO8583CompFormat" />
+				<field id="iso8583CompField"
+					value="com.sunyard.cbif.etp.formats.msg8583.ISO8583CompField" />
+				<field id="visa8583Format"
+					value="com.sunyard.cbif.etp.formats.msg8583.VISA8583Format" />
+				<field id="visa8583Field" value="com.sunyard.cbif.etp.formats.msg8583.VISA8583Field" />
+				<field id="visa8583CompFormat"
+					value="com.sunyard.cbif.etp.formats.msg8583.VISA8583CompFormat" />
+				<field id="visa8583CompField"
+					value="com.sunyard.cbif.etp.formats.msg8583.VISA8583CompField" />
+
+				<!-- 8583报文管理器，配置器定义 -->
+				<field id="Format8583Configs"
+					value="com.sunyard.cbif.etp.formats.msg8583.Format8583Configs" />
+				<field id="UnFormat8583Configs"
+					value="com.sunyard.cbif.etp.formats.msg8583.UnFormat8583Configs" />
+				<field id="MessageFieldsManager"
+					value="com.sunyard.cbif.etp.formats.msg8583.MessageFieldsManager" />
+				<field id="MessageHeaderFormat"
+					value="com.sunyard.cbif.etp.formats.msg8583.MessageHeaderFormat" />
+
+				<field id="fixedLengthField"
+					value="com.sunyard.cbif.etp.formats.fixedLen.FixedLengthField" />
+				<field id="fixedRecordFormat"
+					value="com.sunyard.cbif.etp.formats.fixedLen.FixedRecordFormat" />
+				<field id="fixedLenFormat"
+					value="com.sunyard.cbif.etp.formats.fixedLen.FixedLenFormat" />
+				<field id="fixedICollFormat"
+					value="com.sunyard.cbif.etp.formats.fixedLen.FixedICollFormat" />
+			</kColl>
+			<kColl id="transSteps">
+				<field id="SessionCheckTransStep" value="com.sunyard.cbif.transSteps.SessionCheckTransStep" />
+				<field id="SetReplyPageTransStep" value="com.sunyard.cbif.transSteps.SetReplyPageTransStep" />
+				<field id="SetErrorPageForTransTempStep"
+					value="com.sunyard.cbif.transSteps.SetErrorPageForTransTempStep" />
+				<field id="PJnlUpdateTransStep" value="com.sunyard.cbif.transSteps.PJnlUpdateTransStep" />
+				<field id="vHostTransStep" value="com.sunyard.cbif.transSteps.VHostTransStep" />
+				<field id="SQLAccessTransStep" value="com.sunyard.cbif.transSteps.SQLAccessTransStep" />
+				<field id="DataAssemblyTransStep" value="com.sunyard.cbif.transSteps.DataAssemblyTransStep" />
+				<field id="PrePagingTransStep" value="com.sunyard.cbif.transSteps.PrePagingTransStep" />
+				<field id="SelectParamHandler" value="com.sunyard.cbif.transSteps.SelectParamHandler" />
+				<field id="FormatDataStep" value="com.sunyard.cbif.transSteps.FormatDataStep" />
+				<field id="UnFormatDataStep" value="com.sunyard.cbif.transSteps.UnFormatDataStep" />
+				<field id="ProdureAccessStep" value="com.sunyard.cbif.transSteps.ProdureAccessStep" />
+				<field id="SetSysTimeStep" value="com.sunyard.cbif.transSteps.SetSysTimeStep" />
+				<field id="FtpFileStep" value="com.sunyard.cbif.transSteps.FtpFileStep" />
+				<field id="GenXMLRetPackStep" value="com.sunyard.cbif.transSteps.GenXMLRetPackStep" />
+				<field id="SetNextFlowTransStep" value="com.sunyard.cbif.transSteps.SetNextFlowTransStep" />
+				<field id="ExpressionComputeStep" value="com.sunyard.cbif.transSteps.ExpressionComputeStep" />
+				<field id="SQLMappingAccessStep" value="com.sunyard.cbif.transSteps.SQLMappingAccessStep" />
+				<field id="ConvertDataCollEncodeStep"
+					value="com.sunyard.cbif.transSteps.ConvertDataCollEncodeStep" />
+				<field id="ReceiveTransactionStep" value="com.sunyard.cbif.transSteps.ReceiveTransactionStep" />
+				<field id="SubmitTransactionStep" value="com.sunyard.cbif.transSteps.SubmitTransactionStep" />
+				<field id="HttpCommunicateStep" value="com.sunyard.cbif.transSteps.HttpCommunicateStep" />
+				<field id="CompareDataValueStep" value="com.sunyard.cbif.transSteps.CompareDataValueStep" />
+				<field id="CopyDataValueStep" value="com.sunyard.cbif.transSteps.CopyDataValueStep" />
+				<field id="CreateChartStep" value="com.sunyard.cbif.transSteps.CreateChartStep" />
+				<field id="SendToCICSStep" value="com.sunyard.cbif.transSteps.SendToCICSStep" />
+				<field id="FileDownloadTransStep" value="com.sunyard.cbif.transSteps.FileDownloadTransStep" />
+				<field id="ExportToExcelStep" value="com.sunyard.cbif.transSteps.ExportToExcelStep" />
+				<field id="GenerateSeqNoStep" value="com.sunyard.cbif.transSteps.GenerateSeqNoStep" />
+				<field id="GenerateRandomStringStep"
+					value="com.sunyard.cbif.transSteps.GenerateRandomStringStep" />
+				<field id="FilterICollDataStep" value="com.sunyard.cbif.transSteps.FilterICollDataStep" />
+				<field id="SendMailTransStep" value="com.sunyard.cbif.transSteps.SendMailTransStep" />
+				<field id="EncodePasswordStep" value="com.sunyard.cbif.transSteps.EncodePasswordStep" />
+				<field id="GeneratePayPwdStep" value="com.sunyard.cbif.transSteps.GeneratePayPwdStep" />
+				<field id="EncryptDataStep" value="com.sunyard.cbif.transSteps.EncryptDataStep" />
+				<field id="DecryptDataStep" value="com.sunyard.cbif.transSteps.DecryptDataStep" />
+				<field id="ZipFileStep" value="com.sunyard.cbif.transSteps.ZipFileStep" />
+				<field id="UnZipFileStep" value="com.sunyard.cbif.transSteps.UnZipFileStep" />
+				<field id="ZipDataStep" value="com.sunyard.cbif.transSteps.ZipDataStep" />
+				<field id="UnZipDataStep" value="com.sunyard.cbif.transSteps.UnZipDataStep" />
+				<field id="SetElementValueStep" value="com.sunyard.cbif.transSteps.SetElementValueStep" />
+				<field id="TCPIPSendStep" value="com.sunyard.cbif.transSteps.TCPIPSendStep" />
+			</kColl>
+			<kColl id="types" />
+			<kColl id="services">
+				<field id="ETPEventListener" value="com.sunyard.cbif.etp.base.ETPEventListener" />
+				<field id="JDBCDBResourceService"
+					value="com.sunyard.cbif.etp.services.jdbc.JDBCDBResourceService" />
+				<field id="JDBCDBResource" value="com.sunyard.cbif.etp.services.jdbc.JDBCDBResource" />
+				<field id="JNDIDBResource" value="com.sunyard.cbif.etp.services.jdbc.JNDIDBResource" />
+				<field id="SocketPoolService"
+					value="com.sunyard.cbif.etp.services.socket.SocketPoolService" />
+				<field id="SocketResource"
+					value="com.sunyard.cbif.etp.services.socket.SocketResource" />
+				<field id="CSClientService"
+					value="com.sunyard.cbif.etp.services.csclient.CSClientService" />
+				<field id="WebServClientService"
+					value="com.sunyard.cbif.etp.services.webservice.WebServClientService" />
+				<field id="FtpService" value="com.sunyard.cbif.etp.services.ftp.FtpService" />
+				<field id="SQLAccessService"
+					value="com.sunyard.cbif.etp.services.jdbc.SQLAccessService" />
+				<field id="JDBCSQLStatement"
+					value="com.sunyard.cbif.etp.services.jdbc.JDBCSQLStatement" />
+				<field id="TCPIPResourceService"
+					value="com.sunyard.cbif.etp.services.tcpip.TCPIPResourceService" />
+				<field id="TCPIPResource" value="com.sunyard.cbif.etp.services.tcpip.TCPIPResource" />
+				<field id="TCPIPCheckerService"
+					value="com.sunyard.cbif.etp.services.tcpip.TCPIPCheckerService" />
+				<field id="TCPIPCheckerResource"
+					value="com.sunyard.cbif.etp.services.tcpip.TCPIPCheckerResource" />
+				<field id="JDBCProcedureDefine"
+					value="com.sunyard.cbif.etp.services.jdbc.JDBCProcedureDefine" />
+				<field id="ProcedureAccessService"
+					value="com.sunyard.cbif.etp.services.jdbc.ProcedureAccessService" />
+				<field id="ResultSetDefine" value="com.sunyard.cbif.etp.services.jdbc.ResultSetDefine" />
+				<field id="VHostService" value="com.sunyard.cbif.etp.services.vhost.VHostService" />
+				<field id="CICSConnectionPoolService"
+					value="com.sunyard.cbif.etp.services.cics.CICSConnectionPoolService" />
+				<field id="CICSAccessService"
+					value="com.sunyard.cbif.etp.services.cics.CICSAccessService" />
+				<field id="CICSResource" value="com.sunyard.cbif.etp.services.cics.CICSResource" />
+				<field id="CICSConnection" value="com.sunyard.cbif.etp.services.cics.CICSConnection" />
+				<field id="MQConnectionPoolService"
+					value="com.sunyard.cbif.etp.services.mq.MQConnectionPoolService" />
+				<field id="MQReceiveService" value="com.sunyard.cbif.etp.services.mq.MQReceiveService" />
+				<field id="MQSendService" value="com.sunyard.cbif.etp.services.mq.MQSendService" />
+				<field id="MQResource" value="com.sunyard.cbif.etp.services.mq.MQResource" />
+				<field id="QManagerConnManager"
+					value="com.sunyard.cbif.etp.services.mq.QManagerConnManager" />
+				<field id="HttpCommService" value="com.sunyard.cbif.etp.services.http.HttpCommService" />
+				<field id="HttpCommResource"
+					value="com.sunyard.cbif.etp.services.http.HttpCommResource" />
+				<field id="SystemDataSynchByHttpService"
+					value="com.sunyard.cbif.etp.services.http.SystemDataSynchByHttpService" />
+				<field id="SQLMappingAccessService"
+					value="com.sunyard.cbif.etp.services.jdbc.SQLMappingAccessService" />
+				<field id="TableColumnDefine"
+					value="com.sunyard.cbif.etp.services.jdbc.TableColumnDefine" />
+				<field id="ResultMap"
+					value="com.sunyard.cbif.etp.services.jdbc.TableColumnDefine" />
+				<field id="Transaction" value="com.sunyard.cbif.etp.services.jdbc.Transaction" />
+				<field id="TransactionManager"
+					value="com.sunyard.cbif.etp.services.jdbc.TransactionManager" />
+				<field id="MessageFieldsManager"
+					value="com.sunyard.cbif.etp.formats.msg8583.MessageFieldsManager" />
+				<field id="Message8583ConfigService"
+					value="com.sunyard.cbif.etp.formats.msg8583.Message8583ConfigService" />
+				<field id="ImageService" value="com.sunyard.cbif.etp.services.image.ImageService" />
+				<field id="MailService" value="com.sunyard.cbif.etp.services.mail.ETPMailService" />
+				<field id="JDBCTransactionManager"
+					value="com.sunyard.cbif.etp.services.transaction.JDBCTransactionManager" />
+				<field id="refDataSource"
+					value="com.sunyard.cbif.etp.services.transaction.RefDataSource" />
+				<field id="SocketCommService"
+					value="com.sunyard.cbif.etp.services.socket.SocketCommService" />
+			</kColl>
+		</kColl>
+
+		<kColl id="extendedConfigs">
+			<!-- 系统扩展的相关配置文件 -->
+
+			<!-- 用户自定义构件扩展文件 -->
+			<field id="userPlus" value="/userPlus/userPlusSetting.xml" />
+			<!-- flow相关的配置 -->
+			<field id="flow" value="/transactions/flowSettings.xml" />
+
+		</kColl>
+
+	</kColl>
+</settings>

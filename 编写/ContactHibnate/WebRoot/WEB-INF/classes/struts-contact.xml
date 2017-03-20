@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	
+	<package name="contact" namespace="/background" extends="default">
+		<!-- 添加联系人 -->
+		<action name="add" class="cn.bdqn.contact.action.contact.AddContactAction">
+			<result name="input">add.jsp</result>
+			<result type="redirectAction">list</result>
+			
+			<interceptor-ref name="defaultStack">				
+				<param name="fileUpload.allowedExtensions">.jpg,.bmp,.gif,.png</param>
+			</interceptor-ref>
+
+		</action>
+		
+		<!-- 联系人列表 -->
+		<action name="list" class="cn.bdqn.contact.action.contact.ListContactAction">
+			<result>index.jsp</result>		
+		</action>
+		
+		<!-- 编辑联系人 -->
+		<action name="get" class="cn.bdqn.contact.action.contact.GetContactAction">
+			<result>${view}.jsp</result>
+		</action>
+		
+		<!-- 更新联系人 -->
+		<action name="update" class="cn.bdqn.contact.action.contact.UpdateContactAction">
+			<result name="input">edit.jsp</result>
+			<result type="redirectAction">list</result>
+			
+			<interceptor-ref name="defaultStack">				
+				<param name="fileUpload.allowedExtensions">.jpg,.bmp,.gif,.png</param>
+			</interceptor-ref>
+		</action>
+		
+		<!-- 删除联系人 -->
+		<action name="delete" class="cn.bdqn.contact.action.contact.DeleteContactAction">
+			<result type="redirectAction">list</result>			
+		</action>
+		
+		<!-- 导出联系人 -->
+		<action name="export" class="cn.bdqn.contact.action.contact.ExportContactAction">
+			<result type="stream">
+				<!-- 用来获取输入流的属性名(默认为inputStream) -->
+				<param name="inputName">inputStream</param>
+				<!-- 设置内容类型 -->
+				<param name="contentType">application/octet-stream</param>
+				<!-- 设置下载文件名 -->
+				<param name="contentDisposition">attachment;filename="${fileName}";filename*=utf-8''${fileName}</param>
+			</result>
+		</action>
+	</package>
+
+</struts>    
+
+
+
+
+
+
+

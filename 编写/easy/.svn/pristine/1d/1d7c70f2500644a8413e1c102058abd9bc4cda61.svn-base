@@ -1,0 +1,11 @@
+package cn.hao.easybuy.controller.comment;
+
+import cn.hao.easybuy.controller.ControllerBean;
+
+
+
+public class DeleteGuesbookController extends ControllerBean{
+
+
+	
+}

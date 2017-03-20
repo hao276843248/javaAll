@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>
+	
+	<!-- 设置磁盘缓存目录 -->
+	<diskStore path="D:\temp\cache"/>
+	
+	<defaultCache
+		maxElementsInMemory="100"
+		eternal="false"
+		timeToIdleSeconds="120"
+		timeToLiveSeconds="600"
+		overflowToDisk="true"/>
+		
+		
+	
+</ehcache>

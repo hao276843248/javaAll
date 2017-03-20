@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services>
+	<SocketService id="T_HOST" host="127.0.0.1" port="4000"
+		encode="UTF-8" isEncode="1" pckLength="6" timeOut="60000" />	
+	<CXFWebService id="WebService" wsdlUrl="http://localhost:8080/TestWebService/services/HelloWorld?wsdl" />
+	
+	<Axis2WebService id="Axis2WebService" webServiceUrl="http://127.0.0.1:8080/SunOSE/services/sunoseService"
+		 nameSpace="http://webservice.cbi.cbif.sunyard.com"/>
+		 
+	<JMSService id="JMSService" PROVIDER_URL="" ConnectionFactoryName=""  QUEUE_NAME="" />
+</services>

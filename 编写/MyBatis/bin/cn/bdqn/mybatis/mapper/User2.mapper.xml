@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.mybatis.mapper.UserMapper">
+
+	<!-- 
+		添加用户
+		id:语句id，在同一个命名空间中不能重复
+		parameterType:参数的封装类型 
+	-->
+	<insert id="addUser" parameterType="User">
+		INSERT INTO Users(id,loginName,password) 
+		VALUES(SEQ_USER.nextval,#{loginName},#{password})
+	</insert>
+
+	<!-- 
+		根据id获取用户
+		id:语句id，在同一个命名空间中不能重复
+		resultType:结果集中的每一行数据封装成什么类型的对象
+	-->
+	<select id="getUser" resultType="User">
+		SELECT id,loginName,password FROM Users WHERE id=#{id}		
+	</select>
+	
+	<!-- 查询全部用户 -->
+	<select id="findUser" resultType="User">
+		SELECT id,loginName,password FROM Users ORDER BY id
+	</select>
+
+	<!-- 更新用户 -->
+	<update id="updateUser" parameterType="User">
+		UPDATE Users SET loginName=#{loginName},password=#{password} WHERE id=#{id}
+	</update>
+
+	<!-- 根据ID删除用户 -->
+	<delete id="delUser">
+		DELETE FROM Users WHERE id=#{id}
+	</delete>
+	
+	<!-- 根据用户名和密码查询匹配记录的行数 -->
+	<select id="countUser" resultType="_int">
+		SELECT COUNT(*) FROM Users WHERE loginName=#{loginName} AND password=#{password}
+	</select>
+	
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,63 @@
+package cn.bdqn.qbc.entity;
+
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * Brand entity. @author MyEclipse Persistence Tools
+ */
+
+public class Brand implements java.io.Serializable {
+
+	// Fields
+
+	private Long id;
+	private String name;
+	private Set cameras = new HashSet(0);
+
+	// Constructors
+
+	/** default constructor */
+	public Brand() {
+	}
+
+	/** minimal constructor */
+	public Brand(Long id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+
+	/** full constructor */
+	public Brand(Long id, String name, Set cameras) {
+		this.id = id;
+		this.name = name;
+		this.cameras = cameras;
+	}
+
+	// Property accessors
+
+	public Long getId() {
+		return this.id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Set getCameras() {
+		return this.cameras;
+	}
+
+	public void setCameras(Set cameras) {
+		this.cameras = cameras;
+	}
+
+}

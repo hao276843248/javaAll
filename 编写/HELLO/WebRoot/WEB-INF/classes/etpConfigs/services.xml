@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services>
+	<ETPEventListener id="ETPEventListner" />
+
+	<!--cps主机通讯 -->
+	<SocketCommService id="CPS_HOST" host="10.10.163.222"
+		port="8531" encode="UTF-8" isEncode="1" pckLength="6" timeOut="60000" />
+
+	<TCPIPResourceService id="TCPIPResourceService"
+		isAutoStart="true">
+		<TCPIPResource resourceId="tcpipResource1"
+			connectionTimeOut="0" keepAliveTime="10000" shrinkRefshTime="100000"
+			allowShrink="false" minConnections="10" maxConnections="3000"
+			increNum="10" port="5500" contentLength="8" graduation="10"
+			isNeedEncodingConvert="true" encoding="UTF-8"
+			inputProcessor="com.sunyard.insurance.sunose.flow.ETPAGServerAdaptor"
+			responseHandler="com.sunyard.insurance.sunose.flow.XMLResponseAdaptor"
+			host="127.0.0.1" />
+	</TCPIPResourceService>
+
+	<!-- 工作流服务配置 -->
+	<FlowService id="FlowConfigService" engineHostName="127.0.0.1" engineHostPort="1093" />
+	<SunFlowService id="SunFlowService" />
+	
+	<!--SunOSP库 -->
+	<JDBCDBResourceService id="JDBCDBResourceService">
+		<JDBCDBResource id="CBIFJDBC" maxConnections="10"
+			minConnections="2" driverName="oracle.jdbc.driver.OracleDriver"
+			dbUserName="sunosp" dbPassword="sunosp"
+			dbURL="jdbc:oracle:thin:@10.10.163.220:1521:sunyard" validationSQL="select sysdate from dual"
+			validationTimeOut="60000" reconnectTimeOut=""
+			releaseSurplusConnInterval="86400000" />
+	</JDBCDBResourceService>
+
+	<!-- <JDBCDBResourceService id="JDBCDBResourceService"> <JNDIDBResource 
+		id="CBIFJNDI" dataSourceName="jndi/SunOSP_JDBC" maxConnections="10" minConnections="2" 
+		idleTimeOut="300000" connectionTimeOut="180000" providerURL="t3://127.0.0.1:7001" 
+		initCtxFactory="weblogic.jndi.WLInitialContextFactory" secProtocol="" validationSQL="select 
+		sysdate from dual" validationTimeOut="60000" reconnectTimeOut="10000" releaseSurplusConnInterval="86400000"> 
+		</JNDIDBResource> </JDBCDBResourceService> -->
+
+	<!-- JDBC事务管理器定义，事务管理器名称必须以"transactionManager_"开始 -->
+	<JDBCTransactionManager id="transactionManager_jdbc">
+		<refDataSource refId="CBIFJDBC" />
+		<refDataSource refId="RTJDBC" />
+	</JDBCTransactionManager>
+
+	<!-- service扩展配置 -->
+	<kColl id="extendedFiles">
+		<!-- 存储过程扩展文件 -->
+		<field id="procedureExtended" value="transactions/procedure/procedure.xml" />
+
+		<!-- 用户自定义构件服务扩展文件 -->
+		<field id="userPlusService" value="userPlus/userPlusService.xml" />
+	</kColl>
+
+</services>

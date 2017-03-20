@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.mybatis.mapper.BrandMapper">
+
+	<select id="findBrand" resultMap="brandMap">
+		SELECT 
+		  b.id AS brandId,
+		  b.name,
+		  c.id AS cameraId,
+		  c.title,
+		  c.pixel,
+		  c.zoom,
+		  c.lcd,
+		  c.color,
+		  c.price,
+		  c.image
+		FROM Brand b LEFT JOIN Camera c ON b.id=c.brandId
+		ORDER BY b.id	
+	</select>
+	
+	<select id="getBrandCameraCount" resultMap="brandCameraCountMap">
+		SELECT 
+		    b.id,
+		    b.name,
+		    COUNT(*) AS amount
+		FROM Brand b LEFT JOIN Camera c ON c.brandId=b.id
+		GROUP BY b.id,b.name
+		ORDER BY b.id	
+	</select>
+	
+	
+	
+	
+	<!-- 结果集转换规则 -->
+	<resultMap type="Brand" id="brandMap">
+		<!-- 映射主键相关的列和属性 -->
+		<id column="brandId" property="id"/>
+		<result column="name" property="name"/>
+		<!-- 映射品牌关联的相机集合
+			property:集合的属性名
+			JavaType:集合的java类型
+			column:分组依据，依据哪一列将相机数据填充到同一个集合中
+			ofType:集合中的每个元素封装成什么类型
+		 -->
+		<collection property="cameras" javaType="list" column="brandId" ofType="Camera">
+			<!--集合中的Camera元素的转换规则 -->
+			<id column="cameraId" property="id"/>
+			<result column="title" property="title"/>		
+			<result column="pixel" property="pixel"/>
+			<result column="zoom" property="zoom"/>
+			<result column="lcd" property="lcd"/>
+			<result column="color" property="color"/>
+			<result column="price" property="price"/>
+			<result column="image" property="image"/>	
+		</collection>	
+	</resultMap>
+	
+	
+	<resultMap type="map" id="brandCameraCountMap">
+		<result column="id" property="id" javaType="long"/>
+		<result column="name" property="name" javaType="string"/>
+		<result column="amount" property="amount" javaType="_int"/>
+	</resultMap>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+</mapper>
+
+
+
+
+
+
+
+
+
+

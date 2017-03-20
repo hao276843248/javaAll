@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ROOT>
+  <Proposal>
+    <MainAmount type="Double" name="主险保险金额合计" regex="[0-9]+(.[0-9]{0,2})?">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <REG_ERR>格式不正确，必须为数字且保留0-2位小数。</REG_ERR>
+    </MainAmount>
+    <MainPremium type="Double" name="主险保险费合计" regex="[0-9]+(.[0-9]{0,2})?">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <REG_ERR>格式不正确，必须为数字且保留0-2位小数。</REG_ERR>
+    </MainPremium>
+    <SumAmount type="Double" name="总保险金额合计" regex="[0-9]+(.[0-9]{0,2})?">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <REG_ERR>格式不正确，必须为数字且保留0-2位小数。</REG_ERR>
+    </SumAmount>
+    <SumPremium type="Double" name="总保险费合计" regex="[0-9]+(.[0-9]{0,2})?">
+      <EMP_ERR>不能为空。</EMP_ERR>
+      <REG_ERR>格式不正确，必须为数字且保留0-2位小数。</REG_ERR>
+    </SumPremium>
+    <!--被保人信息校验-->
+    <IprpInss flag="1" errormsg="被保人信息必须填写。" name="被保人信息">
+      <IprpIns>
+        <BusinessSort type="String" max="4" name="被保险人企业性质">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度错误，最大4个字符。</MAX_ERR>
+        </BusinessSort>
+      </IprpIns>
+    </IprpInss>
+    <!-- 主险 -->
+    <MainPrpInss flag="1" errormsg="主险信息必须填写。" name="主险">
+      <MainPrpIns>
+        <ItemCode type="String" max="4" name="项目类别">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度不正确，最大长度4个字符。</MAX_ERR>
+        </ItemCode>
+        <ItemDetailName type="String" max="120" name="项目名称">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度不正确，最大长度120个字符。</MAX_ERR>
+        </ItemDetailName>
+        <KindCode type="String" max="7" name="险别代码">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度不正确，最大长度7个字符。</MAX_ERR>
+        </KindCode>
+        <KindName type="String" max="120" name="险别名称">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度不正确，最大长度120个字符。</MAX_ERR>
+        </KindName>
+        <ModeValueCode type="String" name="保险价值确定方式">
+          <EMP_ERR>不能为空。</EMP_ERR>
+        </ModeValueCode>
+        <ModeCode type="String" name="保险金额确定方式">
+          <EMP_ERR>不能为空。</EMP_ERR>
+        </ModeCode>
+        <AddressNo type="Int" min="1" max="32767" regex="[1-9][0-9]*" name="地址序号">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MIN_ERR>数值范围不正确，最小1。</MIN_ERR>
+          <MAX_ERR>数值范围不正确，最大32767。</MAX_ERR>
+          <REG_ERR>格式不正确，必须为正整数。</REG_ERR>
+        </AddressNo>
+        <Currency type="String" max="3" name="币别">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度不正确，最大长度3个字符。</MAX_ERR>
+        </Currency>
+        <CurrencyName type="String" max="120" name="币别名称">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度不正确，最大长度120个字符。</MAX_ERR>
+        </CurrencyName>
+        <!-- 
+         -->
+        <Amount valid="N" type="Double" regex="[0-9]+(.[0-9]{0,2})?" name="保额">
+          <REG_ERR>格式不正确，必须为数字且保留0-2位小数。</REG_ERR>
+        </Amount>
+        <Rate valid="N" type="Double" min="0.00000" max="999.99999" regex="[0-9]+(.[0-9]{0,5})?" name="年费率">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MIN_ERR>数值范围不正确，最小0.00000。</MIN_ERR>
+          <MAX_ERR>数值范围不正确，最大999.99999。</MAX_ERR>
+          <REG_ERR>格式不正确，必须为数字且0-5位小数。</REG_ERR>
+        </Rate>
+        <AbsoluteDeductible valid="N" type="Double" regex="[0-9]+(.[0-9]{0,2})?" name="每次事故绝对免赔额">
+          <REG_ERR>格式不正确,不可以为负数且小数位不可超过2位。</REG_ERR>
+        </AbsoluteDeductible>
+        <AbsoluteDeductibleRate valid="N" type="Double" regex="[0-9]+(.[0-9]{0,4})?" name="每次事故绝对免赔率">
+          <REG_ERR>格式不正确，不可以为负数且小数位不可超过4位。</REG_ERR>
+        </AbsoluteDeductibleRate>
+        <FranchiseDeductible valid="N" type="Double" regex="[0-9]+(.[0-9]{0,2})?" name="每次事故相对免赔额">
+          <REG_ERR>格式不正确，不可以为负数且小数位不可超过2位。</REG_ERR>
+        </FranchiseDeductible>
+        <FranchiseDeductibleRate valid="N" type="Double" regex="[0-9]+(.[0-9]{0,4})?" name="每次事故相对免赔率">
+          <REG_ERR>格式不正确，不可以为负数且小数位不可超过4位。</REG_ERR>
+        </FranchiseDeductibleRate>
+      </MainPrpIns>
+    </MainPrpInss>
+    <!-- 附加险 -->
+    <SubPrpInss name="附加险">
+      <SubPrpIns>
+        <KindCode type="String" max="7" name="条款代码">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度不正确，最大长度7个字符。</MAX_ERR>
+        </KindCode>
+        <KindName type="String" max="120" name="条款名称">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度不正确，最大长度120个字符。</MAX_ERR>
+        </KindName>
+        <Currency type="String" max="3" name="币别">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度不正确，最大长度3个字符。</MAX_ERR>
+        </Currency>
+        <CurrencyName type="String" max="120" name="币别名称">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度不正确，最大长度120个字符。</MAX_ERR>
+        </CurrencyName>
+        <KindContent type="String" name="条款内容">
+          <EMP_ERR>不能为空。</EMP_ERR>
+        </KindContent>
+        <!--
+        -->
+        <Amount valid="N" type="Double" regex="[0-9]+(.[0-9]{0,2})?" name="保额">
+          <REG_ERR>不正确，必须为数字且保留0-2位小数。</REG_ERR>
+        </Amount>
+        <Rate valid="N" type="Double" min="0.00000" max="999.99999" regex="[0-9]+(.[0-9]{0,5})?" name="年费率">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MIN_ERR>数值范围不正确，最小0.00000。</MIN_ERR>
+          <MAX_ERR>数值范围不正确，最大999.99999。</MAX_ERR>
+          <REG_ERR>格式不正确，必须为数字且0-5位小数。</REG_ERR>
+        </Rate>
+        <!--
+        -->
+        <DeductibleRate valid="N" type="String" regex="^([0-9]{1}|[1-9][0-9]*)([.][0-9]{1,4})?%$" name="免赔率">
+          <REG_ERR>格式不正确，不可以为负数且小数位不可超过4位。</REG_ERR>
+        </DeductibleRate>
+        <Deductible valid="N" type="Double" regex="[0-9]+(.[0-9]{0,2})?" name="免赔额">
+          <REG_ERR>格式不正确，不可以为负数且小数位不可超过2位。</REG_ERR>
+        </Deductible>
+      </SubPrpIns>
+    </SubPrpInss>
+    <!--财产险投保信息-->
+    <PrpTmainProps flag="1" errormsg="财产险投保信息必须填写。" name="财产险投保信息">
+      <PrpTmainProp>
+        <PossessNature type="String" max="5" name="占用性质">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度不正确，最大长度5个字符。</MAX_ERR>
+        </PossessNature>
+        <PossessNatureName type="String" max="120" name="占用性质名称">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度不正确，最大长度120个字符。</MAX_ERR>
+        </PossessNatureName>
+        <BusinessSource1 type="String" max="5" name="行业代码（第一级）">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度不正确，最大长度5个字符。</MAX_ERR>
+        </BusinessSource1>
+        <BusinessSourceName1 type="String" max="120" name="行业名称（第一级）">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度不正确，最大长度120个字符。</MAX_ERR>
+        </BusinessSourceName1>
+        <BusinessSource2 type="String" max="5" name="行业代码（第二级）">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度不正确，最大长度5个字符。</MAX_ERR>
+        </BusinessSource2>
+        <BusinessSourceName2 type="String" max="120" name="行业名称（第二级）">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度不正确，最大长度120个字符。</MAX_ERR>
+        </BusinessSourceName2>
+        <BusinessSource type="String" max="5" name="行业代码（第三级）">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度不正确，最大长度5个字符。</MAX_ERR>
+        </BusinessSource>
+        <BusinessSourceName type="String" max="120" name="行业名称（第三级）">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度不正确，最大长度120个字符。</MAX_ERR>
+        </BusinessSourceName>
+        <HouseStructure type="String" max="120" name="房屋结构">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度不正确，最大长度120个字符。</MAX_ERR>
+        </HouseStructure>
+      </PrpTmainProp>
+    </PrpTmainProps>
+    <!--中间银行信息-->
+    <!-- 
+    <PrpTmainBanks>
+      <PrpTmainBank>
+        <BankCode valid="Y" type="String" max="25" field="[//Expression7]">中间银行信息[BankCode]支行代码不能为空。//中间银行信息[BankCode]支行代码长度不正确，最大长度25个字符。</BankCode>
+        <BankName valid="Y" type="String" max="80" field="[//Expression7]">中间银行信息[BankName]支行名称不能为空。//中间银行信息[BankName]支行名称长度不正确，最大长度80个字符。</BankName>
+        <BankAgentCode valid="Y" type="String" max="25" field="[//Expression20]">[BankAge ntCode]银行网点代码不能为空。//[BankAgentCode]银行网点代码长度不正确，最大长度25个字符。</BankAgentCode>
+        <BankAgentName valid="Y" type="String" max="80" field="[//Expression20]">[BankAgentName]银行网点名称不能为空。//[BankAgentName]银行网点名称长度不正确，最大长度80个字符。</BankAgentName>
+      </PrpTmainBank>
+    </PrpTmainBanks>
+         -->
+    <!-- 被保险人座落地址 -->
+    <PrpTaddresss flag="1" errormsg="被保险人座落地址信息必须填写。" name="被保险人座落地址">
+      <PrpTaddress>
+        <AddressNo type="Int" min="1" max="32767" name="地址序号" regex="[1-9][0-9]*">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MIN_ERR>数值范围不正确，最小1。</MIN_ERR>
+          <MAX_ERR>数值范围不正确，最大32767。</MAX_ERR>
+          <REG_ERR>格式不正确，必须为正整数。</REG_ERR>
+        </AddressNo>
+        <AddressCode type="String" min="6" max="6" name="地址编码" regex="[0-9]*">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MIN_ERR>长度不正确，最小6个字符。</MIN_ERR>
+          <MAX_ERR>长度不正确，最大6个字符。</MAX_ERR>
+          <REG_ERR>格式不正确，必须为纯数字。</REG_ERR>
+        </AddressCode>
+        <ProvinceCode type="String" max="255" name="省">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度不正确，最大255个字符。</MAX_ERR>
+        </ProvinceCode>
+        <CityCode type="String" max="255" name="市">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度不正确，最大255个字符。</MAX_ERR>
+        </CityCode>
+        <DisCountryCode type="String" max="255" name="区县">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度不正确，最大255个字符。</MAX_ERR>
+        </DisCountryCode>
+        <TownShipName type="String" max="255" name="详细地址">
+          <EMP_ERR>不能为空。</EMP_ERR>
+          <MAX_ERR>长度不正确，最大255个字符。</MAX_ERR>
+        </TownShipName>
+      </PrpTaddress>
+    </PrpTaddresss>
+  </Proposal>
+  <Import file="TPcommon.xml" />
+  <Expression>
+    <Expression1><![CDATA['[//Proposal/RenewalFlagName]'=='1']]></Expression1>
+    <Expression2><![CDATA['[//Proposal/ServiceAreaFlag]'=='1']]></Expression2>
+    <Expression3><![CDATA['[//Proposal/APrpTInss/APrpTIns/Type]'=='1']]></Expression3>
+    <Expression4><![CDATA['[//Proposal/APrpTInss/APrpTIns/Type]'=='2']]></Expression4>
+    <Expression5><![CDATA['[//Proposal/IprpInss/IprpIns/Type]'=='1']]></Expression5>
+    <Expression6><![CDATA['[//Proposal/IprpInss/IprpIns/ Type]'=='2']]></Expression6>
+    <Expression7><![CDATA['[//Proposal/BusinessNature]'=='9']]></Expression7>
+    <Expression8 function="check"><![CDATA[function check(){var bn='[//Proposal/BusinessNature]';return (bn=='1'||bn=='2'||bn=='3'||bn=='9'||bn=='A'||bn=='G'||bn=='H'||bn=='M'||bn=='P');}]]></Expression8>
+    <Expression9><![CDATA['[//Proposal/APrpTInss/APrpTIns/Mobile]'!='']]></Expression9>
+    <Expression10><![CDATA['[//Proposal/APrpTInss/APrpTIns/UnitAreaCode]'!='']]></Expression10>
+    <Expression11><![CDATA['[//Proposal/IprpInss/IprpIns/Mobile]'!='']]></Expression11>
+    <Expression12><![CDATA['[//Proposal/IprpInss/IprpIns/UnitAreaCode]'!='']]></Expression12>
+    <Expression16><![CDATA['[//Proposal/IprpInss/IprpIns/UnitPhoneNumber]'!='']]></Expression16>
+    <Expression17><![CDATA['[//Proposal/APrpTInss/APrpTIns/UnitPhoneNumber]'!='']]></Expression17>
+    <Expression13><![CDATA['[//Proposal/ArgueSolution]'=='2']]></Expression13>
+    <Expression14><![CDATA['[//Proposal/APrpTInss/APrpTIns/Type]' == "1"]]></Expression14>
+    <Expression15><![CDATA['[//Proposal/IprpInss/IprpIns/Type]' == "1"]]></Expression15>
+    <!-- <Expression20><![CDATA[('[//Proposal/ChannelType]'=='N03'||'[//Proposal/ChannelTypeSub]'=='S13')&&('[//Proposal/PrpTmainBanks/PrpTmainBank/BancassuranceFlag]'=='1')]]></Expression20>
+   --></Expression>
+</ROOT>

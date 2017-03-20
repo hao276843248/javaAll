@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<contexts>
+	<context id="rootCtx" type="root">
+		<refKColl refId="rootKColl"/>
+	</context>
+	
+	<kColl id="extendedFiles">
+	<!-- 扩展服务规则文件 
+		<field id="demoCtxExtended" value="democfg/contexts.xml"/>-->
+	</kColl>
+	
+</contexts>

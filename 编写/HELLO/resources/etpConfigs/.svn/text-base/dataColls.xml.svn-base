@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datas>
+
+	<kColl id="rootKColl">
+		<field id="transException" />
+		<field id="exceptionMSG" />
+		<field id="SEQ_NO" />
+	</kColl>
+
+	<kColl id="extendedFiles">
+		<!-- 扩展数据规则文件 -->
+		<field id="flowDataExtended" value="flow/flowDataColls.xml" />
+	</kColl>
+
+</datas>

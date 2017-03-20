@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="cn.bdqn.book.entity">
+	
+ 	<query name="findPublisher">
+ 		from Publisher order by id 		
+ 	</query>
+ 	
+ 	<query name="findUserByLoginName"> 	
+ 		from User where loginName=:loginName
+ 	</query>
+ 	
+ 	<query name="getBookCount">
+ 		select count(*) from Book where title like :title
+ 	</query>
+ 	
+ 	<query name="findBook">
+ 		from Book b where b.title like :title order by b.id desc
+ 	</query>
+
+</hibernate-mapping>
+
+
+
+
+
+
+
+

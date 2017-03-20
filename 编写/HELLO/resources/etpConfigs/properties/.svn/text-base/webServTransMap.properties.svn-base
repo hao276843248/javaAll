@@ -1,0 +1,5 @@
+##webService渠道交易映射文件
+Flow_T0001 = TransactionFlowName
+ReqFmt_T0001 = ReqestFormatName
+RespFmt_T0001 = ResponeFormatName
+

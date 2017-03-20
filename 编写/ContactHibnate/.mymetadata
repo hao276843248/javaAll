@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="ContactHibnate"
+  id="myeclipse.1455773721174"
+  context-root="/Contact"
+  j2ee-spec="6.0"
+  archive="ContactHibnate.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

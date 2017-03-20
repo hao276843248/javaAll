@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.contact.mapper.ContactMapper">
+	
+	<insert id="addContact" parameterType="Contact">	
+		INSERT INTO Contact(uid,gid,name,title,sex,photo,birthday,phone,email,qq,address,description)
+		VALUES(#{user.id},#{group.id},#{name},#{title},#{sex},#{photo},#{birthday},#{phone},#{email},#{qq},#{address},#{description})	
+	</insert>
+	
+	<select id="findContact" resultMap="contactMap">
+		SELECT
+			c.id,c.uid,c.gid,c.name,c.title,c.sex,c.photo,c.birthday,c.phone,c.email,c.qq,c.address,c.description,g.name as groupName
+		FROM Contact c INNER JOIN `Group` g ON c.gid=g.id
+		WHERE c.uid=#{userId}
+		<if test="groupId!=null">
+			AND c.gid=#{groupId}
+		</if>
+		<if test="name!=null">
+			AND c.name LIKE #{name}
+		</if>
+		ORDER BY c.id DESC
+	</select>
+	
+	<select id="getContact" resultMap="contactMap">
+		SELECT
+			c.id,c.uid,c.gid,c.name,c.title,c.sex,c.photo,c.birthday,c.phone,c.email,c.qq,c.address,c.description,g.name as groupName
+		FROM Contact c INNER JOIN `Group` g ON c.gid=g.id
+		WHERE c.id=#{id}
+	</select>
+	
+	<update id="updateContact" parameterType="Contact">
+		UPDATE Contact SET
+			uid=#{user.id},
+			gid=#{group.id},
+			name=#{name},
+			title=#{title},
+			sex=#{sex},
+			photo=#{photo},
+			birthday=#{birthday},
+			phone=#{phone},
+			email=#{email},
+			qq=#{qq},
+			address=#{address},
+			description=#{description}
+		WHERE
+			id=#{id}	
+	</update>
+	
+	<delete id="deleteContact">
+		DELETE FROM Contact WHERE id=#{id}
+	</delete>
+	
+	<select id="findAllContact" resultMap="contactMap">
+		SELECT
+			c.id,c.uid,c.gid,c.name,c.title,c.sex,c.photo,c.birthday,c.phone,c.email,c.qq,c.address,c.description,g.name as groupName
+		FROM Contact c INNER JOIN `Group` g ON c.gid=g.id
+		WHERE c.uid=#{userId}
+	</select>
+	
+	<resultMap type="Contact" id="contactMap">
+		<id column="id" property="id"/>
+		
+		<result column="name" property="name"/>
+		<result column="title" property="title"/>
+		<result column="sex" property="sex"/>
+		<result column="photo" property="photo"/>
+		<result column="birthday" property="birthday"/>
+		<result column="phone" property="phone"/>
+		<result column="email" property="email"/>
+		<result column="qq" property="qq"/>
+		<result column="address" property="address"/>
+		<result column="description" property="description"/>
+		
+		<association property="group" javaType="Group">
+			<id column="gid" property="id"/>
+			<result column="groupName" property="name"/>
+		</association>
+		
+		
+	</resultMap>
+
+	
+	
+
+</mapper>
+
+
+
+
+
+
+
+
+
+

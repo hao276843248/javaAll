@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jaxws="http://cxf.apache.org/jaxws" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+		http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+		
+	<context:component-scan base-package="cn.bdqn.mail"/>	
+		
+	<import resource="classpath:META-INF/cxf/cxf.xml"/>
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>	
+	
+	<jaxws:endpoint id="mailWS" implementor="#mailWebService" address="/mail" />
+	
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url" value="jdbc:mysql:///Email"></property>
+		<property name="username" value="email"></property>
+		<property name="password" value="123456"></property>
+	</bean>
+	
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+			</props>
+		</property>
+		<property name="annotatedClasses">
+			<list>
+				<value>cn.bdqn.mail.entity.Email</value>
+				<value>cn.bdqn.mail.entity.User</value></list>
+		</property>
+	</bean>
+	
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate"
+		p:sessionFactory-ref="sessionFactory"
+	/> 
+	
+	<!-- 事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager"
+		p:sessionFactory-ref="sessionFactory"
+	/>
+	
+	<!-- 事务增强 -->
+	<tx:advice id="txAdvice">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true" propagation="SUPPORTS"/>
+			<tx:method name="find*" read-only="true" propagation="SUPPORTS"/>
+			<tx:method name="*" propagation="REQUIRED"/>
+		</tx:attributes>	
+	</tx:advice>
+	
+	<!-- 事务切面 -->
+	<aop:config>
+		<!-- 切点 -->
+		<aop:pointcut expression="execution(* cn.bdqn.mail.service..*.*(..))" id="txMethods"/>
+		<!-- 组装切面 -->
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txMethods"/>
+	</aop:config>
+	
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<!--用来发送邮件的SMTP服务器主机名-->
+		<property name="host" value="smtp.qq.com"/>
+			<property name="port" value="587"/>		
+			<!--登录SMTP服务器的用户名-->
+			<property name="username" value="276843248"/>
+			<!--登录SMTP服务器的密码-->
+			<property name="password" value="qrueeneytplscbeh"/>
+			<!--设置参数，登录SMTP服务器时进行身份验证-->
+			<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+			</props>
+		</property>	
+	</bean>	
+	
+	<!-- 邮件发送定时任务 -->
+	<bean id="sendMailJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"
+		p:targetObject-ref="sendMailJob"
+		p:targetMethod="doJob"		
+	/>
+	<!-- 删除已发送邮件定时任务 -->
+	<bean id="deleteMailJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"
+		p:targetObject-ref="deleteMailJob"
+		p:targetMethod="doJob"
+	/>
+	
+	<!-- 邮件发送触发器 -->
+	<bean id="sendMailTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean"
+		p:jobDetail-ref="sendMailJobDetail"
+		p:cronExpression="0/10 * * * * ?"
+	/>
+	
+	<bean id="deleteMailTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean"
+		p:jobDetail-ref="deleteMailJobDetail"
+		p:cronExpression="0 0 2 * * ?"
+	/>
+	
+	
+	<!-- 调度任务 -->
+	<bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref local="sendMailTrigger"/>
+				<ref local="deleteMailTrigger"/>
+			</list>			
+		</property>
+		<!-- 是否在SchedulerFactoryBean完成初始化后立即启动调度 -->
+		<property name="autoStartup" value="true"/>
+		<!-- SchedulerFactoryBean完成初始化后，延迟多少秒启动调度 -->
+		<property name="startupDelay" value="10"/>
+	</bean>
+	
+	
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

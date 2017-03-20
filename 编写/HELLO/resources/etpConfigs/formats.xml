@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<formats>
+	<!--
+		<fmtDef id="testCurrencyFmt"> <kCollFmt> <fmtCurrency
+		dataName="curData" delimit="," decimal="2" spacing="3" /> </kCollFmt>
+		</fmtDef>
+	-->
+	<kColl id="extendedFiles">
+		<!-- 扩展格式化规则文件 -->
+		<field id="flowFmtInExtended" value="flow/flowInFormat.xml" />
+		<field id="flowFmtOutExtended" value="flow/flowOutFormat.xml" />
+	</kColl>
+</formats>

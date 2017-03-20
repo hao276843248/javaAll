@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<datas>
+	<kColl id="HEAD">
+		<kColl id="FLOW">
+			<field id="FLOWUTIL" des="工作流util类" />
+			<field id="PROCESSID" des="流程实例ID" />
+			<field id="WORKITEMID" des="任务ID" />
+			<field id="USERID" des="用户工作流账号" />
+			<field id="PASS" des="用户工作流密码" value="sunflow" />
+			<field id="PROCDEFNAME" des="流程定义名称" />
+			<field id="PROCINSNAME" des="流程实例名称" />
+			<field id="DESC" des="流程实例描述" value="" />
+			<field id="WEIGHT" des="流程实例的 重要程度" value="1" />
+			<field id="PRIO" des="流程实例的紧急程度" value="0" />
+			<field id="AREACODE" des="区域中心码" value="000000" />
+			<field id="NODENAME" des="节点名称" />
+			<field id="PARTICIPANTNAME" des="参与者的登录名" />
+			<field id="PARTICIPANTID" des="参与者的ID" />
+			<field id="TRANSEXCEPTION" des="业务流程处理异常" />
+			
+			<field id="CREATETIME" des="流程创建时间" /><!-- 非工作流内部时间 -->
+			<field id="ENDTIME" des="流程结束时间" /><!-- 非工作流内部时间 -->
+			<field id="WKIMCREATETIME" des="工作项创建时间" />
+			<field id="WKIMCHECKOUTTIME" des="工作项检出时间" /><!-- 自动环节非工作流内部时间 -->
+			<field id="WKIMCHECKINTIME" des="工作项检入时间" /><!-- 非工作流内部时间 -->
+			<field id="GROUPID" des="流程组索引" />
+			
+			<!-- 流程扩展属性 -->
+			<field id="PRI_RESERVED1" value="" des="扩展属性1" />
+			<field id="PRI_RESERVED2" value="" des="扩展属性2" />
+			<field id="PRI_RESERVED3" value="" des="扩展属性3" />
+			<field id="PRI_RESERVED4" value="" des="扩展属性4" />
+			
+			<!-- PAGEINDEX为0时，PAGESIZE无效 -->
+			<field id="PAGEINDEX" value="1" des="分页查询起始索引" />
+			<field id="PAGESIZE" value="10" des="分页大小" />
+
+			<!-- 任务转寄参与者集合 -->
+			<field id="EXECUTORSID" des="任务转寄参与者ID集合"/>			
+			<!-- 任务可申请的操作员数据集 -->
+			<iColl id="APPLYMANLIST">
+				<kColl>
+					<field id="APPLYMAN" des="任务参与者" />
+				</kColl>
+			</iColl>
+
+			<!-- 可申请参与者集合 -->
+			<iColl id="APPLYEXECUTOR">
+				<kColl>
+					<field id="EXECUTOR" des="任务参与者" />
+				</kColl>
+			</iColl>
+			<field id="FIRSTWORKITEMFILTER" des="获取任务的条件"
+				value="PRI_STATE=1 AND WKI_STATE=2 AND WKI_PRIID='[HEAD.FLOW.PROCESSID]'" />
+
+			<field id="LISTWORKITEMFILTER1" des="获取任务的条件"
+				value="PRI_STATE=1 AND WKI_STATE=4 AND WKI_USER='[HEAD.FLOW.USERID]'" />
+
+			<field id="LISTWORKITEMFILTER2" des="获取任务列表的条件"
+				value="PRI_STATE=1 AND WKI_STATE=2 AND WKA_APPLYMAN LIKE '%,[HEAD.FLOW.USERID],%' AND WKI_PRIORITY &lt; 200 " />
+
+			<field id="AUTOCHECKOUTFILTER" des="自动获取任务列表的条件"
+				value="WKI_STATE IN (1,2,4) AND PRI_STATE=1 AND WKI_NAME='[HEAD.FLOW.NODENAME]' AND WKI_PRIID='[HEAD.FLOW.PROCESSID]'" />
+			
+			<field id="SEARCHFILTER" des="任务查询条件" />
+			<field id="SEARCHCOUNT" value="0" des="条件查询总数" />
+			<field id="LISTCOUNT" value="5" desc="需要查询出的任务个数" /><!-- 盲选专用 -->
+			<field id="WORKITEMLIST" des="获取任务列表的结果" />
+			<field id="WORKITEMCONTEXT" des="工作项对象" />
+			<field id="TASKTRACKLIST" desc="任务轨迹的结果" />
+			<field id="WMTATTRIBUTE" desc="工作项属性" />
+		</kColl>
+		<kColl id="WORKITEMCOUNT">
+			<field id="ALLCOUNT" value="0" des="完成任务总数" />
+			<field id="CMPCOUNT" value="0" des="完成任务总数" />
+			<field id="APPLYCOUNT" value="0" des="申请任务总数" />
+			<field id="CHECKCOUNT" value="0" des="处理中任务总数" />
+			<field id="SUSPENDCOUNT" value="0" des="挂起任务总数" />
+			<field id="TERMCOUNT" value="0" des="终止任务总数" />
+		</kColl>
+		
+		<field id="ISBIZ" value="false" des="是否执行业务脚本" />
+	</kColl>
+	<kColl id="BODY">
+		<field id="XMLDATAS" des="业务数据节点" value="null" />
+	</kColl>
+	<kColl id="TAIL">
+		<field id="RETCODE" des="结果码 " value="0" />
+		<field id="RETREASON" des="结果描述 " value="" />
+	</kColl>
+</datas>

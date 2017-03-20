@@ -1,0 +1,22 @@
+package QunLiao;
+
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner input=new Scanner(System.in);
+		
+		System.out.println("«Î ‰»Î∂Àø⁄∫≈");
+		int duankou=input.nextInt();
+		System.out.println("«Î ‰»Îπ„≤•µÿ÷∑");
+		String ip=input.next();
+		System.out.println("«Î ‰»ÎÍ«≥∆");
+		String name=input.next();
+		FaSong fa=new FaSong(ip, duankou, name);
+		JieShou jie=new JieShou(duankou);
+		fa.start();
+		jie.start();
+		
+		
+	}
+}

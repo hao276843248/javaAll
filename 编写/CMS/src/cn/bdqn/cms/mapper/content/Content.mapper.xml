@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.cms.mapper.content.ContentMapper">
+	
+	<!-- 添加内容 -->
+	<insert id="addContent" parameterType="Content">
+		INSERT INTO Content(id,cid,aid,title,link,content,pic,addTime)
+		VALUES(SEQ_CONTENT.nextval,#{cid},#{aid},#{title},#{link},#{content},#{pic},SYSDATE)		
+	</insert>
+	
+	<!-- 查询内容 -->
+	<select id="findContent" resultType="Content">
+		SELECT 
+			con.id,
+			con.title,
+			cat.name AS categoryName,
+			con.addTime,
+			con.pic,
+			con.link
+		FROM Content con INNER JOIN Category cat ON con.cid=cat.id
+		<where>
+			<if test="categoryId!=null">con.cid=#{categoryId}</if>
+			<if test="title!=null">and con.title LIKE #{title}</if>
+			<if test="categoryName!=null">and cat.name LIKE #{categoryName}</if>
+		</where>
+		ORDER BY con.id DESC
+	</select> 
+	
+	<!-- 根据id获取内容 -->
+	<select id="getContentById" resultType="Content">
+		SELECT 
+			con.id,
+			con.cid,
+			cat.name AS categoryName, 
+			con.title,
+			con.link,
+			con.content,
+			con.pic,
+			con.addTime 
+		FROM Content con INNER JOIN Category cat ON con.cid=cat.id 		
+		WHERE con.id=#{id}	
+	</select>
+	
+	<!-- 更新内容 -->
+	<update id="updateContent" parameterType="Content">
+		UPDATE Content SET
+			cid=#{cid},title=#{title},link=#{link},content=#{content},pic=#{pic}
+		WHERE id=#{id}			
+	</update>
+	
+	<!-- 删除内容 -->
+	<delete id="deleteContent">
+		DELETE FROM Content WHERE id=#{id}
+	</delete>
+	
+	<!-- 根据ID查询上一条记录的编号和标题 -->
+	<select id="getPreContent" resultType="Content">
+		<![CDATA[
+			SELECT * FROM 
+			(SELECT id,title FROM Content WHERE id<#{id} ORDER BY id DESC) t
+			WHERE rownum=1
+		]]>		
+	</select>
+	
+	<!-- 根据ID查询下一条记录的编号和标题 -->
+	<select id="getNextContent" resultType="Content">
+		<![CDATA[
+			SELECT * FROM 
+			(SELECT id,title FROM Content WHERE id>#{id} ORDER BY id) t
+			WHERE rownum=1
+		]]>		
+	</select>
+	
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+

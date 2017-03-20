@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="MyBastHouse"
+  id="myeclipse.1457944682262"
+  context-root="/MyBastHouse"
+  j2ee-spec="6.0"
+  archive="MyBastHouse.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

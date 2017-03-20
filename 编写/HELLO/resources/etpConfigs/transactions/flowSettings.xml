@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<settings>
+	<kColl id="settings">
+		<kColl id="files">
+			<kColl id="transactions">
+				<!-- 创建并开启工作流 -->
+				<transFlowDef id="WMA2000" value="flow/WMA2000.xml" />
+				<!-- 获取任务 -->
+				<transFlowDef id="WMA2002" value="flow/WMA2002.xml" />
+				<!-- 自动获取任务 -->
+				<transFlowDef id="WMA2003" value="flow/WMA2003.xml" />
+				<!-- 提交任务 -->
+				<transFlowDef id="WMA2004" value="flow/WMA2004.xml" />
+				<!-- 自动提交任务 -->
+				<transFlowDef id="WMA2005" value="flow/WMA2005.xml" />
+				<!-- 自动获取并提交任务 -->
+				<transFlowDef id="WMA2006" value="flow/WMA2006.xml" />
+				<!-- 挂起任务 -->
+				<transFlowDef id="WMA2007" value="flow/WMA2007.xml" />
+				<!-- 解挂任务 -->
+				<transFlowDef id="WMA2008" value="flow/WMA2008.xml" />
+				<!-- 释放任务 -->
+				<transFlowDef id="WMA2009" value="flow/WMA2009.xml" />
+				<!-- 终止流程实例 -->
+				<transFlowDef id="WMA2010" value="flow/WMA2010.xml" />
+				<!-- 查询各种工作项状态总数 -->
+				<transFlowDef id="WMA2012" value="flow/WMA2012.xml" />
+				<!-- 任务重新分配 -->
+				<transFlowDef id="WMA2013" value="flow/WMA2013.xml" />
+				<!-- 释放任务 -->
+				<transFlowDef id="WMA2014" value="flow/WMA2014.xml" />
+				<!-- 修改流程优先级 -->
+				<transFlowDef id="WMA2015" value="flow/WMA2015.xml" />
+				<!-- 查询任务轨迹 -->
+				<transFlowDef id="WMA2016" value="flow/WMA2016.xml" />
+				<!-- 任务转寄 -->
+				<transFlowDef id="WMA2017" value="flow/WMA2017.xml" />
+				<!-- 增加参与者 -->
+				<transFlowDef id="WMA2018" value="flow/WMA2018.xml" />
+				<!-- 获取任务列表 -->
+				<transFlowDef id="WMA2100" value="flow/WMA2100.xml" />
+				<!-- 获取任务列表（业务） -->
+				<transFlowDef id="WMA2102" value="flow/WMA2102.xml" />
+				<!-- 监控获取任务个数接口 -->
+				<transFlowDef id="WMA2200" value="flow/WMA2200.xml" />
+				<!-- 自动跳转业务 -->
+				<transFlowDef id="WMA3000" value="flow/WMA3000.xml" />
+				<!-- SunOSM业务跳转 -->
+				<transFlowDef id="WMA4000" value="flow/WMA4000.xml" />
+			</kColl>
+		</kColl>
+		<kColl id="properties">
+			<!-- 自定义属性文件 -->
+		</kColl>
+		<kColl id="tags">
+			<kColl id="services">
+				<field id="FlowService" value="com.sunyard.insurance.sunose.service.FlowService" />
+				<field id="SunFlowService" value="com.sunyard.insurance.sunose.service.SunFlowService" />
+			</kColl>
+			<kColl id="transSteps">
+				<!-- 释放工作流 -->
+				<field id="DisconnectFlowStep" value="com.sunyard.insurance.sunose.steps.DisconnectFlowStep" />
+				<!-- 添加任务参与者 -->
+				<field id="AddApplyManStep" value="com.sunyard.insurance.sunose.steps.AddApplyManStep" />
+				<!-- 获取工作流连接 -->
+				<field id="GetFlowConnStep" value="com.sunyard.insurance.sunose.steps.GetFlowConnStep" />
+				<!-- 提交任务 -->
+				<field id="CheckInItemStep" value="com.sunyard.insurance.sunose.steps.CheckInItemStep" />
+				<!-- 开启工作流示例 -->
+				<field id="StartStep" value="com.sunyard.insurance.sunose.steps.StartStep" />
+				<!-- 创建工作流连接 -->
+				<field id="CreateStep" value="com.sunyard.insurance.sunose.steps.CreateStep" />
+				<!-- 修改流程示例重要程度 -->
+				<field id="ModifyProcessPriorityStep" value="com.sunyard.insurance.sunose.steps.ModifyProcessPriorityStep" />
+				<!-- 任务转寄或者重新分配 -->
+				<field id="ModifyWorkItemExecutorStep" value="com.sunyard.insurance.sunose.steps.ModifyWorkItemExecutorStep" />
+				<!-- 挂起流程示例 -->
+				<field id="SuspendProcessInstanceStep" value="com.sunyard.insurance.sunose.steps.SuspendProcessInstanceStep" />
+				<!-- 挂起任务 -->
+				<field id="SuspendWorkItemStep"	value="com.sunyard.insurance.sunose.steps.SuspendWorkItemStep" />
+				<!-- 流程解挂（重启） -->
+				<field id="ResumeProcessInstanceStep" value="com.sunyard.insurance.sunose.steps.ResumeProcessInstanceStep" />
+				<!-- 任务解挂（重启） -->
+				<field id="ResumeWorkItemStep" value="com.sunyard.insurance.sunose.steps.ResumeWorkItemStep" />
+				<!-- 释放任务 -->
+				<field id="ReleaseWorkItemStep"	value="com.sunyard.insurance.sunose.steps.ReleaseWorkItemStep" />
+				<!-- 终止流程实例 -->
+				<field id="TerminateProcessInstanceStep" value="com.sunyard.insurance.sunose.steps.TerminateProcessInstanceStep" />
+				<!-- 获取可申请参与者 -->
+				<field id="GetApplyExecutorStep" value="com.sunyard.insurance.sunose.steps.GetApplyExecutorStep" />
+				<!-- 获取任务个数 -->
+				<field id="GetWorkItemNumStep" value="com.sunyard.insurance.sunose.steps.GetWorkItemNumStep" />
+				<!-- 获取任务列表 -->
+				<field id="ListWorkItemStep" value="com.sunyard.insurance.sunose.steps.ListWorkItemStep" />
+				<!-- 获取任务轨迹 -->
+				<field id="TaskTrackStep" value="com.sunyard.insurance.sunose.steps.TaskTrackStep" />
+				<!-- 自动获取任务 -->
+				<field id="AutoCheckOutStep" value="com.sunyard.insurance.sunose.steps.AutoCheckOutStep" />
+				<!-- 自动跳转业务流程 -->
+				<field id="AutoDispatchBusinessStep" value="com.sunyard.insurance.sunose.steps.AutoDispatchBusinessStep" />
+				<!-- 错误流程 -->
+				<field id="errorStep" value="com.sunyard.insurance.sunose.steps.ErrorStep" />
+				<!-- 获取任务信息列表 -->
+				<field id="GetWorkListStep" value="com.sunyard.insurance.sunose.steps.GetWorkListStep" />
+				<!-- 根据PROCESSID获取任务WORKITEMID -->
+				<field id="GetFirstNodeWorkItemStep" value="com.sunyard.insurance.sunose.steps.GetFirstNodeWorkItemStep" />
+				<!-- 跳转业务 -->
+				<field id="DispatchStep" value="com.sunyard.insurance.sunose.steps.DispatchStep" />
+				<!-- 根据WorkItemId获取WorkItemContext对象 -->
+				<field id="GetWorkItemByWIDStep" value="com.sunyard.insurance.sunose.steps.GetWorkItemByWIDStep" />
+				<!-- 获取任务（包含推、拉模式） -->
+				<field id="GetWorkItemOutStep" value="com.sunyard.insurance.sunose.steps.GetWorkItemOutStep" />
+				<!-- 检测工作项是否已提交 -->
+				<field id="CheckWorkItemSubmitStep" value="com.sunyard.insurance.sunose.steps.CheckWorkItemSubmitStep" />
+				<!--业务自动跳转 -->
+				<field id="BizDispatchStep" value="com.sunyard.insurance.sunose.steps.BizDispatchStep" />
+				<!--分页查询工作项列表 -->
+				<field id="ListWorkItemsPagingStep" value="com.sunyard.insurance.sunose.steps.ListWorkItemsPagingStep" />
+				<!--获取各个状态的工作项个数 -->
+				<field id="GetWorkItemCountStep" value="com.sunyard.insurance.sunose.steps.GetWorkItemCountStep" />
+				<!-- 获取工作项（推OR拉） -->
+				<field id="CheckOutStep" value="com.sunyard.insurance.sunose.steps.CheckOutStep" />
+				<!-- 根据WORKITEMID查询工作项 -->
+				<field id="GetWorkItemStep" value="com.sunyard.insurance.sunose.steps.GetWorkItemStep" />
+				<!-- 监控获取任务个数接口 -->
+				<field id="GetItemNumCountStep" value="com.sunyard.insurance.sunose.steps.GetItemNumCountStep" />
+				<!-- 获取已终止的工作项接口 -->
+				<field id="GetTerminalWorkItemStep" value="com.sunyard.insurance.sunose.steps.GetTerminalWorkItemStep" />
+
+
+				<!-- 修改工作流参数 -->
+				<field id="ModifyFlowValuePlus" value="com.sunyard.insurance.sunose.plus.ModifyFlowValuePlus" />
+				<!-- CPS构件 -->
+				<field id="CPSPlus" value="com.sunyard.insurance.sunose.plus.CPSPlus" />
+				<!-- 修改上下文变量构件 -->
+				<field id="ModifyContextValuesPlus" value="com.sunyard.insurance.sunose.plus.ModifyContextValuesPlus" />
+				<!-- 流程格式化构件 -->
+				<field id="XMLFormatPlus" value="com.sunyard.insurance.sunose.plus.XMLFormatPlus" />
+				<!-- 流程反格式化构件 -->
+				<field id="UnXMLFormatPlus" value="com.sunyard.insurance.sunose.plus.UnXMLFormatPlus" />
+				<!--用户自定义构件 -->
+				<field id="UserDefinedPlus" value="com.sunyard.insurance.sunose.plus.UserDefinedPlus" />
+				<!--存储过程构件 -->
+				<field id="ProcedurePlus" value="com.sunyard.insurance.sunose.plus.ProcedurePlus" />
+				<!--存储过程构件 -->
+				<field id="FormatPlus" value="com.sunyard.insurance.sunose.plus.FormatPlus" />
+				<!--回拼报文构件 -->
+				<field id="XMLReturnFormatPlus" value="com.sunyard.insurance.sunose.plus.XMLReturnFormatPlus" />
+				<!--回拼报文合并构件 -->
+				<field id="UniteXMLReturnPlus" value="com.sunyard.insurance.sunose.plus.UniteXMLReturnPlus" />
+				<!--组装全单录入的报文数据 -->
+				<field id="GetCheckNodeContextPlus" value="com.sunyard.insurance.sunose.plus.GetCheckNodeContextPlus" />
+				<!--报文操作构件 -->
+				<field id="XMLOperPlus" value="com.sunyard.insurance.sunose.plus.XMLOperPlus" />
+				<!--组装全单录入的报文数据 -->
+				<field id="XMLCheckNodePlus" value="com.sunyard.insurance.sunose.plus.XMLCheckNodePlus" />
+				<!--XML报文格式化构件 -->
+				<field id="XMLInPutFormarPlus" value="com.sunyard.insurance.sunose.plus.XMLInPutFormarPlus" />
+				<!--全单，cps报文合并构件 -->
+				<field id="UniteForXMLPlus" value="com.sunyard.insurance.sunose.plus.UniteForXMLPlus" />
+				<!-- JavaScript构件 -->
+				<field id="JavaScriptPlus" value="com.sunyard.insurance.sunose.plus.JavaScriptPlus" />
+				<!-- 获取流程变量构件 -->
+				<field id="GetFlowValuePlus" value="com.sunyard.insurance.sunose.plus.GetFlowValuePlus" />
+
+			</kColl>
+		</kColl>
+	</kColl>
+</settings>

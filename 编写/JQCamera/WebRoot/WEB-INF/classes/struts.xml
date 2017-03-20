@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="camera" namespace="/" extends="json-default">
+		<action name="listBrand" class="cn.bdqn.camera.action.ListBrandAction">
+			<result type="json">
+				<param name="root">brands</param>
+			</result>
+		</action>
+		<action name="listType" class="cn.bdqn.camera.action.ListTypeAction">
+			<result type="json">
+				<param name="root">types</param>
+			</result>
+		</action>
+		<action name="listCamera" class="cn.bdqn.camera.action.lisCameraAction">
+			<result type="json">
+				<param name="includeProperties">
+					total,
+					rows.*
+				</param>
+			</result>
+		</action>
+	</package>
+</struts>    

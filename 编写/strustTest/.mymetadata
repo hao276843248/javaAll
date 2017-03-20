@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="strustTest"
+  id="myeclipse.1455799493246"
+  context-root="/strustTest"
+  j2ee-spec="6.0"
+  archive="strustTest.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

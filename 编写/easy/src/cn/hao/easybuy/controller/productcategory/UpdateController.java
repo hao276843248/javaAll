@@ -1,0 +1,56 @@
+package cn.hao.easybuy.controller.productcategory;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import cn.hao.easybuy.controller.ControllerBean;
+import cn.hao.easybuy.entity.EasybuyProductCategory;
+import cn.hao.easybuy.form.productategory.GroupForm;
+
+@RequestMapping("/manage")
+@Controller
+public class UpdateController extends ControllerBean{
+
+	@ModelAttribute("productcategoryForm1")
+	public List<EasybuyProductCategory> EasybuyProductCategory(){
+		List<EasybuyProductCategory> a= productCategoryService.find(null);
+		EasybuyProductCategory b=new EasybuyProductCategory();
+		b.setEpcName("¸úÀ¸Ä¿");
+		b.setEpcId(0);
+		a.add(0, b);
+		return a;
+	}
+	
+	@ModelAttribute("groupForm")
+	public GroupForm groupForm(){
+		return new GroupForm();
+	}
+	
+	
+	@RequestMapping(value="productClass-modify_{id}",method=RequestMethod.GET)
+	public ModelAndView add(@PathVariable("id")int id,HttpServletResponse response){
+		EasybuyProductCategory ea=productCategoryService.get(id);
+		GroupForm g=new GroupForm();
+		g.setName(ea.getEpcName());
+		g.setParentId(ea.getEpcParentId());
+		return new ModelAndView("manage/productClass-modify").addObject("groupForm", g);
+	}
+
+	
+	@RequestMapping(value="productClass-modify",method=RequestMethod.POST)
+	public String add(@ModelAttribute("groupForm")GroupForm groupForm){
+		EasybuyProductCategory e=new EasybuyProductCategory();
+		e.setEpcParentId(groupForm.getParentId());
+		e.setEpcName(groupForm.getName());
+		productCategoryService.update(e);
+		return "redirect:productClass.html";
+	}
+}

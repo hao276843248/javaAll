@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SelfDefTransFlow>
+	<!-- 数据库操作业务接口 -->
+	<TransactionFlow id="WMA4000" transFlowContext="WMA4000Context">
+		<!-- 自动跳转到业务执行 -->
+		<transStep id="BizDispatchStep">
+			<transition id="Other" dest="end" />
+			<transition id="-99" dest="errorStep" />
+			<transition id="-1" dest="errorStep" />
+		</transStep>
+
+		<!-- 错误处理步骤 -->
+		<transStep id="errorStep">
+			<transition id="Other" dest="end" />
+		</transStep>
+
+		<refFormat refId="tcpipInputFmt" />
+		<refFormat refId="tcpipOutputFmt" />
+	</TransactionFlow>
+
+	<!-- 上下文配置 -->
+	<context id="WMA4000Context" type="transFlow">
+		<refKColl refId="datas" />
+	</context>
+
+	<!-- 数据配置 -->
+	<kColl id="datas">
+		<field id="transException" />
+		<refData refId="TAIL" />
+	</kColl>
+
+	<!-- 输入格式化配置 -->
+	<fmtDef id="tcpipInputFmt">
+		<xmlWrap tagName="ROOT">
+			<xmlHead encoding="utf-8" version="1.0" />
+			<xmlWrap tagName="HEAD" dataName="HEAD">
+				<xmlFullTag dataName="TRANSID" tagName="TRANSID" />
+				<xmlFullTag dataName="MODULENAME" tagName="MODULENAME" />
+				<xmlFullTag dataName="STEPNAME" tagName="STEPNAME" />
+			</xmlWrap>
+			<xmlWrap tagName="BODY" dataName="BODY">
+				<xmlFullTag dataName="XMLDATAS" tagName="XMLDATAS" />
+			</xmlWrap>
+			<xmlWrap tagName="TAIL" dataName="TAIL">
+				<xmlFullTag dataName="RETCODE" tagName="RETCODE" />
+				<xmlFullTag dataName="RETREASON" tagName="RETREASON" />
+			</xmlWrap>
+		</xmlWrap>
+	</fmtDef>
+
+	<!-- 输出格式化配置 -->
+	<fmtDef id="tcpipOutputFmt">
+		<xmlWrap tagName="ROOT">
+			<xmlHead encoding="utf-8" version="1.0" />
+			<xmlWrap tagName="HEAD" dataName="HEAD">
+				<xmlFullTag dataName="TRANSID" tagName="TRANSID" />
+				<xmlFullTag dataName="MODULENAME" tagName="MODULENAME" />
+				<xmlFullTag dataName="STEPNAME" tagName="STEPNAME" />
+			</xmlWrap>
+			<xmlFullTag dataName="BODY" tagName="BODY" />
+			<xmlWrap tagName="TAIL" dataName="TAIL">
+				<xmlFullTag dataName="RETCODE" tagName="RETCODE" />
+				<xmlFullTag dataName="RETREASON" tagName="RETREASON" />
+			</xmlWrap>
+		</xmlWrap>
+	</fmtDef>
+</SelfDefTransFlow>
